@@ -8,9 +8,10 @@ import json from 'rollup-plugin-json'
 const pkg = require('./package.json')
 
 const libraryName = 'prim'
+const inputFilename = 'Prim'
 
 export default {
-  input: `src/${camelCase(libraryName)}.ts`,
+  input: `src/${inputFilename}.ts`,
   output: [
     { file: pkg.main, name: camelCase(libraryName), format: 'umd', sourcemap: true },
     { file: pkg.module, format: 'es', sourcemap: true },
