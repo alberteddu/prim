@@ -5,12 +5,12 @@ import { IAttachmentList } from './IAttachmentList';
 import { IAttachment } from './IAttachment';
 import { IPostList } from './IPostList';
 import { NodeType } from './NodeType';
-import { PropertyObject } from '@prim/property';
+import { IProperty } from '@prim/property';
 import { PostList } from './PostList';
 import { INodeFinder } from '@prim/finder';
 
 export class Post extends Node implements IPost {
-  constructor(path: IPath, properties: PropertyObject, private readonly nodeFinder: INodeFinder) {
+  constructor(path: IPath, properties: IProperty[], private readonly nodeFinder: INodeFinder) {
     super(path, properties);
   }
 
@@ -54,6 +54,10 @@ export class Post extends Node implements IPost {
     const rootPost = this.nodeFinder.findRootPost();
 
     return this.is(rootPost);
+  }
+
+  getProtectedNames(): string[] {
+    return [];
   }
 
   getNodeType(): NodeType.Post {

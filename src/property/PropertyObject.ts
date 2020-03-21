@@ -1,3 +1,5 @@
+import { IProperty } from './IProperty';
+
 export interface PropertyObject {
-  [name: string]: string | null;
+  [name: string]: IProperty;
 }

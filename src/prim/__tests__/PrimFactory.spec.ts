@@ -1,5 +1,5 @@
 import * as mock from 'mock-fs';
-import { PrimFactory } from './PrimFactory';
+import { PrimFactory } from '@prim/prim/PrimFactory';
 import { InvalidPath } from '@prim/error';
 import { Path } from '@prim/filesystem';
 

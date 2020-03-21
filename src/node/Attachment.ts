@@ -2,12 +2,12 @@ import { Node } from './Node';
 import { IAttachment } from './IAttachment';
 import { NodeType } from './NodeType';
 import { IPath } from '@prim/filesystem';
-import { PropertyObject } from '@prim/property';
+import { IProperty } from '@prim/property';
 import { INodeFinder } from '@prim/finder';
 import { IPost } from './IPost';
 
 export class Attachment extends Node implements IAttachment {
-  constructor(path: IPath, properties: PropertyObject, private readonly nodeFinder: INodeFinder) {
+  constructor(path: IPath, properties: IProperty[], private readonly nodeFinder: INodeFinder) {
     super(path, properties);
   }
 
@@ -17,6 +17,10 @@ export class Attachment extends Node implements IAttachment {
 
   isAttachmentOf(post: IPost): boolean {
     return post.getAttachments().contains(this);
+  }
+
+  getProtectedNames(): string[] {
+    return ['extension', 'type', 'size'];
   }
 
   getNodeType(): NodeType.Attachment {

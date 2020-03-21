@@ -1,6 +1,7 @@
 import { INodeList } from './INodeList';
 import { INode } from './INode';
 import { IProperty } from '@prim/property';
+import { IPropertyMatch } from '@prim/property/match/IPropertyMatch';
 
 export class NodeList<L extends INodeList<any>, T extends INode = INode>
   implements INodeList<L, T> {
@@ -22,8 +23,8 @@ export class NodeList<L extends INodeList<any>, T extends INode = INode>
     return this.nodes.map(callback);
   }
 
-  where(property: IProperty): L {
-    return this.filter(eachNode => eachNode.hasProperty(property));
+  where(propertyMatch: IPropertyMatch): L {
+    return this.filter(eachNode => eachNode.hasMatchingProperty(propertyMatch));
   }
 
   except(node: T): L {
