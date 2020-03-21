@@ -9,7 +9,7 @@ import { INodeFinder, NodeFinder } from '@prim/finder';
 import { INodeProvider, NodeProvider } from '@prim/node';
 
 export class PrimFactory {
-  static create(path: string): IPrim {
+  static createFromPath(path: string): IPrim {
     const container = new Container();
     container.bind<string>(TYPES.Path).toConstantValue(path);
     container.bind<IPath>(TYPES.RootDirectory).toConstantValue(new Path(path));

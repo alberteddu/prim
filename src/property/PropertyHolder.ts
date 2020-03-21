@@ -7,7 +7,7 @@ export abstract class PropertyHolder implements IPropertyHolder {
   constructor(protected readonly properties: PropertyObject = {}) {}
 
   propertyExists(name: string): boolean {
-    return typeof this.properties[name] !== 'undefined';
+    return this.properties.hasOwnProperty(name);
   }
 
   hasProperty(property: IProperty): boolean {

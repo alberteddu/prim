@@ -19,14 +19,14 @@ beforeAll(() => {
 describe('PrimFactory::create', () => {
   it('should throw on invalid paths', () => {
     const instanceCreation = () => {
-      PrimFactory.create(invalidPath);
+      PrimFactory.createFromPath(invalidPath);
     };
     expect(instanceCreation).toThrowError(new InvalidPath(new Path(invalidPath)));
   });
 
   it('should create an instance for valid paths', () => {
-    const prim = PrimFactory.create('empty');
-    const otherPrim = PrimFactory.create('full');
+    const prim = PrimFactory.createFromPath('empty');
+    const otherPrim = PrimFactory.createFromPath('full');
 
     expect(prim.getRootDirectory().getPath()).toBe('empty');
     expect(otherPrim.getRootDirectory().getPath()).toBe('full');
