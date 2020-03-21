@@ -1,1 +1,2 @@
-export { PrimFactory as Prim } from '@prim/prim/PrimFactory';
+import { PrimFactory } from '@prim/prim/PrimFactory';
+export const create = PrimFactory.create;

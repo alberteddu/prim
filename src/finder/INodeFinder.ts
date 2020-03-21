@@ -1,4 +1,4 @@
-import { IPath } from '@prim/path';
+import { IPath } from '@prim/filesystem';
 import { IPostList, IAttachmentList, IPost, IAttachment } from '@prim/node';
 
 export interface INodeFinder {

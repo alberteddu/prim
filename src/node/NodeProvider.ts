@@ -1,7 +1,7 @@
 import { injectable, inject } from 'inversify';
 import { TYPES } from '@prim/types';
 import { INodeProvider } from './INodeProvider';
-import { IPath, IPathValidator } from '@prim/path';
+import { IPath, IPathValidator } from '@prim/filesystem';
 import { INodeFinder } from '@prim/finder';
 import { Post } from './Post';
 import { Attachment } from './Attachment';

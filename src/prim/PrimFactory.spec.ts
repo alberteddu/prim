@@ -1,7 +1,7 @@
 import * as mock from 'mock-fs';
 import { PrimFactory } from './PrimFactory';
 import { InvalidPath } from '@prim/error';
-import { Path } from '@prim/path';
+import { Path } from '@prim/filesystem';
 
 const invalidPath = 'hello';
 const validEmptyPath = 'empty';

@@ -1,7 +1,7 @@
 import { Node } from './Node';
 import { IAttachment } from './IAttachment';
 import { NodeType } from './NodeType';
-import { IPath } from '@prim/path';
+import { IPath } from '@prim/filesystem';
 import { PropertyObject } from '@prim/property';
 import { INodeFinder } from '@prim/finder';
 import { IPost } from './IPost';

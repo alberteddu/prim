@@ -1,4 +1,4 @@
-import { IPath } from '@prim/path';
+import { IPath } from '@prim/filesystem';
 import { IPost, IAttachment } from '@prim/node';
 
 export interface IPrim {

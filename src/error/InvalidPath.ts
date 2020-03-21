@@ -1,4 +1,4 @@
-import { IPath } from '@prim/path';
+import { IPath } from '@prim/filesystem';
 
 export class InvalidPath extends Error {
   constructor(path: IPath) {

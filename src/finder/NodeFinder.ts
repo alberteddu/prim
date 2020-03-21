@@ -2,7 +2,7 @@ import { injectable, inject } from 'inversify';
 import { readdirSync } from 'fs';
 import { TYPES } from '@prim/types';
 import { INodeFinder } from './INodeFinder';
-import { IPath, IPathValidator, Path } from '@prim/path';
+import { IPath, IPathValidator, Path } from '@prim/filesystem';
 import {
   IPost,
   IPostList,

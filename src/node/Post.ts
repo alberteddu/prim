@@ -1,4 +1,4 @@
-import { IPath } from '@prim/path';
+import { IPath } from '@prim/filesystem';
 import { IPost } from './IPost';
 import { Node } from './Node';
 import { IAttachmentList } from './IAttachmentList';

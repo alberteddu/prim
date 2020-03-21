@@ -1,4 +1,4 @@
-import { IPath } from '@prim/path';
+import { IPath } from '@prim/filesystem';
 import { IPropertyHolder } from '@prim/property/IPropertyHolder';
 import { NodeType } from './NodeType';
 
