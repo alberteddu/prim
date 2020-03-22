@@ -1,15 +1,18 @@
-import { injectable } from 'inversify';
+import { injectable, inject } from 'inversify';
 import { existsSync, lstatSync } from 'fs';
+import { relative, isAbsolute } from 'path';
+import { TYPES } from '@prim/types';
 import { IPathValidator } from './IPathValidator';
 import { InvalidPath } from '@prim/error';
 import { IPath } from './IPath';
 
 @injectable()
 export class PathValidator implements IPathValidator {
-  // todo here we should check that paths are actually inside the root path
+  constructor(@inject(TYPES.RootDirectory) private readonly rootDirectory: IPath) {}
+
   validatePath(path: IPath): void {
     if (!this.isValid(path)) {
-      throw new InvalidPath(path);
+      this.failPath(path);
     }
   }
 
@@ -17,7 +20,7 @@ export class PathValidator implements IPathValidator {
     this.validatePath(path);
 
     if (!this.isDirectory(path)) {
-      throw new InvalidPath(path);
+      this.failPath(path);
     }
   }
 
@@ -25,12 +28,12 @@ export class PathValidator implements IPathValidator {
     this.validatePath(path);
 
     if (!this.isFile(path)) {
-      throw new InvalidPath(path);
+      this.failPath(path);
     }
   }
 
   isValid(path: IPath): boolean {
-    return existsSync(path.getPath());
+    return existsSync(path.getPath()) && this.isPathUnderRootDirectory(path.getPath());
   }
 
   isDirectory(path: IPath): boolean {
@@ -39,5 +42,19 @@ export class PathValidator implements IPathValidator {
 
   isFile(path: IPath): boolean {
     return lstatSync(path.getPath()).isFile();
+  }
+
+  private isPathUnderRootDirectory(path: string): boolean {
+    if (path === this.rootDirectory.getPath()) {
+      return true;
+    }
+
+    const relativePath = relative(this.rootDirectory.getPath(), path);
+
+    return relativePath.length > 0 && !relativePath.startsWith('..') && !isAbsolute(relativePath);
+  }
+
+  private failPath(path: IPath): void {
+    throw new InvalidPath(path);
   }
 }

@@ -1,9 +1,9 @@
 import { INodeList } from './INodeList';
 import { INode } from './INode';
-import { IProperty } from '@prim/property';
+import { IProperty, NegateMatch } from '@prim/property';
 import { IPropertyMatch } from '@prim/property/match/IPropertyMatch';
 
-export class NodeList<L extends INodeList<any>, T extends INode = INode>
+export abstract class NodeList<L extends INodeList<any>, T extends INode = INode>
   implements INodeList<L, T> {
   constructor(private readonly nodes: T[]) {}
 
@@ -16,7 +16,7 @@ export class NodeList<L extends INodeList<any>, T extends INode = INode>
   }
 
   filter(callback: (node: T) => boolean): L {
-    return new (this.constructor as { new (nodes: T[]): L })(this.nodes);
+    return new (this.constructor as { new (nodes: T[]): L })(this.nodes.filter(callback));
   }
 
   map(callback: (node: T) => void): any {
@@ -25,6 +25,10 @@ export class NodeList<L extends INodeList<any>, T extends INode = INode>
 
   where(propertyMatch: IPropertyMatch): L {
     return this.filter(eachNode => eachNode.hasMatchingProperty(propertyMatch));
+  }
+
+  whereNot(propertyMatch: IPropertyMatch): L {
+    return this.where(new NegateMatch(propertyMatch));
   }
 
   except(node: T): L {

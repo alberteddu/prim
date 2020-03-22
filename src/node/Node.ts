@@ -4,6 +4,7 @@ import { IPath } from '@prim/filesystem';
 import { NodeType } from './NodeType';
 
 export abstract class Node extends PropertyHolder implements INode {
+  /* istanbul ignore next */
   constructor(protected readonly path: IPath, properties: IProperty[] = []) {
     super(properties);
   }

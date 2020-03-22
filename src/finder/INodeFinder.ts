@@ -1,5 +1,6 @@
 import { IPath } from '@prim/filesystem';
 import { IPostList, IAttachmentList, IPost, IAttachment } from '@prim/node';
+import { IUrl } from '@prim/url/IUrl';
 
 export interface INodeFinder {
   findRootPost(): IPost;
@@ -7,5 +8,5 @@ export interface INodeFinder {
   findPostAt(path: IPath): IPost;
   findAttachmentsAt(post: IPost): IAttachmentList;
   findAttachmentAt(path: IPath): IAttachment;
-  findNodeAt(path: IPath): IPost | IAttachment | null;
+  findNodeAt(url: IUrl): IPost | IAttachment | null;
 }

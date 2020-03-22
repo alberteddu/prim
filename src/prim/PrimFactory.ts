@@ -1,5 +1,3 @@
-import 'reflect-metadata';
-
 import { Container } from 'inversify';
 import { TYPES } from '@prim/types';
 import { IPrim } from './IPrim';

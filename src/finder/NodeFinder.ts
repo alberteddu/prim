@@ -12,6 +12,7 @@ import {
   IAttachment,
 } from '@prim/node';
 import { PostList } from '@prim/node/PostList';
+import { IUrl } from '@prim/url/IUrl';
 
 @injectable()
 export class NodeFinder implements INodeFinder {
@@ -27,10 +28,10 @@ export class NodeFinder implements INodeFinder {
 
   findPostsAt(post: IPost): IPostList {
     const directories = this.findFilesAndDirectoriesAt(post.getPath()).filter(
-      this.pathValidator.isDirectory,
+      this.pathValidator.isDirectory.bind(this.pathValidator),
     );
 
-    return new PostList(directories.map(this.findPostAt));
+    return new PostList(directories.map(this.findPostAt.bind(this)));
   }
 
   findPostAt(path: IPath): IPost {
@@ -40,9 +41,11 @@ export class NodeFinder implements INodeFinder {
   }
 
   findAttachmentsAt(post: IPost): IAttachmentList {
-    const files = this.findFilesAndDirectoriesAt(post.getPath()).filter(this.pathValidator.isFile);
+    const files = this.findFilesAndDirectoriesAt(post.getPath()).filter(
+      this.pathValidator.isFile.bind(this.pathValidator),
+    );
 
-    return new AttachmentList(files.map(this.findAttachmentAt));
+    return new AttachmentList(files.map(this.findAttachmentAt.bind(this)));
   }
 
   findAttachmentAt(path: IPath): IAttachment {
@@ -51,20 +54,18 @@ export class NodeFinder implements INodeFinder {
     return this.nodeProvider.provideAttachment(path, this);
   }
 
-  findNodeAt(path: IPath): IPost | IAttachment | null {
+  findNodeAt(url: IUrl): IPost | IAttachment | null {
+    const urlPath = url.getPath(this.rootDirectory);
+
     try {
-      this.pathValidator.validatePath(path);
+      this.pathValidator.validatePath(urlPath);
 
-      if (this.pathValidator.isFile(path)) {
-        return this.findPostAt(path);
+      if (this.pathValidator.isDirectory(urlPath)) {
+        return this.findPostAt(urlPath);
       }
 
-      if (this.pathValidator.isDirectory(path)) {
-        return this.findAttachmentAt(path);
-      }
-    } catch {
-      return null;
-    }
+      return this.findAttachmentAt(urlPath);
+    } catch {}
 
     return null;
   }
@@ -75,6 +76,6 @@ export class NodeFinder implements INodeFinder {
         // Another place to use plugins in
         return pathString.slice(0, 1) !== '.';
       })
-      .map(pathString => new Path(pathString));
+      .map(pathString => this.rootDirectory.join(new Path(pathString)));
   }
 }

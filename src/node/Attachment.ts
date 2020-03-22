@@ -7,6 +7,7 @@ import { INodeFinder } from '@prim/finder';
 import { IPost } from './IPost';
 
 export class Attachment extends Node implements IAttachment {
+  /* istanbul ignore next */
   constructor(path: IPath, properties: IProperty[], private readonly nodeFinder: INodeFinder) {
     super(path, properties);
   }

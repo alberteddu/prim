@@ -20,7 +20,7 @@ export class NodeProvider implements INodeProvider {
   }
 
   provideAttachment(location: IPath, nodeFinder: INodeFinder): IAttachment {
-    this.pathValidator.validateDirectory(location);
+    this.pathValidator.validateFile(location);
 
     // todo here it would be a good place to call plugins for params
     return new Attachment(location, [], nodeFinder);
