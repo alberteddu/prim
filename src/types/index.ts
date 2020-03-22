@@ -1,7 +1,10 @@
 const TYPES = {
   Path: Symbol.for('Path'),
   Prim: Symbol.for('Prim'),
-  DirectoryValidator: Symbol.for('DirectoryValidator')
-}
+  RootDirectory: Symbol.for('RootDirectory'),
+  PathValidator: Symbol.for('PathValidator'),
+  NodeFinder: Symbol.for('NodeFinder'),
+  NodeProvider: Symbol.for('NodeProvider'),
+};
 
-export { TYPES }
+export { TYPES };
