@@ -1,7 +1,7 @@
 import { Container } from 'inversify';
 import { TYPES } from '@prim/types';
 import { IPrim } from './IPrim';
-import { Prim } from './prim';
+import { Prim } from './Prim';
 import { Path, PathValidator, IPath, IPathValidator } from '@prim/filesystem';
 import { INodeFinder, NodeFinder } from '@prim/finder';
 import { INodeProvider, NodeProvider } from '@prim/node';
