@@ -1,6 +1,6 @@
 {
   "name": "@lbrto/prim",
-  "version": "0.0.1",
+  "version": "dev",
   "description": "",
   "keywords": [],
   "module": "dist/prim.es5.js",
