@@ -1,5 +1,8 @@
 name: Publish
 
+env:
+  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
 on:
   push:
     branches:
