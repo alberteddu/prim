@@ -40,3 +40,13 @@ jobs:
         with:
           name: dist
       - run: yarn semantic-release
+      - id: tag
+        uses: 'WyriHaximus/github-action-get-previous-tag@master'
+        env:
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+      - uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: docs
+          TARGET_FOLDER: ${{ steps.tag.outputs.tag }}
