@@ -10,6 +10,7 @@ import {
   NegateMatch,
 } from '@prim/property';
 import { CannotModifyProtectedProperty } from '@prim/error';
+import { IPropertyHolder } from '../IPropertyHolder';
 
 class ConcretePropertyHolder extends PropertyHolder {
   constructor(properties: IProperty[] = []) {
@@ -22,7 +23,10 @@ class ConcretePropertyHolder extends PropertyHolder {
 }
 
 class PropertyHolderAwareMatch extends PropertyIsEqual implements IPropertyHolderAwareMatch {
-  setPropertyHolder() {}
+  propertyHolder: IPropertyHolder | null = null;
+  setPropertyHolder(propertyHolder: IPropertyHolder) {
+    this.propertyHolder = propertyHolder;
+  }
 }
 
 describe('PropertyHolder', () => {

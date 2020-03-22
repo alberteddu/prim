@@ -65,7 +65,9 @@ export class NodeFinder implements INodeFinder {
       }
 
       return this.findAttachmentAt(urlPath);
-    } catch {}
+    } catch {
+      return null;
+    }
 
     return null;
   }
