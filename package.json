@@ -88,5 +88,7 @@
     "inversify": "^5.0.1",
     "reflect-metadata": "^0.1.13"
   },
-  "dependencies": {}
+  "publishConfig": {
+    "access": "public"
+  }
 }
