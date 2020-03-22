@@ -39,8 +39,3 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-  publish_docs:
-    needs: release
-    name: Publish docs
-    runs-on: ubuntu-latest
