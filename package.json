@@ -87,13 +87,11 @@
     "tslint-config-prettier": "^1.15.0",
     "tslint-config-standard": "^8.0.1",
     "typedoc": "^0.17.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "@types/deep-equal": "^1.0.1",
+    "deep-equal": "^2.0.1"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {
-    "@types/deep-equal": "^1.0.1",
-    "deep-equal": "^2.0.1"
   }
 }
