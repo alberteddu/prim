@@ -1,9 +1,9 @@
 import { injectable, inject } from 'inversify';
 import { existsSync, lstatSync } from 'fs';
 import { relative, isAbsolute } from 'path';
-import { TYPES } from '@prim/types';
+import { TYPES } from '../types';
 import { IPathValidator } from './IPathValidator';
-import { InvalidPath } from '@prim/error';
+import { InvalidPath } from '../error';
 import { IPath } from './IPath';
 
 @injectable()

@@ -13,10 +13,6 @@
     "declarationDir": "dist/types",
     "outDir": "dist/lib",
     "typeRoots": ["node_modules/@types"],
-    "baseUrl": "./src",
-    "paths": {
-      "@prim/*": ["*"]
-    },
     "strictNullChecks": true
   },
   "include": ["src"]

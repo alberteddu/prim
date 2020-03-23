@@ -1,6 +1,6 @@
-import { PropertyHolder, IProperty } from '@prim/property';
+import { PropertyHolder, IProperty } from '../property';
 import { INode } from './INode';
-import { IPath } from '@prim/filesystem';
+import { IPath } from '../filesystem';
 import { NodeType } from './NodeType';
 
 export abstract class Node extends PropertyHolder implements INode {

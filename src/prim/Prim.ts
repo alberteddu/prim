@@ -1,10 +1,10 @@
 import { injectable, inject } from 'inversify';
-import { TYPES } from '@prim/types';
+import { TYPES } from '../types';
 import { IPrim } from './IPrim';
-import { IPath, IPathValidator } from '@prim/filesystem';
-import { INodeFinder } from '@prim/finder';
-import { IUrl, Url } from '@prim/url';
-import { IPost, IAttachment } from '@prim/node';
+import { IPath, IPathValidator } from '../filesystem';
+import { INodeFinder } from '../finder';
+import { IUrl, Url } from '../url';
+import { IPost, IAttachment } from '../node';
 
 @injectable()
 export class Prim implements IPrim {

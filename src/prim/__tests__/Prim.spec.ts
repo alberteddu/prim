@@ -1,8 +1,8 @@
 import * as mock from 'mock-fs';
-import { Prim } from '@prim/prim';
-import { Path, PathValidator } from '@prim/filesystem';
-import { NodeFinder } from '@prim/finder';
-import { NodeProvider } from '@prim/node';
+import { Prim } from '../../prim';
+import { Path, PathValidator } from '../../filesystem';
+import { NodeFinder } from '../../finder';
+import { NodeProvider } from '../../node';
 
 describe('Prim', () => {
   mock({

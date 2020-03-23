@@ -1,6 +1,6 @@
 import { normalize } from 'path';
 import { IUrl } from './IUrl';
-import { IPath, Path } from '@prim/filesystem';
+import { IPath, Path } from '../filesystem';
 
 export class Url implements IUrl {
   constructor(private readonly url: string) {

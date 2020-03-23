@@ -1,8 +1,8 @@
 import * as mock from 'mock-fs';
-import { NodeFinder } from '@prim/finder';
-import { Path, PathValidator } from '@prim/filesystem';
-import { NodeProvider, Attachment } from '@prim/node';
-import { Property } from '@prim/property';
+import { NodeFinder } from '../../finder';
+import { Path, PathValidator } from '../../filesystem';
+import { NodeProvider, Attachment } from '../../node';
+import { Property } from '../../property';
 
 beforeAll(() => {
   mock({

@@ -1,4 +1,4 @@
-import { Url } from '@prim/url/Url';
+import { Url } from '../../url/Url';
 
 describe('Url', () => {
   it('should normalize the url correctly', () => {

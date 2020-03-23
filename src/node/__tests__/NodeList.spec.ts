@@ -1,8 +1,8 @@
 import { Node } from '../Node';
 import { NodeType } from '../NodeType';
 import { NodeList } from '../NodeList';
-import { Path } from '@prim/filesystem';
-import { Property, PropertyIsEqual } from '@prim/property';
+import { Path } from '../../filesystem';
+import { Property, PropertyIsEqual } from '../../property';
 
 class ConcreteNode extends Node {
   getNodeType(): NodeType {

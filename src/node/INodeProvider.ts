@@ -1,7 +1,7 @@
-import { IPath } from '@prim/filesystem';
+import { IPath } from '../filesystem';
 import { IPost } from './IPost';
 import { IAttachment } from './IAttachment';
-import { INodeFinder } from '@prim/finder';
+import { INodeFinder } from '../finder';
 
 export interface INodeProvider {
   providePost(location: IPath, nodeFinder: INodeFinder): IPost;

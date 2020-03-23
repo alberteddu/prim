@@ -1,6 +1,5 @@
 import { INode } from './INode';
-import { IProperty } from '@prim/property';
-import { IPropertyMatch } from '@prim/property/match/IPropertyMatch';
+import { IPropertyMatch } from '../property/match/IPropertyMatch';
 
 export interface INodeList<L, T extends INode = INode> {
   count(): number;

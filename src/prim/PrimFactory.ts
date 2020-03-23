@@ -1,10 +1,10 @@
 import { Container } from 'inversify';
-import { TYPES } from '@prim/types';
+import { TYPES } from '../types';
 import { IPrim } from './IPrim';
 import { Prim } from './Prim';
-import { Path, PathValidator, IPath, IPathValidator } from '@prim/filesystem';
-import { INodeFinder, NodeFinder } from '@prim/finder';
-import { INodeProvider, NodeProvider } from '@prim/node';
+import { Path, PathValidator, IPath, IPathValidator } from '../filesystem';
+import { INodeFinder, NodeFinder } from '../finder';
+import { INodeProvider, NodeProvider } from '../node';
 
 export class PrimFactory {
   static createFromPath(path: string): IPrim {

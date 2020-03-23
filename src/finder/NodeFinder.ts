@@ -1,8 +1,8 @@
 import { injectable, inject } from 'inversify';
 import { readdirSync } from 'fs';
-import { TYPES } from '@prim/types';
+import { TYPES } from '../types';
 import { INodeFinder } from './INodeFinder';
-import { IPath, IPathValidator, Path } from '@prim/filesystem';
+import { IPath, IPathValidator, Path } from '../filesystem';
 import {
   IPost,
   IPostList,
@@ -10,9 +10,9 @@ import {
   INodeProvider,
   AttachmentList,
   IAttachment,
-} from '@prim/node';
-import { PostList } from '@prim/node/PostList';
-import { IUrl } from '@prim/url/IUrl';
+} from '../node';
+import { PostList } from '../node/PostList';
+import { IUrl } from '../url/IUrl';
 
 @injectable()
 export class NodeFinder implements INodeFinder {

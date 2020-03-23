@@ -15,9 +15,6 @@ module.exports = {
     },
   },
   collectCoverageFrom: ['src/**/{!(index),}.{js,ts}'],
-  moduleNameMapper: {
-    '@prim/(.*)': '<rootDir>/src/$1',
-  },
   setupFiles: ['./src/lib.ts'],
   globals: {
     'ts-jest': {

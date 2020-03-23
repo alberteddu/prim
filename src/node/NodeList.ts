@@ -1,7 +1,7 @@
 import { INodeList } from './INodeList';
 import { INode } from './INode';
-import { IProperty, NegateMatch } from '@prim/property';
-import { IPropertyMatch } from '@prim/property/match/IPropertyMatch';
+import { IProperty, NegateMatch } from '../property';
+import { IPropertyMatch } from '../property/match/IPropertyMatch';
 
 export abstract class NodeList<L extends INodeList<any>, T extends INode = INode>
   implements INodeList<L, T> {

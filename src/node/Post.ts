@@ -1,13 +1,13 @@
-import { IPath } from '@prim/filesystem';
+import { IPath } from '../filesystem';
 import { IPost } from './IPost';
 import { Node } from './Node';
 import { IAttachmentList } from './IAttachmentList';
 import { IAttachment } from './IAttachment';
 import { IPostList } from './IPostList';
 import { NodeType } from './NodeType';
-import { IProperty } from '@prim/property';
+import { IProperty } from '../property';
 import { PostList } from './PostList';
-import { INodeFinder } from '@prim/finder';
+import { INodeFinder } from '../finder';
 
 export class Post extends Node implements IPost {
   constructor(path: IPath, properties: IProperty[], private readonly nodeFinder: INodeFinder) {

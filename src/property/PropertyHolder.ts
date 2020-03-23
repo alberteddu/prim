@@ -3,7 +3,7 @@ import { Property } from './Property';
 import { IProperty } from './IProperty';
 import { PropertyObject } from './PropertyObject';
 import { IPropertyMatch, ValueMatchesRegex, PropertyIsEqual, PropertyPassesTest } from './match';
-import { CannotModifyProtectedProperty } from '@prim/error';
+import { CannotModifyProtectedProperty } from '../error';
 import { IPropertyHolderAwareMatch } from './match/IPropertyHolderAwareMatch';
 
 const instanceOfPropertyHolderAwareMatch = (

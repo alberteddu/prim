@@ -1,6 +1,6 @@
 import * as mock from 'mock-fs';
-import { PathValidator, Path } from '@prim/filesystem';
-import { InvalidPath } from '@prim/error';
+import { PathValidator, Path } from '../../filesystem';
+import { InvalidPath } from '../../error';
 
 beforeAll(() => {
   mock({

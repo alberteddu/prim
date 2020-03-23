@@ -8,8 +8,8 @@ import {
   PropertyMatchUnion,
   PropertyMatchIntersection,
   NegateMatch,
-} from '@prim/property';
-import { CannotModifyProtectedProperty } from '@prim/error';
+} from '../../property';
+import { CannotModifyProtectedProperty } from '../../error';
 import { IPropertyHolder } from '../IPropertyHolder';
 
 class ConcretePropertyHolder extends PropertyHolder {

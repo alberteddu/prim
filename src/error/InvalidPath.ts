@@ -1,4 +1,4 @@
-import { IPath } from '@prim/filesystem';
+import { IPath } from '../filesystem';
 
 export class InvalidPath extends Error {
   /* istanbul ignore next */

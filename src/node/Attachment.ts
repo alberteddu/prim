@@ -1,9 +1,9 @@
 import { Node } from './Node';
 import { IAttachment } from './IAttachment';
 import { NodeType } from './NodeType';
-import { IPath } from '@prim/filesystem';
-import { IProperty } from '@prim/property';
-import { INodeFinder } from '@prim/finder';
+import { IPath } from '../filesystem';
+import { IProperty } from '../property';
+import { INodeFinder } from '../finder';
 import { IPost } from './IPost';
 
 export class Attachment extends Node implements IAttachment {

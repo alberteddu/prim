@@ -1,6 +1,6 @@
-import { IPath } from '@prim/filesystem';
-import { IPostList, IAttachmentList, IPost, IAttachment } from '@prim/node';
-import { IUrl } from '@prim/url/IUrl';
+import { IPath } from '../filesystem';
+import { IPostList, IAttachmentList, IPost, IAttachment } from '../node';
+import { IUrl } from '../url/IUrl';
 
 export interface INodeFinder {
   findRootPost(): IPost;
