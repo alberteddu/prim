@@ -3,6 +3,7 @@
   "version": "0.0.1-dev",
   "description": "",
   "keywords": [],
+  "main": "dist/prim.cjs.js",
   "module": "dist/prim.es5.js",
   "typings": "dist/types/prim.d.ts",
   "files": [
