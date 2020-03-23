@@ -7,7 +7,6 @@ import {
   IPropertyHolderAwareMatch,
   PropertyMatchUnion,
   PropertyMatchIntersection,
-  NegateMatch,
 } from '../../property';
 import { CannotModifyProtectedProperty } from '../../error';
 import { IPropertyHolder } from '../IPropertyHolder';
@@ -32,7 +31,13 @@ class PropertyHolderAwareMatch extends PropertyIsEqual implements IPropertyHolde
 describe('PropertyHolder', () => {
   const exampleProperty = new Property('example', 'someValue');
   const otherProperty = new Property('otherExample', 'someOtherValue');
+  const arrayProperty = new Property('arrayExample', [1, 2, 3]);
   const propertyHolder = new ConcretePropertyHolder();
+
+  it('should handle properties with different types of values', () => {
+    propertyHolder.setProperty(arrayProperty);
+    expect(propertyHolder.matchValue([1, 2, 3])).toBeTruthy();
+  });
 
   it('should set a protected property once', () => {
     propertyHolder.setProperty(exampleProperty);
@@ -46,9 +51,7 @@ describe('PropertyHolder', () => {
   });
 
   it('should have already a property set', () => {
-    expect(
-      propertyHolder.hasMatchingProperty(new PropertyHolderAwareMatch(exampleProperty)),
-    ).toBeTruthy();
+    expect(propertyHolder.match(new PropertyHolderAwareMatch(exampleProperty))).toBeTruthy();
     expect(propertyHolder.propertyExists('example')).toBeTruthy();
     expect(propertyHolder.hasProperty(exampleProperty)).toBeTruthy();
     expect(propertyHolder.getProperty('example').is(exampleProperty));
@@ -58,12 +61,6 @@ describe('PropertyHolder', () => {
     expect(propertyHolder.matchNameAndValue('example', 'someValue')).toBeTruthy();
     expect(propertyHolder.matchNameAndValue('example', 'otherValue')).toBeFalsy();
     expect(propertyHolder.matchValue('someValue')).toBeTruthy();
-  });
-
-  it('should match negated properties', () => {
-    expect(
-      propertyHolder.hasMatchingProperty(new NegateMatch(new PropertyIsEqual(exampleProperty))),
-    ).toBeFalsy();
   });
 
   it('should match regex properties', () => {
@@ -106,8 +103,8 @@ describe('PropertyHolder', () => {
       new ValueMatchesRegex(/otherWrongValue/),
     );
 
-    expect(propertyHolder.hasMatchingProperty(matchingUnion)).toBeTruthy();
-    expect(propertyHolder.hasMatchingProperty(nonMatchingUnion)).toBeFalsy();
+    expect(propertyHolder.match(matchingUnion)).toBeTruthy();
+    expect(propertyHolder.match(nonMatchingUnion)).toBeFalsy();
   });
 
   it('should match a property match intersection', () => {
@@ -120,8 +117,8 @@ describe('PropertyHolder', () => {
       new ValueMatchesRegex(/otherWrongValue/),
     );
 
-    expect(propertyHolder.hasMatchingProperty(matchingIntersection)).toBeTruthy();
-    expect(propertyHolder.hasMatchingProperty(nonMatchingIntersection)).toBeFalsy();
+    expect(propertyHolder.match(matchingIntersection)).toBeTruthy();
+    expect(propertyHolder.match(nonMatchingIntersection)).toBeFalsy();
   });
 
   it('should not match regex when property is null', () => {
