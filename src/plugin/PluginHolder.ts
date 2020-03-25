@@ -1,9 +1,7 @@
 import { injectable, inject } from 'inversify';
 import { IPluginHolder } from './IPluginHolder';
 import { IPlugin } from './IPlugin';
-import { PluginScope, isSegmentVoterPlugin, IDynamicNodePlugin } from './scope';
 import { PluginsObject } from './PluginsObject';
-import { isPostEnhancerPlugin, isAttachmentEnhancerPlugin, isDynamicNodePlugin } from './scope';
 
 @injectable()
 export class PluginHolder implements IPluginHolder {
