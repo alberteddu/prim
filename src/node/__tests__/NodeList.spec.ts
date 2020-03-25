@@ -3,6 +3,7 @@ import { NodeType } from '../NodeType';
 import { NodeList } from '../NodeList';
 import { Path } from '../../filesystem';
 import { Property, PropertyIsEqual } from '../../property';
+import { Url } from '../../url';
 
 class ConcreteNode extends Node {
   getNodeType(): NodeType {
@@ -18,7 +19,7 @@ class ConcreteNodeList extends NodeList<ConcreteNodeList, ConcreteNode> {}
 
 describe('NodeList', () => {
   const path = new Path('some-path');
-  const node = new ConcreteNode(path, [new Property('name', 'value')]);
+  const node = new ConcreteNode(new Url('/'), path, false, [new Property('name', 'value')]);
   const nodeList = new ConcreteNodeList([node]);
 
   it('should count all nodes', () => {
@@ -56,6 +57,8 @@ describe('NodeList', () => {
 
   it('should check whether a node is present', () => {
     expect(nodeList.contains(node)).toBeTruthy();
-    expect(nodeList.contains(new ConcreteNode(new Path('other-path'), []))).toBeFalsy();
+    expect(
+      nodeList.contains(new ConcreteNode(new Url('/'), new Path('other-path'), false, [])),
+    ).toBeFalsy();
   });
 });

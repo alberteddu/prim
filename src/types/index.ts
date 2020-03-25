@@ -5,6 +5,7 @@ const TYPES = {
   PathValidator: Symbol.for('PathValidator'),
   NodeFinder: Symbol.for('NodeFinder'),
   NodeProvider: Symbol.for('NodeProvider'),
+  PluginHolder: Symbol.for('PluginHolder'),
 };
 
 export { TYPES };

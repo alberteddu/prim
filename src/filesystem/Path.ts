@@ -1,5 +1,6 @@
 import { join, normalize } from 'path';
 import { IPath } from './IPath';
+import { ISegment, Segment } from '../url';
 
 export class Path implements IPath {
   constructor(private readonly path: string) {
@@ -33,5 +34,15 @@ export class Path implements IPath {
 
   join(path: IPath): IPath {
     return new Path(path.getPath(this));
+  }
+
+  getLastSegment(): ISegment | null {
+    const segments = this.path.split('/').filter(part => part.length > 0);
+
+    if (segments.length === 0) {
+      return null;
+    }
+
+    return new Segment(segments[segments.length - 1]);
   }
 }

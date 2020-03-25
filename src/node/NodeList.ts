@@ -15,6 +15,10 @@ export abstract class NodeList<L extends INodeList<any>, T extends INode = INode
     return this.nodes;
   }
 
+  find(callback: (node: T) => boolean): T | undefined {
+    return this.nodes.find(callback);
+  }
+
   filter(callback: (node: T) => boolean): L {
     return new (this.constructor as { new (nodes: T[]): L })(this.nodes.filter(callback));
   }
