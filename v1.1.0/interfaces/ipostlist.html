@@ -2742,6 +2742,9 @@ img {
 					<a href="ipostlist.html#filter" class="tsd-kind-icon">filter</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+					<a href="ipostlist.html#find" class="tsd-kind-icon">find</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
 					<a href="ipostlist.html#first" class="tsd-kind-icon">first</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -2789,6 +2792,7 @@ img {
 							<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="ipostlist.html#count" class="tsd-kind-icon">count</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="ipostlist.html#except" class="tsd-kind-icon">except</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="ipostlist.html#filter" class="tsd-kind-icon">filter</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="ipostlist.html#find" class="tsd-kind-icon">find</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="ipostlist.html#first" class="tsd-kind-icon">first</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="ipostlist.html#map" class="tsd-kind-icon">map</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="ipostlist.html#toarray" class="tsd-kind-icon">to<wbr>Array</a></li>
@@ -2811,7 +2815,7 @@ img {
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="inodelist.html">INodeList</a>.<a href="inodelist.html#contains">contains</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/9e2a00a/src/node/INodeList.ts#L12">src/node/INodeList.ts:12</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/548fe3f/src/node/INodeList.ts#L13">src/node/INodeList.ts:13</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2835,7 +2839,7 @@ img {
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="inodelist.html">INodeList</a>.<a href="inodelist.html#count">count</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/9e2a00a/src/node/INodeList.ts#L5">src/node/INodeList.ts:5</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/548fe3f/src/node/INodeList.ts#L5">src/node/INodeList.ts:5</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -2853,7 +2857,7 @@ img {
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="inodelist.html">INodeList</a>.<a href="inodelist.html#except">except</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/9e2a00a/src/node/INodeList.ts#L9">src/node/INodeList.ts:9</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/548fe3f/src/node/INodeList.ts#L10">src/node/INodeList.ts:10</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2877,7 +2881,7 @@ img {
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="inodelist.html">INodeList</a>.<a href="inodelist.html#filter">filter</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/9e2a00a/src/node/INodeList.ts#L7">src/node/INodeList.ts:7</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/548fe3f/src/node/INodeList.ts#L8">src/node/INodeList.ts:8</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2909,6 +2913,48 @@ img {
 				</ul>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+				<a name="find" class="tsd-anchor"></a>
+				<h3>find</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+					<li class="tsd-signature tsd-kind-icon">find<span class="tsd-signature-symbol">(</span>callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>node<span class="tsd-signature-symbol">: </span><a href="ipost.html" class="tsd-signature-type">IPost</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="ipost.html" class="tsd-signature-type">IPost</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<p>Inherited from <a href="inodelist.html">INodeList</a>.<a href="inodelist.html#find">find</a></p>
+							<ul>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/548fe3f/src/node/INodeList.ts#L7">src/node/INodeList.ts:7</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>callback: <span class="tsd-signature-symbol">(</span>node<span class="tsd-signature-symbol">: </span><a href="ipost.html" class="tsd-signature-type">IPost</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span></h5>
+								<ul class="tsd-parameters">
+									<li class="tsd-parameter-signature">
+										<ul class="tsd-signatures tsd-kind-type-literal">
+											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>node<span class="tsd-signature-symbol">: </span><a href="ipost.html" class="tsd-signature-type">IPost</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+										</ul>
+										<ul class="tsd-descriptions">
+											<li class="tsd-description">
+												<h4 class="tsd-parameters-title">Parameters</h4>
+												<ul class="tsd-parameters">
+													<li>
+														<h5>node: <a href="ipost.html" class="tsd-signature-type">IPost</a></h5>
+													</li>
+												</ul>
+												<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <a href="ipost.html" class="tsd-signature-type">IPost</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
 				<a name="first" class="tsd-anchor"></a>
 				<h3>first</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -2919,7 +2965,7 @@ img {
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="inodelist.html">INodeList</a>.<a href="inodelist.html#first">first</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/9e2a00a/src/node/INodeList.ts#L11">src/node/INodeList.ts:11</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/548fe3f/src/node/INodeList.ts#L12">src/node/INodeList.ts:12</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-returns-title">Returns <a href="ipost.html" class="tsd-signature-type">IPost</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h4>
@@ -2937,7 +2983,7 @@ img {
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="inodelist.html">INodeList</a>.<a href="inodelist.html#map">map</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/9e2a00a/src/node/INodeList.ts#L8">src/node/INodeList.ts:8</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/548fe3f/src/node/INodeList.ts#L9">src/node/INodeList.ts:9</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2979,7 +3025,7 @@ img {
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="inodelist.html">INodeList</a>.<a href="inodelist.html#toarray">toArray</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/9e2a00a/src/node/INodeList.ts#L6">src/node/INodeList.ts:6</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/548fe3f/src/node/INodeList.ts#L6">src/node/INodeList.ts:6</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-returns-title">Returns <a href="ipost.html" class="tsd-signature-type">IPost</a><span class="tsd-signature-symbol">[]</span></h4>
@@ -2997,7 +3043,7 @@ img {
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="inodelist.html">INodeList</a>.<a href="inodelist.html#where">where</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/9e2a00a/src/node/INodeList.ts#L10">src/node/INodeList.ts:10</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/548fe3f/src/node/INodeList.ts#L11">src/node/INodeList.ts:11</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>

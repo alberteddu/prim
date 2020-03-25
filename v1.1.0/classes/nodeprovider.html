@@ -2799,7 +2799,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/9e2a00a/src/node/NodeProvider.ts#L12">src/node/NodeProvider.ts:12</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/548fe3f/src/node/NodeProvider.ts#L16">src/node/NodeProvider.ts:16</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2821,7 +2821,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">path<wbr>Validator<span class="tsd-signature-symbol">:</span> <a href="../interfaces/ipathvalidator.html" class="tsd-signature-type">IPathValidator</a></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/alberteddu/prim/blob/9e2a00a/src/node/NodeProvider.ts#L13">src/node/NodeProvider.ts:13</a></li>
+						<li>Defined in <a href="https://github.com/alberteddu/prim/blob/548fe3f/src/node/NodeProvider.ts#L17">src/node/NodeProvider.ts:17</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -2832,20 +2832,26 @@ img {
 				<a name="provideattachment" class="tsd-anchor"></a>
 				<h3>provide<wbr>Attachment</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">provide<wbr>Attachment<span class="tsd-signature-symbol">(</span>location<span class="tsd-signature-symbol">: </span><a href="../interfaces/ipath.html" class="tsd-signature-type">IPath</a>, nodeFinder<span class="tsd-signature-symbol">: </span><a href="../interfaces/inodefinder.html" class="tsd-signature-type">INodeFinder</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/iattachment.html" class="tsd-signature-type">IAttachment</a></li>
+					<li class="tsd-signature tsd-kind-icon">provide<wbr>Attachment<span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">: </span><a href="../interfaces/iurl.html" class="tsd-signature-type">IUrl</a>, location<span class="tsd-signature-symbol">: </span><a href="../interfaces/ipath.html" class="tsd-signature-type">IPath</a>, dynamic<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span>, nodeFinder<span class="tsd-signature-symbol">: </span><a href="../interfaces/inodefinder.html" class="tsd-signature-type">INodeFinder</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/iattachment.html" class="tsd-signature-type">IAttachment</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<p>Implementation of <a href="../interfaces/inodeprovider.html">INodeProvider</a>.<a href="../interfaces/inodeprovider.html#provideattachment">provideAttachment</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/9e2a00a/src/node/NodeProvider.ts#L22">src/node/NodeProvider.ts:22</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/548fe3f/src/node/NodeProvider.ts#L29">src/node/NodeProvider.ts:29</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
+								<h5>url: <a href="../interfaces/iurl.html" class="tsd-signature-type">IUrl</a></h5>
+							</li>
+							<li>
 								<h5>location: <a href="../interfaces/ipath.html" class="tsd-signature-type">IPath</a></h5>
+							</li>
+							<li>
+								<h5>dynamic: <span class="tsd-signature-type">boolean</span></h5>
 							</li>
 							<li>
 								<h5>nodeFinder: <a href="../interfaces/inodefinder.html" class="tsd-signature-type">INodeFinder</a></h5>
@@ -2859,20 +2865,26 @@ img {
 				<a name="providepost" class="tsd-anchor"></a>
 				<h3>provide<wbr>Post</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">provide<wbr>Post<span class="tsd-signature-symbol">(</span>location<span class="tsd-signature-symbol">: </span><a href="../interfaces/ipath.html" class="tsd-signature-type">IPath</a>, nodeFinder<span class="tsd-signature-symbol">: </span><a href="../interfaces/inodefinder.html" class="tsd-signature-type">INodeFinder</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/ipost.html" class="tsd-signature-type">IPost</a></li>
+					<li class="tsd-signature tsd-kind-icon">provide<wbr>Post<span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">: </span><a href="../interfaces/iurl.html" class="tsd-signature-type">IUrl</a>, location<span class="tsd-signature-symbol">: </span><a href="../interfaces/ipath.html" class="tsd-signature-type">IPath</a>, dynamic<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span>, nodeFinder<span class="tsd-signature-symbol">: </span><a href="../interfaces/inodefinder.html" class="tsd-signature-type">INodeFinder</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/ipost.html" class="tsd-signature-type">IPost</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<p>Implementation of <a href="../interfaces/inodeprovider.html">INodeProvider</a>.<a href="../interfaces/inodeprovider.html#providepost">providePost</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/9e2a00a/src/node/NodeProvider.ts#L15">src/node/NodeProvider.ts:15</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/548fe3f/src/node/NodeProvider.ts#L20">src/node/NodeProvider.ts:20</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
+								<h5>url: <a href="../interfaces/iurl.html" class="tsd-signature-type">IUrl</a></h5>
+							</li>
+							<li>
 								<h5>location: <a href="../interfaces/ipath.html" class="tsd-signature-type">IPath</a></h5>
+							</li>
+							<li>
+								<h5>dynamic: <span class="tsd-signature-type">boolean</span></h5>
 							</li>
 							<li>
 								<h5>nodeFinder: <a href="../interfaces/inodefinder.html" class="tsd-signature-type">INodeFinder</a></h5>
