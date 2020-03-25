@@ -2,6 +2,7 @@ export * from './Attachment';
 export * from './AttachmentList';
 export * from './IAttachment';
 export * from './IAttachmentList';
+export * from './DynamicNode';
 export * from './INode';
 export * from './INodeList';
 export * from './INodeProvider';

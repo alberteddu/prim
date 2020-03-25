@@ -8,10 +8,17 @@ import { NodeType } from './NodeType';
 import { IProperty } from '../property';
 import { PostList } from './PostList';
 import { INodeFinder } from '../finder';
+import { IUrl } from '../url';
 
 export class Post extends Node implements IPost {
-  constructor(path: IPath, properties: IProperty[], private readonly nodeFinder: INodeFinder) {
-    super(path, properties);
+  constructor(
+    url: IUrl,
+    path: IPath,
+    dynamic: boolean,
+    properties: IProperty[],
+    private readonly nodeFinder: INodeFinder,
+  ) {
+    super(url, path, dynamic, properties);
   }
 
   getAttachments(): IAttachmentList {
@@ -47,7 +54,7 @@ export class Post extends Node implements IPost {
       return null;
     }
 
-    return this.nodeFinder.findPostAt(this.path.removeLastSegment());
+    return this.nodeFinder.findPostAtUrl(this.url.removeLastSegment());
   }
 
   isRoot(): boolean {

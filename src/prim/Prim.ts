@@ -5,6 +5,8 @@ import { IPath, IPathValidator } from '../filesystem';
 import { INodeFinder } from '../finder';
 import { IUrl, Url } from '../url';
 import { IPost, IAttachment } from '../node';
+import { IPluginHolder } from '../plugin';
+import { IdentitySegmentVoter, NumberedSegmentVoter } from '../plugin/plugins';
 
 @injectable()
 export class Prim implements IPrim {
@@ -12,8 +14,12 @@ export class Prim implements IPrim {
     @inject(TYPES.RootDirectory) private readonly rootDirectory: IPath,
     @inject(TYPES.PathValidator) private readonly pathValidator: IPathValidator,
     @inject(TYPES.NodeFinder) private readonly nodeFinder: INodeFinder,
+    @inject(TYPES.PluginHolder) private readonly pluginHolder: IPluginHolder,
   ) {
     this.pathValidator.validateDirectory(this.getRootDirectory());
+
+    this.pluginHolder.addPlugin(new IdentitySegmentVoter());
+    this.pluginHolder.addPlugin(new NumberedSegmentVoter());
   }
 
   getRootDirectory(): IPath {
@@ -29,6 +35,10 @@ export class Prim implements IPrim {
       nodeUrl = url;
     }
 
-    return this.nodeFinder.findNodeAt(nodeUrl);
+    return this.nodeFinder.findNodeAtUrl(nodeUrl);
+  }
+
+  getPluginHolder(): IPluginHolder {
+    return this.pluginHolder;
   }
 }

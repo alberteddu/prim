@@ -5,8 +5,10 @@ import { IUrl } from '../url/IUrl';
 export interface INodeFinder {
   findRootPost(): IPost;
   findPostsAt(post: IPost): IPostList;
-  findPostAt(path: IPath): IPost;
+  findPostAt(url: IUrl, path: IPath): IPost;
   findAttachmentsAt(post: IPost): IAttachmentList;
-  findAttachmentAt(path: IPath): IAttachment;
-  findNodeAt(url: IUrl): IPost | IAttachment | null;
+  findAttachmentAt(url: IUrl, path: IPath): IAttachment;
+  findNodeAtUrl(url: IUrl): IPost | IAttachment | null;
+  findPostAtUrl(url: IUrl): IPost | null;
+  findAttachmentAtUrl(url: IUrl): IAttachment | null;
 }

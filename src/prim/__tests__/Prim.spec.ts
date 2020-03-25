@@ -3,6 +3,7 @@ import { Prim } from '../../prim';
 import { Path, PathValidator } from '../../filesystem';
 import { NodeFinder } from '../../finder';
 import { NodeProvider } from '../../node';
+import { PluginHolder } from '../../plugin';
 
 describe('Prim', () => {
   mock({
@@ -16,10 +17,11 @@ describe('Prim', () => {
   const rootDirectory = new Path('root');
   const pathValidator = new PathValidator(rootDirectory);
   const nodeProvider = new NodeProvider(pathValidator);
-  const nodeFinder = new NodeFinder(rootDirectory, pathValidator, nodeProvider);
+  const pluginHolder = new PluginHolder();
+  const nodeFinder = new NodeFinder(rootDirectory, pathValidator, nodeProvider, pluginHolder);
 
   it('should create a prim instance', () => {
-    const prim = new Prim(rootDirectory, pathValidator, nodeFinder);
+    const prim = new Prim(rootDirectory, pathValidator, nodeFinder, pluginHolder);
     expect(prim.getRootDirectory()).toEqual(rootDirectory);
   });
 });

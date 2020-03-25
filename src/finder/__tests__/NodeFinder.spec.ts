@@ -1,8 +1,18 @@
 import mock from 'mock-fs';
 import { NodeFinder } from '../../finder';
 import { Path, PathValidator } from '../../filesystem';
-import { NodeProvider, Post } from '../../node';
-import { Url } from '../../url';
+import { NodeProvider, Post, IPost } from '../../node';
+import { Url, Segment } from '../../url';
+import {
+  PluginHolder,
+  IDynamicNodePlugin,
+  PluginScope,
+  IDynamicPost,
+  IDynamicAttachment,
+} from '../../plugin';
+import { DynamicPost } from '../../node/DynamicPost';
+import { DynamicAttachment } from '../../node/DynamicAttachment';
+import { IdentitySegmentVoter, NumberedSegmentVoter, PrivateNodes } from '../../plugin/plugins';
 
 beforeAll(() => {
   mock({
@@ -10,17 +20,85 @@ beforeAll(() => {
       emptyFolder: {},
       folderWithFile: {
         otherFile: 'some other contents',
+        '1. folderWithNumber': {},
+        _privateFile: 'some private contents',
+        __privatePath: {
+          unreachable: 'unreachable file',
+        },
+        _privatePathWithReachableChild: {
+          reachable: 'reachable file',
+        },
       },
       file: 'some contents',
     },
   });
 });
 
+class ExamplePlugin implements IDynamicNodePlugin {
+  getId(): string {
+    return 'example';
+  }
+
+  getChildrenOfPost(post: IPost): IDynamicPost[] {
+    if (
+      post
+        .getUrl()
+        .getLastSegment()
+        ?.getSegment() === 'emptyFolder'
+    ) {
+      return [new DynamicPost(new Segment('this-is-dynamic'), [])];
+    }
+
+    if (
+      post
+        .getUrl()
+        .getLastSegment()
+        ?.getSegment() === 'this-is-dynamic'
+    ) {
+      return [new DynamicPost(new Segment('this-is-inside-dynamic'), [])];
+    }
+
+    return [];
+  }
+
+  getAttachmentsOfPost(post: IPost): IDynamicAttachment[] {
+    if (
+      post
+        .getUrl()
+        .getLastSegment()
+        ?.getSegment() === 'this-is-dynamic'
+    ) {
+      return [new DynamicAttachment(new Segment('dynamic-attachment'), [])];
+    }
+
+    if (
+      post
+        .getUrl()
+        .getLastSegment()
+        ?.getSegment() === 'this-is-inside-dynamic'
+    ) {
+      return [new DynamicAttachment(new Segment('deep-dynamic-attachment'), [])];
+    }
+
+    return [];
+  }
+
+  hasScope(scope: PluginScope): boolean {
+    return scope === PluginScope.DynamicNodePlugin;
+  }
+}
+
 describe('NodeFinder', () => {
   const rootDirectory = new Path('root');
   const pathValidator = new PathValidator(rootDirectory);
   const nodeProvider = new NodeProvider(pathValidator);
-  const nodeFinder = new NodeFinder(rootDirectory, pathValidator, nodeProvider);
+  const pluginHolder = new PluginHolder();
+  const nodeFinder = new NodeFinder(rootDirectory, pathValidator, nodeProvider, pluginHolder);
+
+  pluginHolder.addPlugin(new ExamplePlugin());
+  pluginHolder.addPlugin(new IdentitySegmentVoter());
+  pluginHolder.addPlugin(new NumberedSegmentVoter());
+  pluginHolder.addPlugin(new PrivateNodes());
 
   it('should find the root post', () => {
     expect(nodeFinder.findRootPost().getPath()).toEqual(rootDirectory);
@@ -38,9 +116,9 @@ describe('NodeFinder', () => {
 
   it('should find a single post', () => {
     const rootPost = nodeFinder.findRootPost();
-    const child = nodeFinder.findPostAt(new Path('root/emptyFolder'));
+    const child = nodeFinder.findPostAt(new Url('emptyFolder'), new Path('root/emptyFolder'));
 
-    expect(nodeFinder.findPostAt(rootDirectory)).toEqual(rootPost);
+    expect(nodeFinder.findPostAt(new Url('/'), rootDirectory)).toEqual(rootPost);
     expect(rootPost.getParent()).toBeNull();
     expect(child.getParent()?.is(rootPost)).toBeTruthy();
     expect(rootPost.isParentOf(child)).toBeTruthy();
@@ -71,10 +149,10 @@ describe('NodeFinder', () => {
   });
 
   it('should find a single attachment', () => {
-    const node = nodeFinder.findPostAt(new Path('root'));
-    const attachment = nodeFinder.findAttachmentAt(new Path('root/file'));
+    const node = nodeFinder.findPostAt(new Url('/'), new Path('root'));
+    const attachment = nodeFinder.findAttachmentAt(new Url('file'), new Path('root/file'));
 
-    expect(attachment.getProtectedNames()).toEqual(['extension', 'type', 'size']);
+    expect(attachment.getProtectedNames()).toEqual(['extension', 'type']);
     expect(attachment.getPath()).toEqual(new Path('root/file'));
     expect(attachment.getPost().is(node)).toBeTruthy();
     expect(attachment.isAttachmentOf(node)).toBeTruthy();
@@ -85,13 +163,91 @@ describe('NodeFinder', () => {
     const otherUrl = new Url('folderWithFile/otherFile');
     const notFound = new Url('emptyFolder/not-found');
 
-    const node = nodeFinder.findNodeAt(url);
-    const otherNode = nodeFinder.findNodeAt(otherUrl);
-    const notFoundNode = nodeFinder.findNodeAt(notFound);
+    const node = nodeFinder.findNodeAtUrl(url);
+    const otherNode = nodeFinder.findNodeAtUrl(otherUrl);
+    const notFoundNode = nodeFinder.findNodeAtUrl(notFound);
 
     expect(notFoundNode).toBeNull();
     expect(node === null).toBeFalsy();
     expect(otherNode === null).toBeFalsy();
+  });
+
+  it('should find a dynamic post', () => {
+    const emptyFolder = nodeFinder.findPostAt(new Url('emptyFolder'), new Path('root/emptyFolder'));
+    const children = emptyFolder.getChildren();
+
+    expect(children.count()).toBe(1);
+
+    const child = children.first();
+
+    expect(child !== null).toBeTruthy();
+
+    if (child !== null) {
+      expect(child.isDynamic()).toBeTruthy();
+    }
+
+    const dynamicPost = nodeFinder.findNodeAtUrl(new Url('emptyFolder/this-is-dynamic'));
+    const deepDynamicPost = nodeFinder.findNodeAtUrl(
+      new Url('emptyFolder/this-is-dynamic/this-is-inside-dynamic'),
+    );
+
+    expect(deepDynamicPost !== null).toBeTruthy();
+    expect(dynamicPost !== null).toBeTruthy();
+
+    if (child !== null) {
+      expect(dynamicPost?.is(child)).toBeTruthy();
+    }
+
+    if (
+      dynamicPost !== null &&
+      deepDynamicPost !== null &&
+      Post.isPost(dynamicPost) &&
+      Post.isPost(deepDynamicPost)
+    ) {
+      expect(deepDynamicPost.isChildOf(dynamicPost));
+    }
+  });
+
+  it('should find a dynamic attachment', () => {
+    const attachment = nodeFinder.findNodeAtUrl(
+      new Url('emptyFolder/this-is-dynamic/dynamic-attachment'),
+    );
+    const deepAttachment = nodeFinder.findNodeAtUrl(
+      new Url('emptyFolder/this-is-dynamic/this-is-inside-dynamic/deep-dynamic-attachment'),
+    );
+
+    expect(attachment !== null).toBeTruthy();
+    expect(deepAttachment !== null).toBeTruthy();
+  });
+
+  it('should ignore numbers in the beginning of the folder name', () => {
+    const post = nodeFinder.findPostAtUrl(new Url('/folderWithFile/folderWithNumber'));
+
+    expect(post !== null).toBeTruthy();
+    expect(post?.getUrl().getUrl()).toBe('/folderWithFile/folderWithNumber');
+    expect(post?.getPath().getPath()).toBe('root/folderWithFile/1. folderWithNumber');
+  });
+
+  it('should hide private nodes', () => {
+    const privateAttachment = nodeFinder.findAttachmentAtUrl(
+      new Url('/folderWithFile/_privateFile'),
+    );
+    const privateDeepAttachment = nodeFinder.findAttachmentAtUrl(
+      new Url('/folderWithFile/__privatePath/unreachable'),
+    );
+    const privatePost = nodeFinder.findPostAtUrl(new Url('/folderWithFile/__privatePath'));
+    const otherPrivatePost = nodeFinder.findPostAtUrl(
+      new Url('/folderWithFile/_privatePathWithReachableChild'),
+    );
+    const publicAttachmentInPrivatePost = nodeFinder.findAttachmentAtUrl(
+      new Url('/folderWithFile/_privatePathWithReachableChild/reachable'),
+    );
+
+    expect(privateAttachment).toBeNull();
+    expect(privateDeepAttachment).toBeNull();
+    expect(privatePost).toBeNull();
+    expect(otherPrivatePost).toBeNull();
+    expect(publicAttachmentInPrivatePost !== null).toBeTruthy();
   });
 });
 
