@@ -61,6 +61,7 @@
     "cross-env": "^5.2.0",
     "cz-conventional-changelog": "^2.1.0",
     "husky": "^1.0.1",
+    "inversify": "^5.0.1",
     "jest": "^23.6.0",
     "jest-config": "^23.6.0",
     "lint-staged": "^8.0.0",
@@ -68,6 +69,7 @@
     "mock-fs": "^4.11.0",
     "prettier": "^1.14.3",
     "prompt": "^1.0.0",
+    "reflect-metadata": "^0.1.13",
     "replace-in-file": "^3.4.2",
     "rimraf": "^2.6.2",
     "rollup": "^0.67.0",
@@ -86,8 +88,8 @@
     "tslint-config-standard": "^8.0.1",
     "typedoc": "^0.17.1",
     "typescript": "^3.8.3",
-    "inversify": "^5.0.1",
-    "reflect-metadata": "^0.1.13"
+    "@types/deep-equal": "^1.0.1",
+    "deep-equal": "^2.0.1"
   },
   "publishConfig": {
     "access": "public"

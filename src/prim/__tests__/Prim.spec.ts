@@ -1,4 +1,4 @@
-import * as mock from 'mock-fs';
+import mock from 'mock-fs';
 import { Prim } from '../../prim';
 import { Path, PathValidator } from '../../filesystem';
 import { NodeFinder } from '../../finder';

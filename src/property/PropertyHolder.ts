@@ -29,7 +29,7 @@ export abstract class PropertyHolder implements IPropertyHolder {
     return this.propertyExists(name) && this.getProperty(name).is(property);
   }
 
-  hasMatchingProperty(propertyMatch: IPropertyMatch): boolean {
+  match(propertyMatch: IPropertyMatch): boolean {
     if (instanceOfPropertyHolderAwareMatch(propertyMatch)) {
       propertyMatch.setPropertyHolder(this);
     }
@@ -37,23 +37,23 @@ export abstract class PropertyHolder implements IPropertyHolder {
     return this.getProperties().some(eachProperty => propertyMatch.match(eachProperty));
   }
 
-  matchNameAndValue(name: string, value: string): boolean {
-    return this.hasMatchingProperty(new PropertyIsEqual(new Property(name, value)));
+  matchNameAndValue(name: string, value: any): boolean {
+    return this.match(new PropertyIsEqual(new Property(name, value)));
   }
 
-  matchValue(value: string): boolean {
-    return this.matchCallback(property => property.getValue() === value);
+  matchValue(value: any): boolean {
+    return this.matchCallback(property => Property.valueEquals(property.getValue(), value));
   }
 
   matchRegExp(regex: RegExp): boolean {
-    return this.hasMatchingProperty(new ValueMatchesRegex(regex));
+    return this.match(new ValueMatchesRegex(regex));
   }
 
   matchCallback(callback: (property: IProperty) => boolean): boolean {
-    return this.hasMatchingProperty(new PropertyPassesTest(callback));
+    return this.match(new PropertyPassesTest(callback));
   }
 
-  getProperty(name: string, defaultValue: string | null = null): IProperty {
+  getProperty(name: string, defaultValue: any = null): IProperty {
     if (this.propertyExists(name)) {
       return this.properties[name];
     }

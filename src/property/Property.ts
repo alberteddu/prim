@@ -1,17 +1,24 @@
+import equal from 'deep-equal';
 import { IProperty } from './IProperty';
 
-export class Property implements IProperty {
-  constructor(private readonly name: string, private readonly value: string | null) {}
+export class Property<T = any> implements IProperty {
+  constructor(private readonly name: string, private readonly value: T) {}
 
   getName(): string {
     return this.name;
   }
 
-  getValue(): string | null {
+  getValue(): T {
     return this.value;
   }
 
   is(property: IProperty): boolean {
-    return this.name === property.getName() && this.value === property.getValue();
+    return (
+      this.name === property.getName() && Property.valueEquals(this.value, property.getValue())
+    );
+  }
+
+  static valueEquals(left: any, right: any) {
+    return equal(left, right);
   }
 }

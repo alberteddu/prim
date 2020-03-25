@@ -1,6 +1,6 @@
 import { INodeList } from './INodeList';
 import { INode } from './INode';
-import { IProperty, NegateMatch } from '../property';
+import { NegateMatch } from '../property';
 import { IPropertyMatch } from '../property/match/IPropertyMatch';
 
 export abstract class NodeList<L extends INodeList<any>, T extends INode = INode>
@@ -24,7 +24,7 @@ export abstract class NodeList<L extends INodeList<any>, T extends INode = INode
   }
 
   where(propertyMatch: IPropertyMatch): L {
-    return this.filter(eachNode => eachNode.hasMatchingProperty(propertyMatch));
+    return this.filter(eachNode => eachNode.match(propertyMatch));
   }
 
   whereNot(propertyMatch: IPropertyMatch): L {

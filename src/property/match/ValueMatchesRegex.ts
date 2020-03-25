@@ -7,7 +7,7 @@ export class ValueMatchesRegex implements IPropertyMatch {
   match(property: IProperty): boolean {
     const value = property.getValue();
 
-    if (value === null) {
+    if (typeof value !== 'string') {
       return false;
     }
 
