@@ -28,7 +28,7 @@ export class Attachment extends Node implements IAttachment {
   }
 
   getProtectedNames(): string[] {
-    return ['extension', 'type'];
+    return ['filename', 'basename', 'contents', 'extension', 'type'];
   }
 
   getNodeType(): NodeType.Attachment {

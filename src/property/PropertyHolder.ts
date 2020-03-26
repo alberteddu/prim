@@ -45,8 +45,8 @@ export abstract class PropertyHolder implements IPropertyHolder {
     return this.matchCallback(property => Property.valueEquals(property.getValue(), value));
   }
 
-  matchRegExp(regex: RegExp): boolean {
-    return this.match(new ValueMatchesRegex(regex));
+  matchRegExp(name: string, regex: RegExp): boolean {
+    return this.match(new ValueMatchesRegex(name, regex));
   }
 
   matchCallback(callback: (property: IProperty) => boolean): boolean {
