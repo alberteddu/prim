@@ -64,8 +64,8 @@ describe('PropertyHolder', () => {
   });
 
   it('should match regex properties', () => {
-    expect(propertyHolder.matchRegExp(/some*/)).toBeTruthy();
-    expect(propertyHolder.matchRegExp(/nonMatching*/)).toBeFalsy();
+    expect(propertyHolder.matchRegExp('example', /some*/)).toBeTruthy();
+    expect(propertyHolder.matchRegExp('example', /nonMatching*/)).toBeFalsy();
   });
 
   it('should match callback properties', () => {
@@ -95,12 +95,12 @@ describe('PropertyHolder', () => {
 
   it('should match a property match union', () => {
     const matchingUnion = new PropertyMatchUnion(
-      new ValueMatchesRegex(/some/),
-      new ValueMatchesRegex(/wrongValue/),
+      new ValueMatchesRegex('example', /some/),
+      new ValueMatchesRegex('example', /wrongValue/),
     );
     const nonMatchingUnion = new PropertyMatchUnion(
-      new ValueMatchesRegex(/wrongValue/),
-      new ValueMatchesRegex(/otherWrongValue/),
+      new ValueMatchesRegex('example', /wrongValue/),
+      new ValueMatchesRegex('example', /otherWrongValue/),
     );
 
     expect(propertyHolder.match(matchingUnion)).toBeTruthy();
@@ -109,12 +109,12 @@ describe('PropertyHolder', () => {
 
   it('should match a property match intersection', () => {
     const matchingIntersection = new PropertyMatchIntersection(
-      new ValueMatchesRegex(/some/),
-      new ValueMatchesRegex(/Value/),
+      new ValueMatchesRegex('example', /some/),
+      new ValueMatchesRegex('example', /Value/),
     );
     const nonMatchingIntersection = new PropertyMatchIntersection(
-      new ValueMatchesRegex(/some/),
-      new ValueMatchesRegex(/otherWrongValue/),
+      new ValueMatchesRegex('example', /some/),
+      new ValueMatchesRegex('example', /otherWrongValue/),
     );
 
     expect(propertyHolder.match(matchingIntersection)).toBeTruthy();
@@ -123,7 +123,7 @@ describe('PropertyHolder', () => {
 
   it('should not match regex when property is null', () => {
     const property = new Property('null-property', null);
-    const match = new ValueMatchesRegex(/someRegex/);
+    const match = new ValueMatchesRegex('null-property', /someRegex/);
 
     expect(match.match(property)).toBeFalsy();
   });

@@ -101,11 +101,12 @@ describe('NodeFinder', () => {
   pluginHolder.addPlugin(new PrivateNodes());
 
   it('should find the root post', () => {
-    expect(nodeFinder.findRootPost().getPath()).toEqual(rootDirectory);
+    expect(nodeFinder.findRootPost()?.getPath()).toEqual(rootDirectory);
   });
 
   it('should find the children of the root post', () => {
-    const posts = nodeFinder.findPostsAt(nodeFinder.findRootPost());
+    const rootPost = nodeFinder.findRootPost();
+    const posts = nodeFinder.findPostsAt(rootPost);
 
     expect(posts.count()).toBe(2);
     expect(posts.map(post => post.getPath())).toEqual([
@@ -116,19 +117,25 @@ describe('NodeFinder', () => {
 
   it('should find a single post', () => {
     const rootPost = nodeFinder.findRootPost();
-    const child = nodeFinder.findPostAt(new Url('emptyFolder'), new Path('root/emptyFolder'));
+    const child = nodeFinder.findPostAtUrl(new Url('emptyFolder'));
 
-    expect(nodeFinder.findPostAt(new Url('/'), rootDirectory)).toEqual(rootPost);
-    expect(rootPost.getParent()).toBeNull();
-    expect(child.getParent()?.is(rootPost)).toBeTruthy();
-    expect(rootPost.isParentOf(child)).toBeTruthy();
-    expect(rootPost.isParentOf(rootPost)).toBeFalsy();
-    expect(rootPost.isChildOf(child)).toBeFalsy();
-    expect(rootPost.getSiblings().count()).toBe(0);
-    expect(child.isChildOf(rootPost)).toBeTruthy();
-    expect(rootPost.getChildren().contains(child)).toBeTruthy();
-    expect(child.getSiblings().count()).toBe(1);
-    expect(rootPost.getProtectedNames()).toEqual([]);
+    expect(child !== null).toBeTruthy();
+
+    if (child === null) {
+      return;
+    }
+
+    expect(nodeFinder.findPostAtUrl(new Url('/'))).toEqual(rootPost);
+    expect(rootPost?.getParent()).toBeNull();
+    expect(child?.getParent()?.is(rootPost)).toBeTruthy();
+    expect(rootPost?.isParentOf(child)).toBeTruthy();
+    expect(rootPost?.isParentOf(rootPost)).toBeFalsy();
+    expect(rootPost?.isChildOf(child)).toBeFalsy();
+    expect(rootPost?.getSiblings().count()).toBe(0);
+    expect(child?.isChildOf(rootPost)).toBeTruthy();
+    expect(rootPost?.getChildren().contains(child)).toBeTruthy();
+    expect(child?.getSiblings().count()).toBe(1);
+    expect(rootPost?.getProtectedNames()).toEqual([]);
   });
 
   it('should find the attachments of a post', () => {
@@ -137,7 +144,7 @@ describe('NodeFinder', () => {
 
     expect(attachments.count()).toBe(1);
     expect(attachments.map(attachment => attachment.getPath())).toEqual([new Path('root/file')]);
-    expect(rootPost.getAttachments()).toEqual(attachments);
+    expect(rootPost?.getAttachments()).toEqual(attachments);
 
     const first = attachments.first();
 
@@ -149,13 +156,12 @@ describe('NodeFinder', () => {
   });
 
   it('should find a single attachment', () => {
-    const node = nodeFinder.findPostAt(new Url('/'), new Path('root'));
-    const attachment = nodeFinder.findAttachmentAt(new Url('file'), new Path('root/file'));
+    const node = nodeFinder.findRootPost();
+    const attachment = nodeFinder.findAttachmentAtUrl(new Url('file'));
 
-    expect(attachment.getProtectedNames()).toEqual(['extension', 'type']);
-    expect(attachment.getPath()).toEqual(new Path('root/file'));
-    expect(attachment.getPost().is(node)).toBeTruthy();
-    expect(attachment.isAttachmentOf(node)).toBeTruthy();
+    expect(attachment?.getPath()).toEqual(new Path('root/file'));
+    expect(attachment?.getPost().is(node)).toBeTruthy();
+    expect(attachment?.isAttachmentOf(node)).toBeTruthy();
   });
 
   it('should find a node using a URL', () => {
@@ -173,7 +179,14 @@ describe('NodeFinder', () => {
   });
 
   it('should find a dynamic post', () => {
-    const emptyFolder = nodeFinder.findPostAt(new Url('emptyFolder'), new Path('root/emptyFolder'));
+    const emptyFolder = nodeFinder.findPostAtUrl(new Url('emptyFolder'));
+
+    expect(emptyFolder !== null).toBeTruthy();
+
+    if (emptyFolder === null) {
+      return;
+    }
+
     const children = emptyFolder.getChildren();
 
     expect(children.count()).toBe(1);

@@ -12,7 +12,10 @@ export class PrimFactory {
     const container = new Container();
     container.bind<string>(TYPES.Path).toConstantValue(path);
     container.bind<IPath>(TYPES.RootDirectory).toConstantValue(new Path(path));
-    container.bind<IPluginHolder>(TYPES.PluginHolder).to(PluginHolder);
+    container
+      .bind<IPluginHolder>(TYPES.PluginHolder)
+      .to(PluginHolder)
+      .inSingletonScope();
     container
       .bind<IPrim>(TYPES.Prim)
       .to(Prim)

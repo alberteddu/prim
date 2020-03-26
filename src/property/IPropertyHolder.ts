@@ -8,9 +8,9 @@ export interface IPropertyHolder {
   match(propertyMatch: IPropertyMatch): boolean;
   matchNameAndValue(name: string, value: any): boolean;
   matchValue(value: any): boolean;
-  matchRegExp(regex: RegExp): boolean;
+  matchRegExp(name: string, regex: RegExp): boolean;
   matchCallback(callback: (property: IProperty) => boolean): boolean;
-  getProperty(name: string, defaultValue: any): IProperty;
+  getProperty<T>(name: string, defaultValue: T): IProperty<T>;
   setProperty(property: IProperty): void;
   getProperties(): IProperty[];
   removeProperty(name: string): void;

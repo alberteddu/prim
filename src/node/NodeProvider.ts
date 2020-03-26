@@ -1,4 +1,5 @@
-import { extname } from 'path';
+import { extname, basename } from 'path';
+import { readFileSync } from 'fs';
 import { injectable, inject } from 'inversify';
 import { lookup } from 'mime-types';
 import { TYPES } from '../types';
@@ -10,7 +11,7 @@ import { Attachment } from './Attachment';
 import { IPost } from './IPost';
 import { IAttachment } from './IAttachment';
 import { IUrl } from '../url';
-import { Property } from '../property';
+import { Property, IProperty } from '../property';
 
 @injectable()
 export class NodeProvider implements INodeProvider {
@@ -38,15 +39,23 @@ export class NodeProvider implements INodeProvider {
 
     const path = location.getPath();
 
-    const extension = extname(path);
+    const extension = extname(path).slice(1);
     const mimeType = lookup(path) || 'text/plain';
+    const filename = basename(path, `.${extension}`);
+    const nodeBasename = basename(path);
 
     // todo here it would be a good place to call plugins for params
     return new Attachment(
       url,
       location,
       dynamic,
-      [new Property('extension', extension), new Property('type', mimeType)],
+      [
+        new Property('filename', filename),
+        new Property('basename', nodeBasename),
+        new Property('extension', extension),
+        new Property('type', mimeType),
+        ...(dynamic ? [] : [new Property('contents', readFileSync(path))]),
+      ],
       nodeFinder,
     );
   }

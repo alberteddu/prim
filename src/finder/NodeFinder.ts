@@ -13,6 +13,7 @@ import {
   NodeType,
   Node,
   Post,
+  INode,
 } from '../node';
 import { PostList } from '../node/PostList';
 import { IUrl } from '../url/IUrl';
@@ -46,7 +47,7 @@ export class NodeFinder implements INodeFinder {
   ) {}
 
   findRootPost(): IPost {
-    return this.findPostAt(new Url('/'), this.rootDirectory);
+    return this.findPostAtUrl(new Url('/')) as IPost;
   }
 
   findPostsAt(post: IPost): IPostList {
@@ -69,7 +70,12 @@ export class NodeFinder implements INodeFinder {
       const lastSegment = directory.getLastSegment();
       const newSegment = lastSegment === null ? new Segment('') : this.processSegment(lastSegment);
 
-      return this.findPostAt(post.getUrl().appendSegment(newSegment), directory);
+      return this.nodeProvider.providePost(
+        post.getUrl().appendSegment(newSegment),
+        directory,
+        false,
+        this,
+      );
     });
   }
 
@@ -94,12 +100,6 @@ export class NodeFinder implements INodeFinder {
     );
   }
 
-  findPostAt(url: IUrl, path: IPath): IPost {
-    this.pathValidator.validateDirectory(path);
-
-    return this.nodeProvider.providePost(url, path, false, this);
-  }
-
   findAttachmentsAt(post: IPost): IAttachmentList {
     const dynamicAttachments = this.findDynamicAttachmentsAt(post);
     const realAttachments = this.findRealAttachmentsAt(post);
@@ -120,7 +120,12 @@ export class NodeFinder implements INodeFinder {
       const lastSegment = file.getLastSegment();
       const newSegment = lastSegment === null ? new Segment('') : this.processSegment(lastSegment);
 
-      return this.findAttachmentAt(post.getUrl().appendSegment(newSegment), file);
+      return this.nodeProvider.provideAttachment(
+        post.getUrl().appendSegment(newSegment),
+        file,
+        false,
+        this,
+      );
     });
   }
 
@@ -145,50 +150,47 @@ export class NodeFinder implements INodeFinder {
     );
   }
 
-  findAttachmentAt(url: IUrl, path: IPath): IAttachment {
-    this.pathValidator.validateFile(path);
-
-    return this.nodeProvider.provideAttachment(url, path, false, this);
-  }
-
   private recursivelyFindNodeAtUrl(url: IUrl, isLeaf: boolean): IPost | IAttachment | null {
+    let node: INode | undefined;
+
     if (!url.hasParent()) {
-      return this.findRootPost();
-    }
+      node = this.nodeProvider.providePost(new Url('/'), this.rootDirectory, false, this);
+    } else {
+      const parent = this.recursivelyFindNodeAtUrl(url.removeLastSegment(), false);
 
-    const parent = this.recursivelyFindNodeAtUrl(url.removeLastSegment(), false);
-
-    if (parent === null) {
-      return null;
-    }
-
-    if (!Post.isPost(parent)) {
-      return null;
-    }
-
-    const children = parent.getChildren();
-    const attachments = parent.getAttachments();
-    const nodes = [...children.toArray(), ...attachments.toArray()];
-    const node = nodes.find(node => {
-      const lastSegment = node.getUrl().getLastSegment();
-
-      if (lastSegment === null) {
-        return false;
+      if (parent === null) {
+        return null;
       }
 
-      return url.getLastSegment()?.is(lastSegment) ?? false;
-    });
+      if (!Post.isPost(parent)) {
+        return null;
+      }
+
+      const children = parent.getChildren();
+      const attachments = parent.getAttachments();
+      const nodes = [...children.toArray(), ...attachments.toArray()];
+      node = nodes.find(node => {
+        const lastSegment = node.getUrl().getLastSegment();
+
+        if (lastSegment === null) {
+          return false;
+        }
+
+        return url.getLastSegment()?.is(lastSegment) ?? false;
+      });
+    }
 
     if (typeof node === 'undefined') {
       return null;
     }
 
     if (Node.isPost(node)) {
+      const post = node;
       const defaultPostEnhancement = new PostEnhancement(new Resolution(ResolutionState.Found));
       const postEnhancers = this.pluginHolder.getPlugins<IPostEnhancerPlugin>(isPostEnhancerPlugin);
 
       const newEnhancement = postEnhancers.reduce<IPostEnhancement>(
-        (previousEnhancement, currentPlugin) => currentPlugin.enhance(node, previousEnhancement),
+        (previousEnhancement, currentPlugin) => currentPlugin.enhance(post, previousEnhancement),
         defaultPostEnhancement,
       );
 
@@ -206,6 +208,7 @@ export class NodeFinder implements INodeFinder {
     }
 
     if (Node.isAttachment(node)) {
+      const attachment = node;
       const defaultAttachmentEnhancement = new AttachmentEnhancement(
         new Resolution(ResolutionState.Found),
       );
@@ -214,7 +217,8 @@ export class NodeFinder implements INodeFinder {
       );
 
       const newEnhancement = attachmentEnhancers.reduce<IAttachmentEnhancement>(
-        (previousEnhancement, currentPlugin) => currentPlugin.enhance(node, previousEnhancement),
+        (previousEnhancement, currentPlugin) =>
+          currentPlugin.enhance(attachment, previousEnhancement),
         defaultAttachmentEnhancement,
       );
 
