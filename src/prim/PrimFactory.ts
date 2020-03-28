@@ -5,7 +5,7 @@ import { Prim } from './Prim';
 import { Path, PathValidator, IPath, IPathValidator } from '../filesystem';
 import { INodeFinder, NodeFinder } from '../finder';
 import { INodeProvider, NodeProvider } from '../node';
-import { IPluginHolder, PluginHolder } from '../plugin';
+import { IPluginHolder, PluginHolder } from '../extend';
 
 export class PrimFactory {
   static createFromPath(path: string): IPrim {

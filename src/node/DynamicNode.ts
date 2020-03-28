@@ -1,4 +1,4 @@
-import { IDynamicNode } from '../plugin';
+import { IDynamicNode } from '../extend';
 import { IProperty } from '../property';
 import { ISegment } from '../url';
 

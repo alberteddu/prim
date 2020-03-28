@@ -6,7 +6,7 @@ import filter from 'unist-util-filter';
 import toml from '@iarna/toml';
 import yaml from 'yaml';
 import { Node } from 'unist';
-import { IPostEnhancerPlugin, PluginScope, IPostEnhancement } from '../scope';
+import { IPostEnhancerPlugin, PluginScope, IPostEnhancement } from '../../extend/scope';
 import { IPost } from '../../node';
 import { ResolutionState } from '../../finder';
 import { PropertyIsEqual, Property, ValueMatchesRegex } from '../../property';

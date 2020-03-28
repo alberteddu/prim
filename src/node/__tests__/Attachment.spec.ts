@@ -3,7 +3,7 @@ import { NodeFinder } from '../../finder';
 import { Path, PathValidator } from '../../filesystem';
 import { NodeProvider, Attachment } from '../../node';
 import { Property } from '../../property';
-import { PluginHolder } from '../../plugin';
+import { PluginHolder } from '../../extend';
 import { Url } from '../../url';
 
 beforeAll(() => {

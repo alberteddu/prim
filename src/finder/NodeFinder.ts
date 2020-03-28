@@ -33,7 +33,7 @@ import {
   AttachmentEnhancement,
   IAttachmentEnhancement,
   IPostEnhancement,
-} from '../plugin';
+} from '../extend';
 import { Url, ISegment, Segment } from '../url';
 import { Resolution, ResolutionState } from './resolution';
 

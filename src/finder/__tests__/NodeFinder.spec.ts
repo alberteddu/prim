@@ -9,10 +9,10 @@ import {
   PluginScope,
   IDynamicPost,
   IDynamicAttachment,
-} from '../../plugin';
+} from '../../extend';
 import { DynamicPost } from '../../node/DynamicPost';
 import { DynamicAttachment } from '../../node/DynamicAttachment';
-import { IdentitySegmentVoter, NumberedSegmentVoter, PrivateNodes } from '../../plugin/plugins';
+import { IdentitySegmentVoter, NumberedSegmentVoter, PrivateNodes } from '../../extra/plugins';
 
 beforeAll(() => {
   mock({

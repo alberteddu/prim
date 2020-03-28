@@ -1,7 +1,7 @@
 import { IPath } from '../filesystem';
 import { IPost, IAttachment } from '../node';
 import { IUrl } from '../url';
-import { IPluginHolder } from '../plugin';
+import { IPluginHolder } from '../extend';
 
 export interface IPrim {
   getRootDirectory(): IPath;
