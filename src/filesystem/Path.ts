@@ -5,10 +5,6 @@ import { ISegment, Segment } from '../url';
 export class Path implements IPath {
   constructor(private readonly path: string) {
     this.path = path.length === 0 ? '' : normalize(path);
-
-    if (this.path.slice(0, 1) === '/') {
-      this.path = this.path.slice(1);
-    }
   }
 
   getPath(prefix?: IPath): string {
