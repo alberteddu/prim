@@ -1,4 +1,4 @@
 import { DynamicNode } from './DynamicNode';
-import { IDynamicAttachment } from '../plugin';
+import { IDynamicAttachment } from '../extend';
 
 export class DynamicAttachment extends DynamicNode implements IDynamicAttachment {}

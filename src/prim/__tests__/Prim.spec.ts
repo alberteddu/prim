@@ -3,7 +3,7 @@ import { Prim } from '../../prim';
 import { Path, PathValidator } from '../../filesystem';
 import { NodeFinder } from '../../finder';
 import { NodeProvider } from '../../node';
-import { PluginHolder } from '../../plugin';
+import { PluginHolder } from '../../extend';
 
 describe('Prim', () => {
   mock({

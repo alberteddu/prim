@@ -1,5 +1,7 @@
 import './lib';
 export * from './error';
+export * from './extend';
+export * from './extra';
 export * from './filesystem';
 export * from './finder';
 export * from './node';

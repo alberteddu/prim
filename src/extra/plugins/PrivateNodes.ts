@@ -5,7 +5,7 @@ import {
   IAttachmentEnhancement,
   IPostEnhancement,
   INodeEnhancement,
-} from '../scope';
+} from '../../extend/scope';
 import { INode, Node } from '../../node';
 import { ResolutionState, Resolution } from '../../finder';
 

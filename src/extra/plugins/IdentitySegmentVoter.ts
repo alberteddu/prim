@@ -1,4 +1,4 @@
-import { ISegmentVoterPlugin, PluginScope } from '../scope';
+import { ISegmentVoterPlugin, PluginScope } from '../../extend/scope';
 import { ISegment } from '../../url';
 
 export class IdentitySegmentVoter implements ISegmentVoterPlugin {
