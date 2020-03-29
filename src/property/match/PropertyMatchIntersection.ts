@@ -2,9 +2,13 @@ import { IPropertyMatch } from './IPropertyMatch';
 import { IProperty } from '../IProperty';
 
 export class PropertyMatchIntersection implements IPropertyMatch {
-  constructor(private readonly left: IPropertyMatch, private readonly right: IPropertyMatch) {}
+  private operands: IPropertyMatch[];
+
+  constructor(...operands: IPropertyMatch[]) {
+    this.operands = operands;
+  }
 
   match(property: IProperty): boolean {
-    return this.left.match(property) && this.right.match(property);
+    return this.operands.every(operand => operand.match(property));
   }
 }

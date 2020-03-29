@@ -5,18 +5,27 @@ import frontmatter from 'remark-frontmatter';
 import filter from 'unist-util-filter';
 import toml from '@iarna/toml';
 import yaml from 'yaml';
-import { Node } from 'unist';
-import { IPostEnhancerPlugin, PluginScope, IPostEnhancement } from '../../extend/scope';
-import { IPost } from '../../node';
+import { Node as UnistNode } from 'unist';
+import {
+  IPostEnhancerPlugin,
+  PluginScope,
+  IPostEnhancement,
+  IAttachmentEnhancerPlugin,
+  INodeEnhancement,
+} from '../../extend/scope';
+import { Node, INode } from '../../node';
 import { ResolutionState } from '../../finder';
 import { PropertyIsEqual, Property, ValueMatchesRegex } from '../../property';
+import { IUrl } from '../../url';
 
 export enum Formats {
   TOML = 'toml',
   YAML = 'yaml',
 }
 
-export class MarkdownPosts implements IPostEnhancerPlugin {
+export class MarkdownPosts implements IPostEnhancerPlugin, IAttachmentEnhancerPlugin {
+  private contentAttachmentUrls: IUrl[] = [];
+
   constructor(private readonly supportedFormats: Formats[] = [Formats.TOML, Formats.YAML]) {}
 
   getId(): string {
@@ -24,13 +33,27 @@ export class MarkdownPosts implements IPostEnhancerPlugin {
   }
 
   hasScope(scope: PluginScope): boolean {
-    return scope === PluginScope.PostEnhancerPlugin;
+    return [PluginScope.PostEnhancerPlugin, PluginScope.AttachmentEnhancerPlugin].includes(scope);
   }
 
-  enhance(post: IPost, currentEnhancement: IPostEnhancement): IPostEnhancement {
+  enhance(node: INode, currentEnhancement: INodeEnhancement): INodeEnhancement {
     if (currentEnhancement.resolve().getState() !== ResolutionState.Found) {
       return currentEnhancement;
     }
+
+    if (Node.isAttachment(node)) {
+      if (typeof this.contentAttachmentUrls.find(url => url.is(node.getUrl())) !== 'undefined') {
+        node.setProperty(new Property('--content-attachment', true));
+      }
+
+      return currentEnhancement;
+    }
+
+    if (!Node.isPost(node)) {
+      return currentEnhancement;
+    }
+
+    const post = node;
 
     if (post.isDynamic() && !post.propertyExists('_markdown-source')) {
       return currentEnhancement;
@@ -38,8 +61,8 @@ export class MarkdownPosts implements IPostEnhancerPlugin {
 
     const attachments = post
       .getAttachments()
-      .where(new PropertyIsEqual(new Property('extension', 'md')))
-      .where(new ValueMatchesRegex('filename', /(index|content|post|doc|document)/));
+      .whereProperty(new PropertyIsEqual(new Property('extension', 'md')))
+      .whereProperty(new ValueMatchesRegex('filename', /(index|content|post|doc|document)/));
 
     const firstDocument = attachments.first();
 
@@ -56,8 +79,8 @@ export class MarkdownPosts implements IPostEnhancerPlugin {
 
     const getFrontmatterFilter = (include: boolean) => {
       return () => {
-        return (tree: Node) =>
-          filter(tree, (node: any): node is Node => {
+        return (tree: UnistNode) =>
+          filter(tree, (node: any): node is UnistNode => {
             if (include) {
               return node.type === 'root' || this.supportedFormats.includes(node.type);
             }
@@ -84,6 +107,7 @@ export class MarkdownPosts implements IPostEnhancerPlugin {
     let data: { [key: string]: any } | undefined;
 
     post.setProperty(new Property('markdown', textSource));
+    this.contentAttachmentUrls.push(firstDocument.getUrl());
 
     if (frontmatterSource.slice(0, 3) === '+++') {
       data = toml.parse(frontmatterSource.slice(3, -3));

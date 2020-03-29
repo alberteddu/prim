@@ -9,4 +9,6 @@ export interface IUrl {
   getLastSegment(): ISegment | null;
   hasParent(): boolean;
   appendSegment(segment: ISegment): IUrl;
+  toString(): string;
+  is(url: IUrl): boolean;
 }

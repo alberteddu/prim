@@ -35,12 +35,12 @@ describe('NodeList', () => {
   });
 
   it('should filter nodes that match a property match', () => {
-    expect(nodeList.where(new PropertyIsEqual(new Property('name', 'value'))).count()).toBe(1);
-    expect(nodeList.where(new PropertyIsEqual(new Property('name', 'wrongValue'))).count()).toBe(0);
-  });
-
-  it("should filter nodes that don't match a property match", () => {
-    expect(nodeList.whereNot(new PropertyIsEqual(new Property('name', 'value'))).count()).toBe(0);
+    expect(nodeList.whereProperty(new PropertyIsEqual(new Property('name', 'value'))).count()).toBe(
+      1,
+    );
+    expect(
+      nodeList.whereProperty(new PropertyIsEqual(new Property('name', 'wrongValue'))).count(),
+    ).toBe(0);
   });
 
   it('should return a new NodeList without a certain node', () => {

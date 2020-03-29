@@ -1,6 +1,6 @@
+import jexl from 'jexl';
 import { INodeList } from './INodeList';
 import { INode } from './INode';
-import { NegateMatch } from '../property';
 import { IPropertyMatch } from '../property/match/IPropertyMatch';
 
 export abstract class NodeList<L extends INodeList<any>, T extends INode = INode>
@@ -27,12 +27,24 @@ export abstract class NodeList<L extends INodeList<any>, T extends INode = INode
     return this.nodes.map(callback);
   }
 
-  where(propertyMatch: IPropertyMatch): L {
-    return this.filter(eachNode => eachNode.match(propertyMatch));
+  where(expression: string): L {
+    return this.filter((node: T) => {
+      const evaluator = new jexl.Jexl();
+
+      evaluator.addUnaryOp('@', (name: string) => node.getProperty(name).getValue());
+
+      return Boolean(
+        evaluator.evalSync(expression, {
+          url: node.getUrl().toString(),
+          path: node.getPath().toString(),
+          dynamic: node.isDynamic(),
+        }),
+      );
+    });
   }
 
-  whereNot(propertyMatch: IPropertyMatch): L {
-    return this.where(new NegateMatch(propertyMatch));
+  whereProperty(propertyMatch: IPropertyMatch): L {
+    return this.filter(eachNode => eachNode.match(propertyMatch));
   }
 
   except(node: T): L {
@@ -49,5 +61,9 @@ export abstract class NodeList<L extends INodeList<any>, T extends INode = INode
 
   contains(node: T): boolean {
     return this.filter(eachNode => eachNode.is(node)).count() === 1;
+  }
+
+  [Symbol.iterator]() {
+    return this.toArray().values();
   }
 }

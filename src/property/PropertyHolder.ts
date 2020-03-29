@@ -53,12 +53,12 @@ export abstract class PropertyHolder implements IPropertyHolder {
     return this.match(new PropertyPassesTest(callback));
   }
 
-  getProperty(name: string, defaultValue: any = null): IProperty {
+  getProperty<T = any>(name: string, defaultValue: T = null as any): IProperty {
     if (this.propertyExists(name)) {
       return this.properties[name];
     }
 
-    return new Property(name, defaultValue);
+    return new Property<T>(name, defaultValue);
   }
 
   setProperty(property: IProperty): void {
@@ -75,6 +75,10 @@ export abstract class PropertyHolder implements IPropertyHolder {
     this.protect(name);
 
     delete this.properties[name];
+  }
+
+  prop<T = any>(name: string, defaultValue: T = null as any): T {
+    return this.getProperty(name, defaultValue).getValue();
   }
 
   abstract getProtectedNames(): string[];

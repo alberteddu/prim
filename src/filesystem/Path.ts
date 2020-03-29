@@ -41,4 +41,8 @@ export class Path implements IPath {
 
     return new Segment(segments[segments.length - 1]);
   }
+
+  toString(): string {
+    return this.path;
+  }
 }

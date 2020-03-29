@@ -53,8 +53,14 @@ export class NodeFinder implements INodeFinder {
   findPostsAt(post: IPost): IPostList {
     const realChildren = this.findRealPostsAt(post);
     const dynamicChildren = this.findDynamicPostsAt(post);
+    const allChildren = [...realChildren, ...dynamicChildren].filter(child => {
+      const enhancement = this.enhancePost(child);
+      const state = enhancement.resolve().getState();
 
-    return new PostList([...realChildren, ...dynamicChildren]);
+      return [ResolutionState.Found, ResolutionState.NotFoundSelf].includes(state);
+    });
+
+    return new PostList(allChildren);
   }
 
   private findRealPostsAt(post: IPost): IPost[] {
@@ -103,8 +109,14 @@ export class NodeFinder implements INodeFinder {
   findAttachmentsAt(post: IPost): IAttachmentList {
     const dynamicAttachments = this.findDynamicAttachmentsAt(post);
     const realAttachments = this.findRealAttachmentsAt(post);
+    const allAttachments = [...realAttachments, ...dynamicAttachments].filter(attachment => {
+      const enhancement = this.enhanceAttachment(attachment);
+      const state = enhancement.resolve().getState();
 
-    return new AttachmentList([...realAttachments, ...dynamicAttachments]);
+      return state === ResolutionState.Found;
+    });
+
+    return new AttachmentList(allAttachments);
   }
 
   private findRealAttachmentsAt(post: IPost): IAttachment[] {
@@ -186,14 +198,7 @@ export class NodeFinder implements INodeFinder {
 
     if (Node.isPost(node)) {
       const post = node;
-      const defaultPostEnhancement = new PostEnhancement(new Resolution(ResolutionState.Found));
-      const postEnhancers = this.pluginHolder.getPlugins<IPostEnhancerPlugin>(isPostEnhancerPlugin);
-
-      const newEnhancement = postEnhancers.reduce<IPostEnhancement>(
-        (previousEnhancement, currentPlugin) => currentPlugin.enhance(post, previousEnhancement),
-        defaultPostEnhancement,
-      );
-
+      const newEnhancement = this.enhancePost(post);
       const currentState = newEnhancement.resolve().getState();
 
       if (currentState === ResolutionState.NotFound) {
@@ -209,25 +214,10 @@ export class NodeFinder implements INodeFinder {
 
     if (Node.isAttachment(node)) {
       const attachment = node;
-      const defaultAttachmentEnhancement = new AttachmentEnhancement(
-        new Resolution(ResolutionState.Found),
-      );
-      const attachmentEnhancers = this.pluginHolder.getPlugins<IAttachmentEnhancerPlugin>(
-        isAttachmentEnhancerPlugin,
-      );
-
-      const newEnhancement = attachmentEnhancers.reduce<IAttachmentEnhancement>(
-        (previousEnhancement, currentPlugin) =>
-          currentPlugin.enhance(attachment, previousEnhancement),
-        defaultAttachmentEnhancement,
-      );
-
+      const newEnhancement = this.enhanceAttachment(attachment);
       const currentState = newEnhancement.resolve().getState();
 
-      if (
-        currentState === ResolutionState.NotFound ||
-        currentState === ResolutionState.NotFoundSelf
-      ) {
+      if (currentState !== ResolutionState.Found) {
         return null;
       }
 
@@ -259,6 +249,35 @@ export class NodeFinder implements INodeFinder {
     }
 
     return node;
+  }
+
+  private enhancePost(post: IPost): IPostEnhancement {
+    const defaultPostEnhancement = new PostEnhancement(new Resolution(ResolutionState.Found));
+    const postEnhancers = this.pluginHolder.getPlugins<IPostEnhancerPlugin>(isPostEnhancerPlugin);
+
+    const newEnhancement = postEnhancers.reduce<IPostEnhancement>(
+      (previousEnhancement, currentPlugin) => currentPlugin.enhance(post, previousEnhancement),
+      defaultPostEnhancement,
+    );
+
+    return newEnhancement;
+  }
+
+  private enhanceAttachment(attachment: IAttachment): IAttachmentEnhancement {
+    const defaultAttachmentEnhancement = new AttachmentEnhancement(
+      new Resolution(ResolutionState.Found),
+    );
+    const attachmentEnhancers = this.pluginHolder.getPlugins<IAttachmentEnhancerPlugin>(
+      isAttachmentEnhancerPlugin,
+    );
+
+    const newEnhancement = attachmentEnhancers.reduce<IAttachmentEnhancement>(
+      (previousEnhancement, currentPlugin) =>
+        currentPlugin.enhance(attachment, previousEnhancement),
+      defaultAttachmentEnhancement,
+    );
+
+    return newEnhancement;
   }
 
   private findFilesAndDirectoriesAt(path: IPath): IPath[] {

@@ -10,4 +10,8 @@ export class Segment implements ISegment {
   is(segment: ISegment): boolean {
     return segment.getSegment() === this.getSegment();
   }
+
+  toString(): string {
+    return this.getSegment();
+  }
 }

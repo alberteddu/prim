@@ -58,6 +58,14 @@ export class Url implements IUrl {
     return Url.fromSegments(...this.getSegments(), segment);
   }
 
+  toString(): string {
+    return this.getUrl();
+  }
+
+  is(url: IUrl): boolean {
+    return this.getUrl() === url.getUrl();
+  }
+
   static fromSegments(...segments: ISegment[]): IUrl {
     return new Url(segments.map(segment => segment.getSegment()).join('/'));
   }

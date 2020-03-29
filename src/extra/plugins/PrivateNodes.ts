@@ -2,8 +2,6 @@ import {
   IPostEnhancerPlugin,
   IAttachmentEnhancerPlugin,
   PluginScope,
-  IAttachmentEnhancement,
-  IPostEnhancement,
   INodeEnhancement,
 } from '../../extend/scope';
 import { INode, Node } from '../../node';

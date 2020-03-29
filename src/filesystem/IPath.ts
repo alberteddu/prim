@@ -6,4 +6,5 @@ export interface IPath {
   removeLastSegment(): IPath;
   join(path: IPath): IPath;
   getLastSegment(): ISegment | null;
+  toString(): string;
 }

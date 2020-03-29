@@ -8,7 +8,8 @@ export interface INodeList<L, T extends INode = INode> {
   filter(callback: (node: T) => boolean): L;
   map(callback: (node: T) => void): any;
   except(node: T): L;
-  where(propertyMatch: IPropertyMatch): L;
+  where(expression: string): L;
+  whereProperty(propertyMatch: IPropertyMatch): L;
   first(): T | null;
   contains(node: T): boolean;
 }
