@@ -25,6 +25,10 @@ export class Post extends Node implements IPost {
     return this.nodeFinder.findAttachmentsAt(this);
   }
 
+  get attachments(): IAttachment[] {
+    return this.getAttachments().toArray();
+  }
+
   hasAttachment(attachment: IAttachment): boolean {
     return attachment.getPost().is(this);
   }
@@ -41,6 +45,10 @@ export class Post extends Node implements IPost {
     return this.nodeFinder.findPostsAt(this);
   }
 
+  get children(): IPost[] {
+    return this.getChildren().toArray();
+  }
+
   getSiblings(): IPostList {
     return (
       this.getParent()
@@ -49,12 +57,16 @@ export class Post extends Node implements IPost {
     );
   }
 
+  get siblings(): IPost[] {
+    return this.getSiblings().toArray();
+  }
+
   getParent(): IPost | null {
     if (this.isRoot()) {
       return null;
     }
 
-    return this.nodeFinder.findPostAtUrl(this.url.removeLastSegment());
+    return this.nodeFinder.findPostAtUrl(this.getUrl().removeLastSegment());
   }
 
   isRoot(): boolean {

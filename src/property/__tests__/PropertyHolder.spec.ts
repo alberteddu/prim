@@ -10,6 +10,7 @@ import {
 } from '../../property';
 import { CannotModifyProtectedProperty } from '../../error';
 import { IPropertyHolder } from '../IPropertyHolder';
+import { NegateMatch } from '../match';
 
 class ConcretePropertyHolder extends PropertyHolder {
   constructor(properties: IProperty[] = []) {
@@ -61,6 +62,14 @@ describe('PropertyHolder', () => {
     expect(propertyHolder.matchNameAndValue('example', 'someValue')).toBeTruthy();
     expect(propertyHolder.matchNameAndValue('example', 'otherValue')).toBeFalsy();
     expect(propertyHolder.matchValue('someValue')).toBeTruthy();
+  });
+
+  it('should match negated properties', () => {
+    expect(
+      propertyHolder.match(
+        new NegateMatch(new PropertyIsEqual(new Property('not-name', 'not-value'))),
+      ),
+    ).toBeTruthy();
   });
 
   it('should match regex properties', () => {

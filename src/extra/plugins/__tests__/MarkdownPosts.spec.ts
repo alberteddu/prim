@@ -23,19 +23,24 @@ Some markdown *content*.
   });
 
   const prim = PrimFactory.createFromPath('root');
-  prim.getPluginHolder().addPlugin(new MarkdownPosts());
+  const plugin = new MarkdownPosts();
+  prim.getPluginHolder().addPlugin(plugin);
   const root = prim.get('/');
   const post = prim.get('/post');
   const attachment = prim.get('/index.md');
 
-  it.only('should handle files with frontmatter', () => {
-    // expect(root?.getProperty('title', '').getValue()).toBe('Some title');
-    // expect(root?.getProperty('date', null).getValue()).toEqual(new Date('2020-01-25'));
-    // expect(root?.getProperty('markdown', '').getValue()).toBe('Some markdown _content_.');
-    // expect(root?.getProperty('post', {}).getValue()).toEqual({
-    //   category: 'blog',
-    //   published: false,
-    // });
+  it('should set --content-attachment property', () => {
+    expect(attachment?.prop('--content-attachment', false)).toBeTruthy();
+  });
+
+  it('should handle files with frontmatter', () => {
+    expect(root?.getProperty('title', '').getValue()).toBe('Some title');
+    expect(root?.getProperty('date', null).getValue()).toEqual(new Date('2020-01-25'));
+    expect(root?.getProperty('markdown', '').getValue()).toBe('Some markdown _content_.');
+    expect(root?.getProperty('post', {}).getValue()).toEqual({
+      category: 'blog',
+      published: false,
+    });
     expect(attachment?.getProperty('--content-attachment', false).getValue()).toBeTruthy();
 
     if (root !== null && Node.isPost(root)) {

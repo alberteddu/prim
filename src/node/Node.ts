@@ -9,28 +9,36 @@ import { IUrl } from '../url';
 export abstract class Node extends PropertyHolder implements INode {
   /* istanbul ignore next */
   constructor(
-    protected readonly url: IUrl,
-    protected readonly path: IPath,
-    private readonly dynamic: boolean,
+    protected readonly _url: IUrl,
+    protected readonly _path: IPath,
+    private readonly _dynamic: boolean,
     properties: IProperty[] = [],
   ) {
     super(properties);
   }
 
   getUrl(): IUrl {
-    return this.url;
+    return this._url;
+  }
+
+  get url(): string {
+    return this._url.toString();
   }
 
   getPath(): IPath {
-    return this.path;
+    return this._path;
+  }
+
+  get path(): string {
+    return this._path.toString();
   }
 
   is(node: INode): boolean {
-    return this.path.getPath() === node.getPath().getPath();
+    return this.getPath().getPath() === node.getPath().getPath();
   }
 
   isDynamic(): boolean {
-    return this.dynamic;
+    return this._dynamic;
   }
 
   abstract getNodeType(): NodeType;

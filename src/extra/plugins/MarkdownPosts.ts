@@ -2,6 +2,7 @@ import unified, { Plugin } from 'unified';
 import parse from 'remark-parse';
 import stringify from 'remark-stringify';
 import frontmatter from 'remark-frontmatter';
+import html from 'remark-html';
 import filter from 'unist-util-filter';
 import toml from '@iarna/toml';
 import yaml from 'yaml';
@@ -9,12 +10,10 @@ import { Node as UnistNode } from 'unist';
 import {
   IPostEnhancerPlugin,
   PluginScope,
-  IPostEnhancement,
   IAttachmentEnhancerPlugin,
   INodeEnhancement,
 } from '../../extend/scope';
-import { Node, INode } from '../../node';
-import { ResolutionState } from '../../finder';
+import { Node, INode, IPost } from '../../node';
 import { PropertyIsEqual, Property, ValueMatchesRegex } from '../../property';
 import { IUrl } from '../../url';
 
@@ -37,10 +36,6 @@ export class MarkdownPosts implements IPostEnhancerPlugin, IAttachmentEnhancerPl
   }
 
   enhance(node: INode, currentEnhancement: INodeEnhancement): INodeEnhancement {
-    if (currentEnhancement.resolve().getState() !== ResolutionState.Found) {
-      return currentEnhancement;
-    }
-
     if (Node.isAttachment(node)) {
       if (typeof this.contentAttachmentUrls.find(url => url.is(node.getUrl())) !== 'undefined') {
         node.setProperty(new Property('--content-attachment', true));
@@ -49,11 +44,7 @@ export class MarkdownPosts implements IPostEnhancerPlugin, IAttachmentEnhancerPl
       return currentEnhancement;
     }
 
-    if (!Node.isPost(node)) {
-      return currentEnhancement;
-    }
-
-    const post = node;
+    const post = node as IPost;
 
     if (post.isDynamic() && !post.propertyExists('_markdown-source')) {
       return currentEnhancement;
@@ -101,12 +92,16 @@ export class MarkdownPosts implements IPostEnhancerPlugin, IAttachmentEnhancerPl
     const textResult = getDocument()
       .use(getFrontmatterFilter(false) as Plugin)
       .processSync(markdownSource);
+    const htmlResult = getDocument()
+      .use(html)
+      .processSync(markdownSource);
 
     const textSource = textResult.contents.toString().trim();
     const frontmatterSource = frontmatterResult.contents.toString().trim();
     let data: { [key: string]: any } | undefined;
 
     post.setProperty(new Property('markdown', textSource));
+    post.setProperty(new Property('markdown-content', htmlResult));
     this.contentAttachmentUrls.push(firstDocument.getUrl());
 
     if (frontmatterSource.slice(0, 3) === '+++') {

@@ -34,6 +34,14 @@ describe('NodeList', () => {
     expect(nodeList.map(node => node.getPath())).toEqual([path]);
   });
 
+  it('should find a node', () => {
+    expect(nodeList.find(n => n.is(node))).toBe(node);
+  });
+
+  it('should filter nodes based on an expression', () => {
+    expect(nodeList.where('url == "/"').count()).toBe(1);
+  });
+
   it('should filter nodes that match a property match', () => {
     expect(nodeList.whereProperty(new PropertyIsEqual(new Property('name', 'value'))).count()).toBe(
       1,

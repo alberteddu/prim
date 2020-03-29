@@ -20,7 +20,7 @@ export class Attachment extends Node implements IAttachment {
   }
 
   getPost(): IPost {
-    return this.nodeFinder.findPostAtUrl(this.url.removeLastSegment()) as IPost;
+    return this.nodeFinder.findPostAtUrl(this.getUrl().removeLastSegment()) as IPost;
   }
 
   isAttachmentOf(post: IPost): boolean {
