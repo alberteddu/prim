@@ -31,13 +31,18 @@ export abstract class NodeList<L extends INodeList<any>, T extends INode = INode
     return this.filter((node: T) => {
       const evaluator = new jexl.Jexl();
 
-      evaluator.addUnaryOp('@', (name: string) => node.getProperty(name).getValue());
-
       return Boolean(
         evaluator.evalSync(expression, {
           url: node.getUrl().toString(),
           path: node.getPath().toString(),
           dynamic: node.isDynamic(),
+          ...node.getProperties().reduce(
+            (previous, current) => ({
+              ...previous,
+              [current.getName()]: current.getValue(),
+            }),
+            {},
+          ),
         }),
       );
     });

@@ -40,6 +40,7 @@ describe('NodeList', () => {
 
   it('should filter nodes based on an expression', () => {
     expect(nodeList.where('url == "/"').count()).toBe(1);
+    expect(nodeList.where('name == "value"').count()).toBe(1);
   });
 
   it('should filter nodes that match a property match', () => {
