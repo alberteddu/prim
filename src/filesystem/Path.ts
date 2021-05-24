@@ -1,7 +1,7 @@
 import { join, normalize } from 'path';
-import { IPath } from 'lib/filesystem/IPath';
-import { ISegment } from 'lib/url/ISegment';
-import { Segment } from 'lib/url/Segment';
+import { IPath } from './IPath';
+import { ISegment } from '../url/ISegment';
+import { Segment } from '../url/Segment';
 
 export class Path implements IPath {
     constructor(private readonly path: string) {

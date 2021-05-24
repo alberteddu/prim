@@ -1,17 +1,17 @@
 import { Container } from 'inversify';
-import { TYPES } from 'lib/types';
-import { Prim } from 'lib/prim/Prim';
-import { IPluginHolder } from 'lib/extend/IPluginHolder';
-import { PluginHolder } from 'lib/extend/PluginHolder';
-import { IPath } from 'lib/filesystem/IPath';
-import { IPrim } from 'lib/prim/IPrim';
-import { IPathValidator } from 'lib/filesystem/IPathValidator';
-import { PathValidator } from 'lib/filesystem/PathValidator';
-import { INodeProvider } from 'lib/node/INodeProvider';
-import { NodeProvider } from 'lib/node/NodeProvider';
-import { INodeFinder } from 'lib/finder/INodeFinder';
-import { NodeFinder } from 'lib/finder/NodeFinder';
-import { Path } from 'lib/filesystem/Path';
+import { Prim } from './Prim';
+import { IPrim } from './IPrim';
+import { IPluginHolder } from '../extend/IPluginHolder';
+import { IPath } from '../filesystem/IPath';
+import { IPathValidator } from '../filesystem/IPathValidator';
+import { PathValidator } from '../filesystem/PathValidator';
+import { INodeProvider } from '../node/INodeProvider';
+import { NodeProvider } from '../node/NodeProvider';
+import { INodeFinder } from '../finder/INodeFinder';
+import { NodeFinder } from '../finder/NodeFinder';
+import { TYPES } from '../types';
+import { PluginHolder } from '../extend/PluginHolder';
+import { Path } from '../filesystem/Path';
 
 export class PrimFactory {
     static createFromPath(path: string): IPrim {

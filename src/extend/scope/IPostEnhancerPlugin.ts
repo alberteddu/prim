@@ -1,7 +1,7 @@
-import { IPlugin } from 'lib/extend/IPlugin';
-import { IPost } from 'lib/node/IPost';
-import { IPostEnhancement } from 'lib/extend/scope/IPostEnhancement';
-import { PluginScope } from 'lib/extend/scope/PluginScope';
+import { IPostEnhancement } from './IPostEnhancement';
+import { PluginScope } from './PluginScope';
+import { IPlugin } from '../IPlugin';
+import { IPost } from '../../node/IPost';
 
 export interface IPostEnhancerPlugin extends IPlugin {
     enhance(attachment: IPost, currentEnhancement: IPostEnhancement): IPostEnhancement;

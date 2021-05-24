@@ -1,11 +1,11 @@
-import { IUrl } from 'lib/url/IUrl';
-import { IPost } from 'lib/node/IPost';
-import { IPath } from 'lib/filesystem/IPath';
-import { IProperty } from 'lib/property/IProperty';
-import { NodeType } from 'lib/node/NodeType';
-import { IAttachment } from 'lib/node/IAttachment';
-import { INodeFinder } from 'lib/finder/INodeFinder';
-import { Node } from 'lib/node/Node';
+import { IAttachment } from './IAttachment';
+import { IPost } from './IPost';
+import { NodeType } from './NodeType';
+import { Node } from './Node';
+import { IUrl } from '../url/IUrl';
+import { IPath } from '../filesystem/IPath';
+import { IProperty } from '../property/IProperty';
+import { INodeFinder } from '../finder/INodeFinder';
 
 export class Attachment extends Node implements IAttachment {
     /* istanbul ignore next */

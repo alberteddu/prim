@@ -1,4 +1,4 @@
-import { ResolutionState } from 'lib/finder/resolution/ResolutionState';
+import { ResolutionState } from './ResolutionState';
 
 export interface IResolution {
     getState(): ResolutionState;

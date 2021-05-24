@@ -1,4 +1,4 @@
-import { IPlugin } from 'lib/extend/IPlugin';
+import { IPlugin } from './IPlugin';
 
 export interface PluginsObject {
     [name: string]: IPlugin;

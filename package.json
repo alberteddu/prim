@@ -27,7 +27,7 @@
         "prebuild": "rimraf dist",
         "build": "tsc --module commonjs && rollup -c rollup.config.ts",
         "docs": "typedoc --json docs/docs.json --out docs --target es6 --theme minimal --mode file src",
-        "start": "roNodeFinder.ts\nllup -c rollup.config.ts -w",
+        "start": "rollup -c rollup.config.ts -w",
         "test": "jest --coverage",
         "test:watch": "jest --coverage --watch",
         "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand --watch",

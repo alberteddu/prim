@@ -1,10 +1,10 @@
-import { Node } from 'lib/node/Node';
-import { NodeList } from 'lib/node/NodeList';
-import { NodeType } from 'lib/node/NodeType';
-import { PropertyIsEqual } from 'lib/property/match/PropertyIsEqual';
-import { Property } from 'lib/property/Property';
-import { Path } from 'lib/filesystem/Path';
-import { Url } from 'lib/url/Url';
+import { NodeType } from '../NodeType';
+import { PropertyIsEqual } from '../../property/match/PropertyIsEqual';
+import { Property } from '../../property/Property';
+import { Node } from '../Node';
+import { NodeList } from '../NodeList';
+import { Path } from '../../filesystem/Path';
+import { Url } from '../../url/Url';
 
 class ConcreteNode extends Node {
     getNodeType(): NodeType {

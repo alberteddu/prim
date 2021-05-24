@@ -7,17 +7,17 @@ import filter from 'unist-util-filter';
 import toml from '@iarna/toml';
 import yaml from 'yaml';
 import { Node as UnistNode } from 'unist';
-import { IPostEnhancerPlugin } from 'lib/extend/scope/IPostEnhancerPlugin';
-import { IAttachmentEnhancerPlugin } from 'lib/extend/scope/IAttachmentEnhancerPlugin';
-import { INode } from 'lib/node/INode';
-import { INodeEnhancement } from 'lib/extend/scope/INodeEnhancement';
-import { IPost } from 'lib/node/IPost';
-import { IUrl } from 'lib/url/IUrl';
-import { PluginScope } from 'lib/extend/scope/PluginScope';
-import { PropertyIsEqual } from 'lib/property/match/PropertyIsEqual';
-import { ValueMatchesRegex } from 'lib/property/match/ValueMatchesRegex';
-import { Property } from 'lib/property/Property';
-import { Node } from 'lib/node/Node';
+import { IPostEnhancerPlugin } from '../../extend/scope/IPostEnhancerPlugin';
+import { IAttachmentEnhancerPlugin } from '../../extend/scope/IAttachmentEnhancerPlugin';
+import { INode } from '../../node/INode';
+import { INodeEnhancement } from '../../extend/scope/INodeEnhancement';
+import { IPost } from '../../node/IPost';
+import { IUrl } from '../../url/IUrl';
+import { PluginScope } from '../../extend/scope/PluginScope';
+import { PropertyIsEqual } from '../../property/match/PropertyIsEqual';
+import { ValueMatchesRegex } from '../../property/match/ValueMatchesRegex';
+import { Property } from '../../property/Property';
+import { Node } from '../../node/Node';
 
 export enum Formats {
     TOML = 'toml',

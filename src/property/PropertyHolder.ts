@@ -1,13 +1,13 @@
-import { IPropertyMatch } from 'lib/property/match/IPropertyMatch';
-import { CannotModifyProtectedProperty } from 'lib/error/CannotModifyProtectedProperty';
-import { PropertyPassesTest } from 'lib/property/match/PropertyPassesTest';
-import { IProperty } from 'lib/property/IProperty';
-import { IPropertyHolderAwareMatch } from 'lib/property/match/IPropertyHolderAwareMatch';
-import { PropertyIsEqual } from 'lib/property/match/PropertyIsEqual';
-import { PropertyObject } from 'lib/property/PropertyObject';
-import { ValueMatchesRegex } from 'lib/property/match/ValueMatchesRegex';
-import { IPropertyHolder } from 'lib/property/IPropertyHolder';
-import { Property } from 'lib/property/Property';
+import { IPropertyMatch } from './match/IPropertyMatch';
+import { PropertyPassesTest } from './match/PropertyPassesTest';
+import { IProperty } from './IProperty';
+import { IPropertyHolderAwareMatch } from './match/IPropertyHolderAwareMatch';
+import { PropertyIsEqual } from './match/PropertyIsEqual';
+import { PropertyObject } from './PropertyObject';
+import { ValueMatchesRegex } from './match/ValueMatchesRegex';
+import { IPropertyHolder } from './IPropertyHolder';
+import { Property } from './Property';
+import { CannotModifyProtectedProperty } from '../error/CannotModifyProtectedProperty';
 
 const instanceOfPropertyHolderAwareMatch = (object: IPropertyMatch): object is IPropertyHolderAwareMatch => {
     return 'setPropertyHolder' in object;

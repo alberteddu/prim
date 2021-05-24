@@ -1,5 +1,5 @@
-import { IPath } from 'lib/filesystem/IPath';
-import { ISegment } from 'lib/url/ISegment';
+import { ISegment } from './ISegment';
+import { IPath } from '../filesystem/IPath';
 
 export interface IUrl {
     getUrl(): string;

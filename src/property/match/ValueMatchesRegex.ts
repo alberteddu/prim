@@ -1,5 +1,5 @@
-import { IPropertyMatch } from 'lib/property/match/IPropertyMatch';
-import { IProperty } from 'lib/property/IProperty';
+import { IPropertyMatch } from './IPropertyMatch';
+import { IProperty } from '../IProperty';
 
 export class ValueMatchesRegex implements IPropertyMatch {
     constructor(private readonly name: string, private readonly regex: string | RegExp) {}

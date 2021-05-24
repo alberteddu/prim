@@ -1,5 +1,5 @@
-import { IProperty } from 'lib/property/IProperty';
-import { IPropertyMatch } from 'lib/property/match/IPropertyMatch';
+import { IPropertyMatch } from './match/IPropertyMatch';
+import { IProperty } from './IProperty';
 
 export interface IPropertyHolder {
     propertyExists(name: string): boolean;

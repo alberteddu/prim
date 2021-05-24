@@ -1,9 +1,9 @@
 import mock from 'mock-fs';
-import { PrimFactory } from 'lib/prim/PrimFactory';
-import { InvalidPath } from 'lib/error/InvalidPath';
-import { NodeType } from 'lib/node/NodeType';
-import { Path } from 'lib/filesystem/Path';
-import { Url } from 'lib/url/Url';
+import { PrimFactory } from '../PrimFactory';
+import { NodeType } from '../../node/NodeType';
+import { InvalidPath } from '../../error/InvalidPath';
+import { Path } from '../../filesystem/Path';
+import { Url } from '../../url/Url';
 
 const invalidPath = 'hello';
 

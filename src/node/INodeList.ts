@@ -1,5 +1,5 @@
-import { INode } from 'lib/node/INode';
-import { IPropertyMatch } from 'lib/property/match/IPropertyMatch';
+import { INode } from './INode';
+import { IPropertyMatch } from '../property/match/IPropertyMatch';
 
 export interface INodeList<L, T extends INode = INode> {
     count(): number;

@@ -1,6 +1,6 @@
-import { IPlugin } from 'lib/extend/IPlugin';
-import { PluginScope } from 'lib/extend/scope/PluginScope';
-import { ISegment } from 'lib/url/ISegment';
+import { PluginScope } from './PluginScope';
+import { IPlugin } from '../IPlugin';
+import { ISegment } from '../../url/ISegment';
 
 export interface ISegmentVoterPlugin extends IPlugin {
     vote(segment: ISegment): ISegment;

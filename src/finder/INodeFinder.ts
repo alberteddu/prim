@@ -1,8 +1,8 @@
-import { IAttachmentList } from 'lib/node/IAttachmentList';
-import { IPost } from 'lib/node/IPost';
-import { IUrl } from 'lib/url/IUrl';
-import { IAttachment } from 'lib/node/IAttachment';
-import { IPostList } from 'lib/node/IPostList';
+import { IPost } from '../node/IPost';
+import { IUrl } from '../url/IUrl';
+import { IAttachmentList } from '../node/IAttachmentList';
+import { IAttachment } from '../node/IAttachment';
+import { IPostList } from '../node/IPostList';
 
 export interface INodeFinder {
     findRootPost(): IPost;

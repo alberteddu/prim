@@ -1,3 +1,3 @@
-import { IDynamicNode } from 'lib/extend/scope/IDynamicNode';
+import { IDynamicNode } from './IDynamicNode';
 
 export interface IDynamicAttachment extends IDynamicNode {}

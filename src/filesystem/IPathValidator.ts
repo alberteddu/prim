@@ -1,4 +1,4 @@
-import { IPath } from 'lib/filesystem/IPath';
+import { IPath } from './IPath';
 
 export interface IPathValidator {
     validatePath(path: IPath): void;

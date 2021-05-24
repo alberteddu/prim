@@ -1,5 +1,5 @@
-import { IPropertyMatch } from 'lib/property/match/IPropertyMatch';
-import { IProperty } from 'lib/property/IProperty';
+import { IPropertyMatch } from './IPropertyMatch';
+import { IProperty } from '../IProperty';
 
 export class NegateMatch implements IPropertyMatch {
     constructor(private readonly propertyMatch: IPropertyMatch) {}

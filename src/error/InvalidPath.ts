@@ -1,4 +1,4 @@
-import { IPath } from 'lib/filesystem/IPath';
+import { IPath } from '../filesystem/IPath';
 
 export class InvalidPath extends Error {
     /* istanbul ignore next */

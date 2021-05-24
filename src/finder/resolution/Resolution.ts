@@ -1,5 +1,5 @@
-import { ResolutionState } from 'lib/finder/resolution/ResolutionState';
-import { IResolution } from 'lib/finder/resolution/IResolution';
+import { IResolution } from './IResolution';
+import { ResolutionState } from './ResolutionState';
 
 export class Resolution implements IResolution {
     constructor(private readonly resolution: ResolutionState) {}

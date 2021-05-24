@@ -1,4 +1,4 @@
-import { IResolution } from 'lib/finder/resolution/IResolution';
+import { IResolution } from '../../finder/resolution/IResolution';
 
 export interface INodeEnhancement {
     resolve(): IResolution;

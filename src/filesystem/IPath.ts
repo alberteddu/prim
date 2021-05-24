@@ -1,4 +1,4 @@
-import { ISegment } from 'lib/url/ISegment';
+import { ISegment } from '../url/ISegment';
 
 export interface IPath {
     getPath(prefix?: IPath): string;

@@ -1,4 +1,4 @@
-import { Property } from 'lib/property/Property';
+import { Property } from '../Property';
 
 describe('Property', () => {
     const property = new Property('name', 'value');

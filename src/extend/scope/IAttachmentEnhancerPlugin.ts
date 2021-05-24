@@ -1,7 +1,7 @@
-import { IAttachment } from 'lib/node/IAttachment';
-import { IAttachmentEnhancement } from 'lib/extend/scope/IAttachmentEnhancement';
-import { PluginScope } from 'lib/extend/scope/PluginScope';
-import { IPlugin } from 'lib/extend/IPlugin';
+import { IAttachmentEnhancement } from './IAttachmentEnhancement';
+import { PluginScope } from './PluginScope';
+import { IAttachment } from '../../node/IAttachment';
+import { IPlugin } from '../IPlugin';
 
 export interface IAttachmentEnhancerPlugin extends IPlugin {
     enhance(attachment: IAttachment, currentEnhancement: IAttachmentEnhancement): IAttachmentEnhancement;

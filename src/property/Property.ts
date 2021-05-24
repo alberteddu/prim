@@ -1,5 +1,5 @@
 import equal from 'deep-equal';
-import { IProperty } from 'lib/property/IProperty';
+import { IProperty } from './IProperty';
 
 export class Property<T = any> implements IProperty<T> {
     constructor(private readonly name: string, private readonly value: T) {}

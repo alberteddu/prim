@@ -1,10 +1,10 @@
-import { IAttachmentEnhancerPlugin } from 'lib/extend/scope/IAttachmentEnhancerPlugin';
-import { ResolutionState } from 'lib/finder/resolution/ResolutionState';
-import { INode } from 'lib/node/INode';
-import { INodeEnhancement } from 'lib/extend/scope/INodeEnhancement';
-import { PluginScope } from 'lib/extend/scope/PluginScope';
-import { IPostEnhancerPlugin } from 'lib/extend/scope/IPostEnhancerPlugin';
-import { Resolution } from 'lib/finder/resolution/Resolution';
+import { IAttachmentEnhancerPlugin } from '../../extend/scope/IAttachmentEnhancerPlugin';
+import { ResolutionState } from '../../finder/resolution/ResolutionState';
+import { INode } from '../../node/INode';
+import { INodeEnhancement } from '../../extend/scope/INodeEnhancement';
+import { PluginScope } from '../../extend/scope/PluginScope';
+import { IPostEnhancerPlugin } from '../../extend/scope/IPostEnhancerPlugin';
+import { Resolution } from '../../finder/resolution/Resolution';
 
 export class PrivateNodes implements IAttachmentEnhancerPlugin, IPostEnhancerPlugin {
     hasScope(scope: PluginScope): boolean {

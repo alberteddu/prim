@@ -1,4 +1,4 @@
-import { ISegment } from 'lib/url/ISegment';
+import { ISegment } from './ISegment';
 
 export class Segment implements ISegment {
     constructor(private readonly segment: string) {}

@@ -1,4 +1,4 @@
-import { NodeEnhancement } from 'lib/extend/scope/NodeEnhancement';
-import { IAttachmentEnhancement } from 'lib/extend/scope/IAttachmentEnhancement';
+import { NodeEnhancement } from './NodeEnhancement';
+import { IAttachmentEnhancement } from './IAttachmentEnhancement';
 
 export class AttachmentEnhancement extends NodeEnhancement implements IAttachmentEnhancement {}

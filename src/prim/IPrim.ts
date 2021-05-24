@@ -1,8 +1,8 @@
-import { IPath } from 'lib/filesystem/IPath';
-import { IPluginHolder } from 'lib/extend/IPluginHolder';
-import { IPost } from 'lib/node/IPost';
-import { IUrl } from 'lib/url/IUrl';
-import { IAttachment } from 'lib/node/IAttachment';
+import { IPluginHolder } from '../extend/IPluginHolder';
+import { IPost } from '../node/IPost';
+import { IPath } from '../filesystem/IPath';
+import { IUrl } from '../url/IUrl';
+import { IAttachment } from '../node/IAttachment';
 
 export interface IPrim {
     getRootDirectory(): IPath;
