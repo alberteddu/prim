@@ -110,7 +110,7 @@ export class MarkdownPosts implements IPostEnhancerPlugin, IAttachmentEnhancerPl
             data = toml.parse(frontmatterSource.slice(3, -3));
         }
 
-        if (frontmatterSource.slice(0, 3) === '-') {
+        if (frontmatterSource.slice(0, 3) === '---') {
             data = yaml.parse(frontmatterSource.slice(3, -3));
         }
 
