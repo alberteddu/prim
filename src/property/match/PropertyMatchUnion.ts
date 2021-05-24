@@ -1,10 +1,14 @@
-import { IPropertyMatch } from './IPropertyMatch';
-import { IProperty } from '../IProperty';
+import { IPropertyMatch } from 'lib/property/match/IPropertyMatch';
+import { IProperty } from 'lib/property/IProperty';
 
 export class PropertyMatchUnion implements IPropertyMatch {
-  constructor(private readonly left: IPropertyMatch, private readonly right: IPropertyMatch) {}
+    private operands: IPropertyMatch[];
 
-  match(property: IProperty): boolean {
-    return this.left.match(property) || this.right.match(property);
-  }
+    constructor(...operands: IPropertyMatch[]) {
+        this.operands = operands;
+    }
+
+    match(property: IProperty): boolean {
+        return this.operands.some(operand => operand.match(property));
+    }
 }

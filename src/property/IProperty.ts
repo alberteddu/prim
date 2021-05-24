@@ -1,5 +1,7 @@
-export interface IProperty {
-  getName(): string;
-  getValue(): any;
-  is(property: IProperty): boolean;
+export interface IProperty<T = any> {
+    getName(): string;
+
+    getValue(): T;
+
+    is(property: IProperty): boolean;
 }

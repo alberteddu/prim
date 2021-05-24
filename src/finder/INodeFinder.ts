@@ -1,12 +1,19 @@
-import { IPath } from '../filesystem';
-import { IPostList, IAttachmentList, IPost, IAttachment } from '../node';
-import { IUrl } from '../url/IUrl';
+import { IAttachmentList } from 'lib/node/IAttachmentList';
+import { IPost } from 'lib/node/IPost';
+import { IUrl } from 'lib/url/IUrl';
+import { IAttachment } from 'lib/node/IAttachment';
+import { IPostList } from 'lib/node/IPostList';
 
 export interface INodeFinder {
-  findRootPost(): IPost;
-  findPostsAt(post: IPost): IPostList;
-  findPostAt(path: IPath): IPost;
-  findAttachmentsAt(post: IPost): IAttachmentList;
-  findAttachmentAt(path: IPath): IAttachment;
-  findNodeAt(url: IUrl): IPost | IAttachment | null;
+    findRootPost(): IPost;
+
+    findPostsAt(post: IPost): IPostList;
+
+    findAttachmentsAt(post: IPost): IAttachmentList;
+
+    findNodeAtUrl(url: IUrl): IPost | IAttachment | null;
+
+    findPostAtUrl(url: IUrl): IPost | null;
+
+    findAttachmentAtUrl(url: IUrl): IAttachment | null;
 }

@@ -1,30 +1,37 @@
-import { Node } from './Node';
-import { IAttachment } from './IAttachment';
-import { NodeType } from './NodeType';
-import { IPath } from '../filesystem';
-import { IProperty } from '../property';
-import { INodeFinder } from '../finder';
-import { IPost } from './IPost';
+import { IUrl } from 'lib/url/IUrl';
+import { IPost } from 'lib/node/IPost';
+import { IPath } from 'lib/filesystem/IPath';
+import { IProperty } from 'lib/property/IProperty';
+import { NodeType } from 'lib/node/NodeType';
+import { IAttachment } from 'lib/node/IAttachment';
+import { INodeFinder } from 'lib/finder/INodeFinder';
+import { Node } from 'lib/node/Node';
 
 export class Attachment extends Node implements IAttachment {
-  /* istanbul ignore next */
-  constructor(path: IPath, properties: IProperty[], private readonly nodeFinder: INodeFinder) {
-    super(path, properties);
-  }
+    /* istanbul ignore next */
+    constructor(
+        url: IUrl,
+        path: IPath,
+        dynamic: boolean,
+        properties: IProperty[],
+        private readonly nodeFinder: INodeFinder,
+    ) {
+        super(url, path, dynamic, properties);
+    }
 
-  getPost(): IPost {
-    return this.nodeFinder.findPostAt(this.path.removeLastSegment());
-  }
+    getPost(): IPost {
+        return this.nodeFinder.findPostAtUrl(this.getUrl().removeLastSegment()) as IPost;
+    }
 
-  isAttachmentOf(post: IPost): boolean {
-    return post.getAttachments().contains(this);
-  }
+    isAttachmentOf(post: IPost): boolean {
+        return post.getAttachments().contains(this);
+    }
 
-  getProtectedNames(): string[] {
-    return ['extension', 'type', 'size'];
-  }
+    getProtectedNames(): string[] {
+        return ['filename', 'basename', 'contents', 'extension', 'type'];
+    }
 
-  getNodeType(): NodeType.Attachment {
-    return NodeType.Attachment;
-  }
+    getNodeType(): NodeType.Attachment {
+        return NodeType.Attachment;
+    }
 }

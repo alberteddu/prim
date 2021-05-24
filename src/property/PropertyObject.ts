@@ -1,5 +1,5 @@
-import { IProperty } from './IProperty';
+import { IProperty } from 'lib/property/IProperty';
 
 export interface PropertyObject {
-  [name: string]: IProperty;
+    [name: string]: IProperty;
 }
