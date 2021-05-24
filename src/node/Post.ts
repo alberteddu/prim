@@ -1,14 +1,14 @@
-import { IPost } from 'lib/node/IPost';
-import { IUrl } from 'lib/url/IUrl';
-import { IPath } from 'lib/filesystem/IPath';
-import { IProperty } from 'lib/property/IProperty';
-import { IAttachmentList } from 'lib/node/IAttachmentList';
-import { NodeType } from 'lib/node/NodeType';
-import { PostList } from 'lib/node/PostList';
-import { IAttachment } from 'lib/node/IAttachment';
-import { INodeFinder } from 'lib/finder/INodeFinder';
-import { IPostList } from 'lib/node/IPostList';
-import { Node } from 'lib/node/Node';
+import { IPost } from './IPost';
+import { IAttachmentList } from './IAttachmentList';
+import { NodeType } from './NodeType';
+import { PostList } from './PostList';
+import { IAttachment } from './IAttachment';
+import { IPostList } from './IPostList';
+import { Node } from './Node';
+import { INodeFinder } from '../finder/INodeFinder';
+import { IProperty } from '../property/IProperty';
+import { IPath } from '../filesystem/IPath';
+import { IUrl } from '../url/IUrl';
 
 export class Post extends Node implements IPost {
     constructor(

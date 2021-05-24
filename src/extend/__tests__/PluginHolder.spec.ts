@@ -1,5 +1,5 @@
-import { IPlugin } from 'lib/extend/IPlugin';
-import { PluginHolder } from 'lib/extend/PluginHolder';
+import { IPlugin } from '../IPlugin';
+import { PluginHolder } from '../PluginHolder';
 
 class ExamplePlugin implements IPlugin {
     getId(): string {

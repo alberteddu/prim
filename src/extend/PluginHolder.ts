@@ -1,7 +1,7 @@
 import { injectable } from 'inversify';
-import { IPluginHolder } from 'lib/extend/IPluginHolder';
-import { PluginsObject } from 'lib/extend/PluginsObject';
-import { IPlugin } from 'lib/extend/IPlugin';
+import { IPluginHolder } from './IPluginHolder';
+import { PluginsObject } from './PluginsObject';
+import { IPlugin } from './IPlugin';
 
 @injectable()
 export class PluginHolder implements IPluginHolder {

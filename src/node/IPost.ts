@@ -1,7 +1,7 @@
-import { INode } from 'lib/node/INode';
-import { IAttachmentList } from 'lib/node/IAttachmentList';
-import { IAttachment } from 'lib/node/IAttachment';
-import { IPostList } from 'lib/node/IPostList';
+import { INode } from './INode';
+import { IAttachmentList } from './IAttachmentList';
+import { IAttachment } from './IAttachment';
+import { IPostList } from './IPostList';
 
 export interface IPost extends INode {
     getAttachments(): IAttachmentList;

@@ -1,5 +1,5 @@
-import { ISegment } from 'lib/url/ISegment';
-import { IProperty } from 'lib/property/IProperty';
+import { ISegment } from '../../url/ISegment';
+import { IProperty } from '../../property/IProperty';
 
 export interface IDynamicNode {
     getSegment(): ISegment;

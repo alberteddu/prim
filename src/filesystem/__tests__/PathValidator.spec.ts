@@ -1,7 +1,7 @@
 import mock from 'mock-fs';
-import { Path } from 'lib/filesystem/Path';
-import { PathValidator } from 'lib/filesystem/PathValidator';
-import { InvalidPath } from 'lib/error/InvalidPath';
+import { Path } from '../Path';
+import { PathValidator } from '../PathValidator';
+import { InvalidPath } from '../../error/InvalidPath';
 
 beforeAll(() => {
     mock({

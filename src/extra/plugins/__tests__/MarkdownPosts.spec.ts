@@ -1,7 +1,7 @@
 import mock from 'mock-fs';
-import { PrimFactory } from 'lib/prim/PrimFactory';
-import { MarkdownPosts } from 'lib/extra/plugins/MarkdownPosts';
-import { Node } from 'lib/node/Node';
+import { PrimFactory } from '../../../prim/PrimFactory';
+import { MarkdownPosts } from '../MarkdownPosts';
+import { Node } from '../../../node/Node';
 
 describe('MarkdownPosts', () => {
     mock({

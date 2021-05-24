@@ -1,4 +1,4 @@
-import { INodeList } from 'lib/node/INodeList';
-import { IPost } from 'lib/node/IPost';
+import { INodeList } from './INodeList';
+import { IPost } from './IPost';
 
 export interface IPostList extends INodeList<IPostList, IPost> {}

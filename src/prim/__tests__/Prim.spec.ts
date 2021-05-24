@@ -1,10 +1,10 @@
 import mock from 'mock-fs';
-import { Path } from 'lib/filesystem/Path';
-import { Prim } from 'lib/prim/Prim';
-import { PluginHolder } from 'lib/extend/PluginHolder';
-import { PathValidator } from 'lib/filesystem/PathValidator';
-import { NodeProvider } from 'lib/node/NodeProvider';
-import { NodeFinder } from 'lib/finder/NodeFinder';
+import { Prim } from '../Prim';
+import { PluginHolder } from '../../extend/PluginHolder';
+import { PathValidator } from '../../filesystem/PathValidator';
+import { NodeProvider } from '../../node/NodeProvider';
+import { NodeFinder } from '../../finder/NodeFinder';
+import { Path } from '../../filesystem/Path';
 
 describe('Prim', () => {
     mock({

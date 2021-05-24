@@ -23,10 +23,6 @@
         ],
         "strictNullChecks": true,
         "esModuleInterop": true,
-        "baseUrl": "./",
-        "paths": {
-            "lib/*": ["./src/*"]
-        }
     },
     "include": [
         "src"

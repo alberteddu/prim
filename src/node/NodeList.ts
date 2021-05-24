@@ -1,7 +1,7 @@
 import jexl from 'jexl';
-import { INodeList } from 'lib/node/INodeList';
-import { INode } from 'lib/node/INode';
-import { IPropertyMatch } from 'lib/property/match/IPropertyMatch';
+import { INodeList } from './INodeList';
+import { INode } from './INode';
+import { IPropertyMatch } from '../property/match/IPropertyMatch';
 
 export abstract class NodeList<L extends INodeList<any>, T extends INode = INode> implements INodeList<L, T> {
     constructor(private readonly nodes: T[]) {}

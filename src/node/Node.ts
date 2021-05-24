@@ -1,11 +1,11 @@
-import { PropertyHolder } from 'lib/property/PropertyHolder';
-import { INode } from 'lib/node/INode';
-import { IPost } from 'lib/node/IPost';
-import { IUrl } from 'lib/url/IUrl';
-import { IPath } from 'lib/filesystem/IPath';
-import { IProperty } from 'lib/property/IProperty';
-import { NodeType } from 'lib/node/NodeType';
-import { IAttachment } from 'lib/node/IAttachment';
+import { INode } from './INode';
+import { IPost } from './IPost';
+import { NodeType } from './NodeType';
+import { IAttachment } from './IAttachment';
+import { PropertyHolder } from '../property/PropertyHolder';
+import { IUrl } from '../url/IUrl';
+import { IPath } from '../filesystem/IPath';
+import { IProperty } from '../property/IProperty';
 
 export abstract class Node extends PropertyHolder implements INode {
     /* istanbul ignore next */

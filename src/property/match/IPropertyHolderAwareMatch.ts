@@ -1,5 +1,5 @@
-import { IPropertyMatch } from 'lib/property/match/IPropertyMatch';
-import { IPropertyHolder } from 'lib/property/IPropertyHolder';
+import { IPropertyMatch } from './IPropertyMatch';
+import { IPropertyHolder } from '../IPropertyHolder';
 
 export interface IPropertyHolderAwareMatch extends IPropertyMatch {
     setPropertyHolder(propertyHolder: IPropertyHolder): void;

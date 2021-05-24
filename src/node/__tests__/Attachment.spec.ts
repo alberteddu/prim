@@ -1,12 +1,12 @@
 import mock from 'mock-fs';
-import { Path } from 'lib/filesystem/Path';
-import { PluginHolder } from 'lib/extend/PluginHolder';
-import { PathValidator } from 'lib/filesystem/PathValidator';
-import { Attachment } from 'lib/node/Attachment';
-import { NodeProvider } from 'lib/node/NodeProvider';
-import { NodeFinder } from 'lib/finder/NodeFinder';
-import { Property } from 'lib/property/Property';
-import { Url } from 'lib/url/Url';
+import { PluginHolder } from '../../extend/PluginHolder';
+import { PathValidator } from '../../filesystem/PathValidator';
+import { Attachment } from '../Attachment';
+import { NodeProvider } from '../NodeProvider';
+import { NodeFinder } from '../../finder/NodeFinder';
+import { Property } from '../../property/Property';
+import { Path } from '../../filesystem/Path';
+import { Url } from '../../url/Url';
 
 beforeAll(() => {
     mock({

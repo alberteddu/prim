@@ -1,4 +1,4 @@
-import { Path } from 'lib/filesystem/Path';
+import { Path } from '../Path';
 
 describe('Path', () => {
     const emptyPath = new Path('');

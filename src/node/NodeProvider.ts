@@ -2,17 +2,17 @@ import { readFileSync } from 'fs';
 import { basename, extname } from 'path';
 import { inject, injectable } from 'inversify';
 import { lookup } from 'mime-types';
-import { INodeProvider } from 'lib/node/INodeProvider';
-import { TYPES } from 'lib/types';
-import { IPost } from 'lib/node/IPost';
-import { IUrl } from 'lib/url/IUrl';
-import { IPath } from 'lib/filesystem/IPath';
-import { Post } from 'lib/node/Post';
-import { IPathValidator } from 'lib/filesystem/IPathValidator';
-import { Attachment } from 'lib/node/Attachment';
-import { IAttachment } from 'lib/node/IAttachment';
-import { INodeFinder } from 'lib/finder/INodeFinder';
-import { Property } from 'lib/property/Property';
+import { IPost } from './IPost';
+import { Post } from './Post';
+import { INodeProvider } from './INodeProvider';
+import { Attachment } from './Attachment';
+import { IAttachment } from './IAttachment';
+import { IPathValidator } from '../filesystem/IPathValidator';
+import { IPath } from '../filesystem/IPath';
+import { IUrl } from '../url/IUrl';
+import { TYPES } from '../types';
+import { INodeFinder } from '../finder/INodeFinder';
+import { Property } from '../property/Property';
 
 @injectable()
 export class NodeProvider implements INodeProvider {

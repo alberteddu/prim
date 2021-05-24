@@ -1,4 +1,4 @@
-import { DynamicNode } from 'lib/node/DynamicNode';
-import { IDynamicPost } from 'lib/extend/scope/IDynamicPost';
+import { DynamicNode } from './DynamicNode';
+import { IDynamicPost } from '../extend/scope/IDynamicPost';
 
 export class DynamicPost extends DynamicNode implements IDynamicPost {}

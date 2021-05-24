@@ -1,4 +1,4 @@
-import { INodeList } from 'lib/node/INodeList';
-import { IAttachment } from 'lib/node/IAttachment';
+import { INodeList } from './INodeList';
+import { IAttachment } from './IAttachment';
 
 export interface IAttachmentList extends INodeList<IAttachmentList, IAttachment> {}

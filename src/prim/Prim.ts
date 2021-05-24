@@ -1,15 +1,15 @@
 import { inject, injectable } from 'inversify';
-import { IPrim } from 'lib/prim/IPrim';
-import { TYPES } from 'lib/types';
-import { IPluginHolder } from 'lib/extend/IPluginHolder';
-import { IPost } from 'lib/node/IPost';
-import { IPath } from 'lib/filesystem/IPath';
-import { IUrl } from 'lib/url/IUrl';
-import { IPathValidator } from 'lib/filesystem/IPathValidator';
-import { IAttachment } from 'lib/node/IAttachment';
-import { INodeFinder } from 'lib/finder/INodeFinder';
-import { IdentitySegmentVoter } from 'lib/extra/plugins/IdentitySegmentVoter';
-import { Url } from 'lib/url/Url';
+import { IPrim } from './IPrim';
+import { TYPES } from '../types';
+import { IPluginHolder } from '../extend/IPluginHolder';
+import { IPost } from '../node/IPost';
+import { IPath } from '../filesystem/IPath';
+import { IUrl } from '../url/IUrl';
+import { IPathValidator } from '../filesystem/IPathValidator';
+import { IAttachment } from '../node/IAttachment';
+import { INodeFinder } from '../finder/INodeFinder';
+import { IdentitySegmentVoter } from '../extra/plugins/IdentitySegmentVoter';
+import { Url } from '../url/Url';
 
 @injectable()
 export class Prim implements IPrim {

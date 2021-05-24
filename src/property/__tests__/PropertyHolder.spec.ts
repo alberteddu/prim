@@ -1,14 +1,14 @@
-import { PropertyHolder } from 'lib/property/PropertyHolder';
-import { CannotModifyProtectedProperty } from 'lib/error/CannotModifyProtectedProperty';
-import { IProperty } from 'lib/property/IProperty';
-import { PropertyMatchUnion } from 'lib/property/match/PropertyMatchUnion';
-import { PropertyIsEqual } from 'lib/property/match/PropertyIsEqual';
-import { IPropertyHolderAwareMatch } from 'lib/property/match/IPropertyHolderAwareMatch';
-import { PropertyMatchIntersection } from 'lib/property/match/PropertyMatchIntersection';
-import { NegateMatch } from 'lib/property/match/NegateMatch';
-import { ValueMatchesRegex } from 'lib/property/match/ValueMatchesRegex';
-import { IPropertyHolder } from 'lib/property/IPropertyHolder';
-import { Property } from 'lib/property/Property';
+import { CannotModifyProtectedProperty } from '../../error/CannotModifyProtectedProperty';
+import { PropertyHolder } from '../PropertyHolder';
+import { IProperty } from '../IProperty';
+import { PropertyMatchUnion } from '../match/PropertyMatchUnion';
+import { PropertyIsEqual } from '../match/PropertyIsEqual';
+import { IPropertyHolderAwareMatch } from '../match/IPropertyHolderAwareMatch';
+import { PropertyMatchIntersection } from '../match/PropertyMatchIntersection';
+import { NegateMatch } from '../match/NegateMatch';
+import { ValueMatchesRegex } from '../match/ValueMatchesRegex';
+import { IPropertyHolder } from '../IPropertyHolder';
+import { Property } from '../Property';
 
 class ConcretePropertyHolder extends PropertyHolder {
     constructor(properties: IProperty[] = []) {

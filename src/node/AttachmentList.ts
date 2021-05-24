@@ -1,5 +1,5 @@
-import { IAttachmentList } from 'lib/node/IAttachmentList';
-import { NodeList } from 'lib/node/NodeList';
-import { IAttachment } from 'lib/node/IAttachment';
+import { IAttachmentList } from './IAttachmentList';
+import { IAttachment } from './IAttachment';
+import { NodeList } from './NodeList';
 
 export class AttachmentList extends NodeList<IAttachmentList, IAttachment> implements IAttachmentList {}

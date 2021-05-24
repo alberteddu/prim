@@ -1,8 +1,8 @@
-import { IDynamicPost } from 'lib/extend/scope/IDynamicPost';
-import { IPost } from 'lib/node/IPost';
-import { IDynamicAttachment } from 'lib/extend/scope/IDynamicAttachment';
-import { PluginScope } from 'lib/extend/scope/PluginScope';
-import { IPlugin } from 'lib/extend/IPlugin';
+import { IDynamicPost } from './IDynamicPost';
+import { IDynamicAttachment } from './IDynamicAttachment';
+import { PluginScope } from './PluginScope';
+import { IPost } from '../../node/IPost';
+import { IPlugin } from '../IPlugin';
 
 export interface IDynamicNodePlugin extends IPlugin {
     getChildrenOfPost(post: IPost): IDynamicPost[];

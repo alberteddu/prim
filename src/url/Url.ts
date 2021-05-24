@@ -1,9 +1,9 @@
 import { normalize } from 'path';
-import { IUrl } from 'lib/url/IUrl';
-import { IPath } from 'lib/filesystem/IPath';
-import { ISegment } from 'lib/url/ISegment';
-import { Segment } from 'lib/url/Segment';
-import { Path } from 'lib/filesystem/Path';
+import { IUrl } from './IUrl';
+import { ISegment } from './ISegment';
+import { Segment } from './Segment';
+import { IPath } from '../filesystem/IPath';
+import { Path } from '../filesystem/Path';
 
 export class Url implements IUrl {
     constructor(private readonly url: string) {

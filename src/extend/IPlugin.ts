@@ -1,4 +1,4 @@
-import { PluginScope } from 'lib/extend/scope/PluginScope';
+import { PluginScope } from './scope/PluginScope';
 
 export interface IPlugin {
     getId(): string;

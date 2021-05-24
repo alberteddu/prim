@@ -1,10 +1,10 @@
 import { existsSync, lstatSync } from 'fs';
 import { isAbsolute, relative } from 'path';
 import { inject, injectable } from 'inversify';
-import { IPathValidator } from 'lib/filesystem/IPathValidator';
-import { TYPES } from 'lib/types';
-import { IPath } from 'lib/filesystem/IPath';
-import { InvalidPath } from 'lib/error/InvalidPath';
+import { IPath } from './IPath';
+import { IPathValidator } from './IPathValidator';
+import { TYPES } from '../types';
+import { InvalidPath } from '../error/InvalidPath';
 
 @injectable()
 export class PathValidator implements IPathValidator {

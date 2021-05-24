@@ -1,22 +1,22 @@
 import mock from 'mock-fs';
-import { IDynamicNodePlugin } from 'lib/extend/scope/IDynamicNodePlugin';
-import { DynamicAttachment } from 'lib/node/DynamicAttachment';
-import { IPost } from 'lib/node/IPost';
-import { DynamicPost } from 'lib/node/DynamicPost';
-import { IDynamicAttachment } from 'lib/extend/scope/IDynamicAttachment';
-import { Post } from 'lib/node/Post';
-import { PathValidator } from 'lib/filesystem/PathValidator';
-import { NodeProvider } from 'lib/node/NodeProvider';
-import { NodeFinder } from 'lib/finder/NodeFinder';
-import { PrivateNodes } from 'lib/extra/plugins/PrivateNodes';
-import { Segment } from 'lib/url/Segment';
-import { NumberedSegmentVoter } from 'lib/extra/plugins/NumberedSegmentVoter';
-import { PluginHolder } from 'lib/extend/PluginHolder';
-import { IDynamicPost } from 'lib/extend/scope/IDynamicPost';
-import { PluginScope } from 'lib/extend/scope/PluginScope';
-import { IdentitySegmentVoter } from 'lib/extra/plugins/IdentitySegmentVoter';
-import { Path } from 'lib/filesystem/Path';
-import { Url } from 'lib/url/Url';
+import { DynamicAttachment } from '../../node/DynamicAttachment';
+import { IPost } from '../../node/IPost';
+import { DynamicPost } from '../../node/DynamicPost';
+import { IDynamicAttachment } from '../../extend/scope/IDynamicAttachment';
+import { Post } from '../../node/Post';
+import { PathValidator } from '../../filesystem/PathValidator';
+import { NodeProvider } from '../../node/NodeProvider';
+import { NodeFinder } from '../NodeFinder';
+import { PrivateNodes } from '../../extra/plugins/PrivateNodes';
+import { Segment } from '../../url/Segment';
+import { NumberedSegmentVoter } from '../../extra/plugins/NumberedSegmentVoter';
+import { PluginHolder } from '../../extend/PluginHolder';
+import { IDynamicPost } from '../../extend/scope/IDynamicPost';
+import { PluginScope } from '../../extend/scope/PluginScope';
+import { IDynamicNodePlugin } from '../../extend/scope/IDynamicNodePlugin';
+import { IdentitySegmentVoter } from '../../extra/plugins/IdentitySegmentVoter';
+import { Path } from '../../filesystem/Path';
+import { Url } from '../../url/Url';
 
 beforeAll(() => {
     mock({

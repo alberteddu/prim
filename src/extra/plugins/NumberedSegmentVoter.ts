@@ -1,7 +1,7 @@
-import { ISegmentVoterPlugin } from 'lib/extend/scope/ISegmentVoterPlugin';
-import { PluginScope } from 'lib/extend/scope/PluginScope';
-import { ISegment } from 'lib/url/ISegment';
-import { Segment } from 'lib/url/Segment';
+import { ISegmentVoterPlugin } from '../../extend/scope/ISegmentVoterPlugin';
+import { PluginScope } from '../../extend/scope/PluginScope';
+import { ISegment } from '../../url/ISegment';
+import { Segment } from '../../url/Segment';
 
 export class NumberedSegmentVoter implements ISegmentVoterPlugin {
     getId(): string {

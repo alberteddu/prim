@@ -1,4 +1,4 @@
-import { Url } from 'lib/url/Url';
+import { Url } from '../Url';
 
 describe('Url', () => {
     it('should normalize the url correctly', () => {
