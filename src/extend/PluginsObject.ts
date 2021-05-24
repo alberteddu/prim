@@ -1,5 +1,5 @@
-import { IPlugin } from './IPlugin';
+import { IPlugin } from 'lib/extend/IPlugin';
 
 export interface PluginsObject {
-  [name: string]: IPlugin;
+    [name: string]: IPlugin;
 }

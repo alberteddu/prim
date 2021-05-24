@@ -1,6 +1,6 @@
 export enum PluginScope {
-  PostEnhancerPlugin,
-  AttachmentEnhancerPlugin,
-  DynamicNodePlugin,
-  SegmentVoterPlugin,
+    PostEnhancerPlugin,
+    AttachmentEnhancerPlugin,
+    DynamicNodePlugin,
+    SegmentVoterPlugin,
 }

@@ -1,31 +1,31 @@
-import { PluginHolder } from '../PluginHolder';
-import { IPlugin } from '../IPlugin';
+import { IPlugin } from 'lib/extend/IPlugin';
+import { PluginHolder } from 'lib/extend/PluginHolder';
 
 class ExamplePlugin implements IPlugin {
-  getId(): string {
-    return 'example';
-  }
+    getId(): string {
+        return 'example';
+    }
 
-  hasScope(): boolean {
-    return true;
-  }
+    hasScope(): boolean {
+        return true;
+    }
 }
 
 describe('PluginHolder', () => {
-  const pluginHolder = new PluginHolder();
-  const plugin = new ExamplePlugin();
+    const pluginHolder = new PluginHolder();
+    const plugin = new ExamplePlugin();
 
-  it('should add plugins', () => {
-    pluginHolder.addPlugin(plugin);
+    it('should add plugins', () => {
+        pluginHolder.addPlugin(plugin);
 
-    expect(pluginHolder.getPlugin('invalid-id')).toBeNull();
-    expect(pluginHolder.hasPlugin('example')).toBeTruthy();
-    expect(pluginHolder.getPlugin('example')).toBe(plugin);
-    expect(pluginHolder.getPlugins((plugin: IPlugin): plugin is IPlugin => true)).toEqual([plugin]);
+        expect(pluginHolder.getPlugin('invalid-id')).toBeNull();
+        expect(pluginHolder.hasPlugin('example')).toBeTruthy();
+        expect(pluginHolder.getPlugin('example')).toBe(plugin);
+        expect(pluginHolder.getPlugins((plugin: IPlugin): plugin is IPlugin => true)).toEqual([plugin]);
 
-    pluginHolder.removePlugin('example');
-    pluginHolder.removePlugin('should-not-break');
+        pluginHolder.removePlugin('example');
+        pluginHolder.removePlugin('should-not-break');
 
-    expect(pluginHolder.hasPlugin('example')).toBeFalsy();
-  });
+        expect(pluginHolder.hasPlugin('example')).toBeFalsy();
+    });
 });

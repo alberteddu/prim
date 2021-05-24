@@ -7,123 +7,125 @@ import filter from 'unist-util-filter';
 import toml from '@iarna/toml';
 import yaml from 'yaml';
 import { Node as UnistNode } from 'unist';
-import {
-  IPostEnhancerPlugin,
-  PluginScope,
-  IAttachmentEnhancerPlugin,
-  INodeEnhancement,
-} from '../../extend/scope';
-import { Node, INode, IPost } from '../../node';
-import { PropertyIsEqual, Property, ValueMatchesRegex } from '../../property';
-import { IUrl } from '../../url';
+import { IPostEnhancerPlugin } from 'lib/extend/scope/IPostEnhancerPlugin';
+import { IAttachmentEnhancerPlugin } from 'lib/extend/scope/IAttachmentEnhancerPlugin';
+import { INode } from 'lib/node/INode';
+import { INodeEnhancement } from 'lib/extend/scope/INodeEnhancement';
+import { IPost } from 'lib/node/IPost';
+import { IUrl } from 'lib/url/IUrl';
+import { PluginScope } from 'lib/extend/scope/PluginScope';
+import { PropertyIsEqual } from 'lib/property/match/PropertyIsEqual';
+import { ValueMatchesRegex } from 'lib/property/match/ValueMatchesRegex';
+import { Property } from 'lib/property/Property';
+import { Node } from 'lib/node/Node';
 
 export enum Formats {
-  TOML = 'toml',
-  YAML = 'yaml',
+    TOML = 'toml',
+    YAML = 'yaml',
 }
 
 export class MarkdownPosts implements IPostEnhancerPlugin, IAttachmentEnhancerPlugin {
-  private contentAttachmentUrls: IUrl[] = [];
+    private contentAttachmentUrls: IUrl[] = [];
 
-  constructor(private readonly supportedFormats: Formats[] = [Formats.TOML, Formats.YAML]) {}
+    constructor(private readonly supportedFormats: Formats[] = [Formats.TOML, Formats.YAML]) {}
 
-  getId(): string {
-    return 'markdown-posts';
-  }
-
-  hasScope(scope: PluginScope): boolean {
-    return [PluginScope.PostEnhancerPlugin, PluginScope.AttachmentEnhancerPlugin].includes(scope);
-  }
-
-  enhance(node: INode, currentEnhancement: INodeEnhancement): INodeEnhancement {
-    if (Node.isAttachment(node)) {
-      if (typeof this.contentAttachmentUrls.find(url => url.is(node.getUrl())) !== 'undefined') {
-        node.setProperty(new Property('--content-attachment', true));
-      }
-
-      return currentEnhancement;
+    getId(): string {
+        return 'markdown-posts';
     }
 
-    const post = node as IPost;
-
-    if (post.isDynamic() && !post.propertyExists('_markdown-source')) {
-      return currentEnhancement;
+    hasScope(scope: PluginScope): boolean {
+        return [PluginScope.PostEnhancerPlugin, PluginScope.AttachmentEnhancerPlugin].includes(scope);
     }
 
-    const attachments = post
-      .getAttachments()
-      .whereProperty(new PropertyIsEqual(new Property('extension', 'md')))
-      .whereProperty(new ValueMatchesRegex('filename', /(index|content|post|doc|document)/));
-
-    const firstDocument = attachments.first();
-
-    if (firstDocument === null) {
-      return currentEnhancement;
-    }
-
-    const markdownSourceProperty = firstDocument.getProperty('contents', '');
-    const markdownSource = markdownSourceProperty.getValue();
-
-    if (markdownSource === '') {
-      return currentEnhancement;
-    }
-
-    const getFrontmatterFilter = (include: boolean) => {
-      return () => {
-        return (tree: UnistNode) =>
-          filter(tree, (node: any): node is UnistNode => {
-            if (include) {
-              return node.type === 'root' || this.supportedFormats.includes(node.type);
+    enhance(node: INode, currentEnhancement: INodeEnhancement): INodeEnhancement {
+        if (Node.isAttachment(node)) {
+            if (typeof this.contentAttachmentUrls.find(url => url.is(node.getUrl())) !== 'undefined') {
+                node.setProperty(new Property('--content-attachment', true));
             }
 
-            return !this.supportedFormats.includes(node.type);
-          });
-      };
-    };
+            return currentEnhancement;
+        }
 
-    const getDocument = () =>
-      unified()
-        .use(parse)
-        .use(stringify)
-        .use(frontmatter, ['yaml', 'toml']);
-    const frontmatterResult = getDocument()
-      .use(getFrontmatterFilter(true) as Plugin)
-      .processSync(markdownSource);
-    const textResult = getDocument()
-      .use(getFrontmatterFilter(false) as Plugin)
-      .processSync(markdownSource);
-    const htmlResult = getDocument()
-      .use(html)
-      .processSync(markdownSource);
+        const post = node as IPost;
 
-    const textSource = textResult.contents.toString().trim();
-    const frontmatterSource = frontmatterResult.contents.toString().trim();
-    let data: { [key: string]: any } | undefined;
+        if (post.isDynamic() && !post.propertyExists('_markdown-source')) {
+            return currentEnhancement;
+        }
 
-    post.setProperty(new Property('markdown', textSource));
-    post.setProperty(new Property('markdown-content', htmlResult));
-    this.contentAttachmentUrls.push(firstDocument.getUrl());
+        const attachments = post
+            .getAttachments()
+            .whereProperty(new PropertyIsEqual(new Property('extension', 'md')))
+            .whereProperty(new ValueMatchesRegex('filename', /(index|content|post|doc|document)/));
 
-    if (frontmatterSource.slice(0, 3) === '+++') {
-      data = toml.parse(frontmatterSource.slice(3, -3));
+        const firstDocument = attachments.first();
+
+        if (firstDocument === null) {
+            return currentEnhancement;
+        }
+
+        const markdownSourceProperty = firstDocument.getProperty('contents', '');
+        const markdownSource = markdownSourceProperty.getValue();
+
+        if (markdownSource === '') {
+            return currentEnhancement;
+        }
+
+        const getFrontmatterFilter = (include: boolean) => {
+            return () => {
+                return (tree: UnistNode) =>
+                    filter(tree, (node: any): node is UnistNode => {
+                        if (include) {
+                            return node.type === 'root' || this.supportedFormats.includes(node.type);
+                        }
+
+                        return !this.supportedFormats.includes(node.type);
+                    });
+            };
+        };
+
+        const getDocument = () =>
+            unified()
+                .use(parse)
+                .use(stringify)
+                .use(frontmatter, ['yaml', 'toml']);
+        const frontmatterResult = getDocument()
+            .use(getFrontmatterFilter(true) as Plugin)
+            .processSync(markdownSource);
+        const textResult = getDocument()
+            .use(getFrontmatterFilter(false) as Plugin)
+            .processSync(markdownSource);
+        const htmlResult = getDocument()
+            .use(html)
+            .processSync(markdownSource);
+
+        const textSource = textResult.contents.toString().trim();
+        const frontmatterSource = frontmatterResult.contents.toString().trim();
+        let data: { [key: string]: any } | undefined;
+
+        post.setProperty(new Property('markdown', textSource));
+        post.setProperty(new Property('markdown-content', htmlResult));
+        this.contentAttachmentUrls.push(firstDocument.getUrl());
+
+        if (frontmatterSource.slice(0, 3) === '+++') {
+            data = toml.parse(frontmatterSource.slice(3, -3));
+        }
+
+        if (frontmatterSource.slice(0, 3) === '-') {
+            data = yaml.parse(frontmatterSource.slice(3, -3));
+        }
+
+        if (typeof data === 'undefined') {
+            return currentEnhancement;
+        }
+
+        const realData = data;
+
+        Object.keys(realData).forEach((key: string) => {
+            const value = realData[key];
+
+            post.setProperty(new Property(key, value));
+        });
+
+        return currentEnhancement;
     }
-
-    if (frontmatterSource.slice(0, 3) === '-') {
-      data = yaml.parse(frontmatterSource.slice(3, -3));
-    }
-
-    if (typeof data === 'undefined') {
-      return currentEnhancement;
-    }
-
-    const realData = data;
-
-    Object.keys(realData).forEach((key: string) => {
-      const value = realData[key];
-
-      post.setProperty(new Property(key, value));
-    });
-
-    return currentEnhancement;
-  }
 }

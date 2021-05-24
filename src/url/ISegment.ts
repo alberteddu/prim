@@ -1,5 +1,7 @@
 export interface ISegment {
-  getSegment(): string;
-  is(segment: ISegment): boolean;
-  toString(): string;
+    getSegment(): string;
+
+    is(segment: ISegment): boolean;
+
+    toString(): string;
 }

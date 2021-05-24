@@ -1,5 +1,5 @@
-import { NodeList } from './NodeList';
-import { IPostList } from './IPostList';
-import { IPost } from './IPost';
+import { NodeList } from 'lib/node/NodeList';
+import { IPostList } from 'lib/node/IPostList';
+import { IPost } from 'lib/node/IPost';
 
 export class PostList extends NodeList<IPostList, IPost> implements IPostList {}

@@ -1,10 +1,15 @@
-import { IPath } from './IPath';
+import { IPath } from 'lib/filesystem/IPath';
 
 export interface IPathValidator {
-  validatePath(path: IPath): void;
-  validateDirectory(path: IPath): void;
-  validateFile(path: IPath): void;
-  isValid(path: IPath): boolean;
-  isDirectory(path: IPath): boolean;
-  isFile(path: IPath): boolean;
+    validatePath(path: IPath): void;
+
+    validateDirectory(path: IPath): void;
+
+    validateFile(path: IPath): void;
+
+    isValid(path: IPath): boolean;
+
+    isDirectory(path: IPath): boolean;
+
+    isFile(path: IPath): boolean;
 }

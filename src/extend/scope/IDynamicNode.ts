@@ -1,7 +1,8 @@
-import { ISegment } from '../../url';
-import { IProperty } from '../../property';
+import { ISegment } from 'lib/url/ISegment';
+import { IProperty } from 'lib/property/IProperty';
 
 export interface IDynamicNode {
-  getSegment(): ISegment;
-  getProperties(): IProperty[];
+    getSegment(): ISegment;
+
+    getProperties(): IProperty[];
 }

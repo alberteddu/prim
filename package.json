@@ -1,114 +1,116 @@
 {
-  "name": "@lbrto/prim",
-  "version": "0.0.1-dev",
-  "description": "",
-  "keywords": [],
-  "main": "dist/prim.cjs.js",
-  "module": "dist/prim.es5.js",
-  "typings": "dist/types/index.d.ts",
-  "files": [
-    "dist",
-    "plugins"
-  ],
-  "author": "Alberto Piu <a@lbr.to>",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/alberteddu/prim.git"
-  },
-  "license": "MIT",
-  "engines": {
-    "node": ">=6.0.0"
-  },
-  "scripts": {
-    "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
-    "prebuild": "rimraf dist",
-    "build": "tsc --module commonjs && rollup -c rollup.config.ts",
-    "docs": "typedoc --json docs/docs.json --out docs --target es6 --theme minimal --mode file src",
-    "start": "rollup -c rollup.config.ts -w",
-    "test": "jest --coverage",
-    "test:watch": "jest --coverage --watch",
-    "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand --watch",
-    "test:prod": "npm run lint && npm run test -- --no-cache",
-    "commit": "git-cz",
-    "semantic-release": "semantic-release",
-    "precommit": "lint-staged",
-    "prepush": "npm run test:prod && npm run build",
-    "commitmsg": "commitlint -E HUSKY_GIT_PARAMS"
-  },
-  "lint-staged": {
-    "{src,test}/**/*.ts": [
-      "prettier --write",
-      "git add"
-    ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-conventional-changelog"
+    "name": "@lbrto/prim",
+    "version": "0.0.1-dev",
+    "description": "",
+    "keywords": [],
+    "main": "dist/prim.cjs.js",
+    "module": "dist/prim.es5.js",
+    "typings": "dist/types/index.d.ts",
+    "files": [
+        "dist",
+        "plugins"
+    ],
+    "author": "Alberto Piu <a@lbr.to>",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/alberteddu/prim.git"
+    },
+    "license": "MIT",
+    "engines": {
+        "node": ">=6.0.0"
+    },
+    "scripts": {
+        "lint": "eslint 'src/**/*.{js,ts,tsx}' --max-warnings=0",
+        "lint-fix": "eslint 'src/**/*.{js,ts,tsx}' --fix",
+        "is-pretty": "prettier --check 'src/**/*.{js,ts,tsx}'",
+        "make-pretty": "prettier --write 'src/**/*.{js,ts,tsx}'",
+        "prebuild": "rimraf dist",
+        "build": "tsc --module commonjs && rollup -c rollup.config.ts",
+        "docs": "typedoc --json docs/docs.json --out docs --target es6 --theme minimal --mode file src",
+        "start": "roNodeFinder.ts\nllup -c rollup.config.ts -w",
+        "test": "jest --coverage",
+        "test:watch": "jest --coverage --watch",
+        "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand --watch",
+        "test:prod": "npm run lint && npm run is-pretty && npm run test -- --no-cache",
+        "commit": "git-cz",
+        "semantic-release": "semantic-release",
+        "precommit": "lint-staged",
+        "prepush": "npm run test:prod && npm run build",
+        "commitmsg": "commitlint -E HUSKY_GIT_PARAMS"
+    },
+    "lint-staged": {
+        "{src,test}/**/*.ts": [
+            "prettier --write",
+            "git add"
+        ]
+    },
+    "config": {
+        "commitizen": {
+            "path": "node_modules/cz-conventional-changelog"
+        }
+    },
+    "commitlint": {
+        "extends": [
+            "@commitlint/config-conventional"
+        ]
+    },
+    "dependencies": {
+        "eslint-config-blitz": "^0.35.0",
+        "remark-frontmatter": "^1.3.3",
+        "remark-html": "^11.0.1",
+        "remark-parse": "^7.0.2",
+        "remark-stringify": "^7.0.4",
+        "rollup": "^2.49.0",
+        "unified": "^8.4.2",
+        "unist-util-filter": "^2.0.2"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^7.1.2",
+        "@commitlint/config-conventional": "^7.1.2",
+        "@iarna/toml": "^2.2.3",
+        "@rollup/plugin-commonjs": "^19.0.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-node-resolve": "^13.0.0",
+        "@types/deep-equal": "^1.0.1",
+        "@types/jest": "^23.3.2",
+        "@types/jexl": "^2.2.0",
+        "@types/mime-types": "^2.1.0",
+        "@types/mock-fs": "^4.10.0",
+        "@types/node": "^10.11.0",
+        "@types/yaml": "^1.2.0",
+        "colors": "^1.3.2",
+        "commitizen": "^3.0.0",
+        "coveralls": "^3.0.2",
+        "cross-env": "^5.2.0",
+        "cz-conventional-changelog": "^2.1.0",
+        "deep-equal": "^2.0.1",
+        "eslint": "^7.27.0",
+        "husky": "^1.0.1",
+        "inversify": "^5.0.1",
+        "jest": "^23.6.0",
+        "jest-config": "^23.6.0",
+        "jexl": "^2.2.2",
+        "lint-staged": "^8.0.0",
+        "lodash.camelcase": "^4.3.0",
+        "mime-types": "^2.1.26",
+        "mock-fs": "^4.11.0",
+        "prettier": "^1.14.3",
+        "prompt": "^1.0.0",
+        "reflect-metadata": "^0.1.13",
+        "replace-in-file": "^3.4.2",
+        "rimraf": "^2.6.2",
+        "rollup-plugin-sourcemaps": "^0.6.3",
+        "rollup-plugin-typescript2": "^0.30.0",
+        "semantic-release": "^17.0.4",
+        "shelljs": "^0.8.3",
+        "travis-deploy-once": "^5.0.9",
+        "ts-jest": "23.10.4",
+        "ts-node": "^7.0.1",
+        "typedoc": "^0.17.1",
+        "typescript": "^3.8.3",
+        "yaml": "^1.8.3"
+    },
+    "publishConfig": {
+        "access": "public"
     }
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "dependencies": {
-    "remark-frontmatter": "^1.3.3",
-    "remark-html": "^11.0.1",
-    "remark-parse": "^7.0.2",
-    "remark-stringify": "^7.0.4",
-    "unified": "^8.4.2",
-    "unist-util-filter": "^2.0.2"
-  },
-  "devDependencies": {
-    "@commitlint/cli": "^7.1.2",
-    "@commitlint/config-conventional": "^7.1.2",
-    "@iarna/toml": "^2.2.3",
-    "@types/deep-equal": "^1.0.1",
-    "@types/jest": "^23.3.2",
-    "@types/jexl": "^2.2.0",
-    "@types/mime-types": "^2.1.0",
-    "@types/mock-fs": "^4.10.0",
-    "@types/node": "^10.11.0",
-    "@types/yaml": "^1.2.0",
-    "colors": "^1.3.2",
-    "commitizen": "^3.0.0",
-    "coveralls": "^3.0.2",
-    "cross-env": "^5.2.0",
-    "cz-conventional-changelog": "^2.1.0",
-    "deep-equal": "^2.0.1",
-    "husky": "^1.0.1",
-    "inversify": "^5.0.1",
-    "jest": "^23.6.0",
-    "jest-config": "^23.6.0",
-    "jexl": "^2.2.2",
-    "lint-staged": "^8.0.0",
-    "lodash.camelcase": "^4.3.0",
-    "mime-types": "^2.1.26",
-    "mock-fs": "^4.11.0",
-    "prettier": "^1.14.3",
-    "prompt": "^1.0.0",
-    "reflect-metadata": "^0.1.13",
-    "replace-in-file": "^3.4.2",
-    "rimraf": "^2.6.2",
-    "rollup": "^0.67.0",
-    "rollup-plugin-commonjs": "^9.1.8",
-    "rollup-plugin-json": "^3.1.0",
-    "rollup-plugin-node-resolve": "^3.4.0",
-    "rollup-plugin-sourcemaps": "^0.4.2",
-    "rollup-plugin-typescript2": "^0.26.0",
-    "semantic-release": "^17.0.4",
-    "shelljs": "^0.8.3",
-    "travis-deploy-once": "^5.0.9",
-    "ts-jest": "23.10.4",
-    "ts-node": "^7.0.1",
-    "tslint": "^5.11.0",
-    "tslint-config-prettier": "^1.15.0",
-    "tslint-config-standard": "^8.0.1",
-    "typedoc": "^0.17.1",
-    "typescript": "^3.8.3",
-    "yaml": "^1.8.3"
-  },
-  "publishConfig": {
-    "access": "public"
-  }
 }

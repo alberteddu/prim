@@ -1,6 +1,7 @@
-import { PluginScope } from './scope/PluginScope';
+import { PluginScope } from 'lib/extend/scope/PluginScope';
 
 export interface IPlugin {
-  getId(): string;
-  hasScope(scope: PluginScope): boolean;
+    getId(): string;
+
+    hasScope(scope: PluginScope): boolean;
 }

@@ -1,5 +1,5 @@
 export enum ResolutionState {
-  NotFound,
-  NotFoundSelf,
-  Found,
+    NotFound,
+    NotFoundSelf,
+    Found,
 }
