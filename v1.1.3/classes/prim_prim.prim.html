@@ -2733,12 +2733,6 @@ img {
 				</li>
 			</ul>
 		</section>
-		<section class="tsd-panel">
-			<h3>Implements</h3>
-			<ul class="tsd-hierarchy">
-				<li><a href="../interfaces/prim_iprim.iprim.html" class="tsd-signature-type" data-tsd-kind="Interface">IPrim</a></li>
-			</ul>
-		</section>
 		<section class="tsd-panel-group tsd-index-group">
 			<h2>Index</h2>
 			<section class="tsd-panel tsd-index-panel">
@@ -2766,28 +2760,28 @@ img {
 				<a name="constructor" class="tsd-anchor"></a>
 				<h3>constructor</h3>
 				<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">new <wbr>Prim<span class="tsd-signature-symbol">(</span>rootDirectory<span class="tsd-signature-symbol">: </span><a href="../interfaces/filesystem_ipath.ipath.html" class="tsd-signature-type" data-tsd-kind="Interface">IPath</a>, pathValidator<span class="tsd-signature-symbol">: </span><a href="../interfaces/filesystem_ipathvalidator.ipathvalidator.html" class="tsd-signature-type" data-tsd-kind="Interface">IPathValidator</a>, nodeFinder<span class="tsd-signature-symbol">: </span><a href="../interfaces/finder_inodefinder.inodefinder.html" class="tsd-signature-type" data-tsd-kind="Interface">INodeFinder</a>, pluginHolder<span class="tsd-signature-symbol">: </span><a href="../interfaces/extend_ipluginholder.ipluginholder.html" class="tsd-signature-type" data-tsd-kind="Interface">IPluginHolder</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="prim_prim.prim.html" class="tsd-signature-type" data-tsd-kind="Class">Prim</a></li>
+					<li class="tsd-signature tsd-kind-icon">new <wbr>Prim<span class="tsd-signature-symbol">(</span>rootDirectory<span class="tsd-signature-symbol">: </span><a href="filesystem_path.path.html" class="tsd-signature-type" data-tsd-kind="Class">Path</a>, pathValidator<span class="tsd-signature-symbol">: </span><a href="filesystem_pathvalidator.pathvalidator.html" class="tsd-signature-type" data-tsd-kind="Class">PathValidator</a>, nodeFinder<span class="tsd-signature-symbol">: </span><a href="finder_nodefinder.nodefinder.html" class="tsd-signature-type" data-tsd-kind="Class">NodeFinder</a>, pluginHolder<span class="tsd-signature-symbol">: </span><a href="extend_pluginholder.pluginholder.html" class="tsd-signature-type" data-tsd-kind="Class">PluginHolder</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="prim_prim.prim.html" class="tsd-signature-type" data-tsd-kind="Class">Prim</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/e386078/src/prim/Prim.ts#L15">src/prim/Prim.ts:15</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/d8285d7/src/prim/Prim.ts#L13">src/prim/Prim.ts:13</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>rootDirectory: <a href="../interfaces/filesystem_ipath.ipath.html" class="tsd-signature-type" data-tsd-kind="Interface">IPath</a></h5>
+								<h5>rootDirectory: <a href="filesystem_path.path.html" class="tsd-signature-type" data-tsd-kind="Class">Path</a></h5>
 							</li>
 							<li>
-								<h5>pathValidator: <a href="../interfaces/filesystem_ipathvalidator.ipathvalidator.html" class="tsd-signature-type" data-tsd-kind="Interface">IPathValidator</a></h5>
+								<h5>pathValidator: <a href="filesystem_pathvalidator.pathvalidator.html" class="tsd-signature-type" data-tsd-kind="Class">PathValidator</a></h5>
 							</li>
 							<li>
-								<h5>nodeFinder: <a href="../interfaces/finder_inodefinder.inodefinder.html" class="tsd-signature-type" data-tsd-kind="Interface">INodeFinder</a></h5>
+								<h5>nodeFinder: <a href="finder_nodefinder.nodefinder.html" class="tsd-signature-type" data-tsd-kind="Class">NodeFinder</a></h5>
 							</li>
 							<li>
-								<h5>pluginHolder: <a href="../interfaces/extend_ipluginholder.ipluginholder.html" class="tsd-signature-type" data-tsd-kind="Interface">IPluginHolder</a></h5>
+								<h5>pluginHolder: <a href="extend_pluginholder.pluginholder.html" class="tsd-signature-type" data-tsd-kind="Class">PluginHolder</a></h5>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <a href="prim_prim.prim.html" class="tsd-signature-type" data-tsd-kind="Class">Prim</a></h4>
@@ -2801,23 +2795,22 @@ img {
 				<a name="get" class="tsd-anchor"></a>
 				<h3>get</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/url_iurl.iurl.html" class="tsd-signature-type" data-tsd-kind="Interface">IUrl</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/node_iattachment.iattachment.html" class="tsd-signature-type" data-tsd-kind="Interface">IAttachment</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/node_ipost.ipost.html" class="tsd-signature-type" data-tsd-kind="Interface">IPost</a></li>
+					<li class="tsd-signature tsd-kind-icon">get<span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="url_url.url.html" class="tsd-signature-type" data-tsd-kind="Class">Url</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><a href="node_attachment.attachment.html" class="tsd-signature-type" data-tsd-kind="Class">Attachment</a><span class="tsd-signature-symbol"> | </span><a href="node_post.post.html" class="tsd-signature-type" data-tsd-kind="Class">Post</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
-							<p>Implementation of <a href="../interfaces/prim_iprim.iprim.html">IPrim</a>.<a href="../interfaces/prim_iprim.iprim.html#get">get</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/e386078/src/prim/Prim.ts#L31">src/prim/Prim.ts:31</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/d8285d7/src/prim/Prim.ts#L29">src/prim/Prim.ts:29</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>url: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/url_iurl.iurl.html" class="tsd-signature-type" data-tsd-kind="Interface">IUrl</a></h5>
+								<h5>url: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="url_url.url.html" class="tsd-signature-type" data-tsd-kind="Class">Url</a></h5>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/node_iattachment.iattachment.html" class="tsd-signature-type" data-tsd-kind="Interface">IAttachment</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/node_ipost.ipost.html" class="tsd-signature-type" data-tsd-kind="Interface">IPost</a></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><a href="node_attachment.attachment.html" class="tsd-signature-type" data-tsd-kind="Class">Attachment</a><span class="tsd-signature-symbol"> | </span><a href="node_post.post.html" class="tsd-signature-type" data-tsd-kind="Class">Post</a></h4>
 					</li>
 				</ul>
 			</section>
@@ -2825,17 +2818,16 @@ img {
 				<a name="getpluginholder" class="tsd-anchor"></a>
 				<h3>get<wbr>Plugin<wbr>Holder</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Plugin<wbr>Holder<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/extend_ipluginholder.ipluginholder.html" class="tsd-signature-type" data-tsd-kind="Interface">IPluginHolder</a></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Plugin<wbr>Holder<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="extend_pluginholder.pluginholder.html" class="tsd-signature-type" data-tsd-kind="Class">PluginHolder</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
-							<p>Implementation of <a href="../interfaces/prim_iprim.iprim.html">IPrim</a>.<a href="../interfaces/prim_iprim.iprim.html#getpluginholder">getPluginHolder</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/e386078/src/prim/Prim.ts#L43">src/prim/Prim.ts:43</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/d8285d7/src/prim/Prim.ts#L41">src/prim/Prim.ts:41</a></li>
 							</ul>
 						</aside>
-						<h4 class="tsd-returns-title">Returns <a href="../interfaces/extend_ipluginholder.ipluginholder.html" class="tsd-signature-type" data-tsd-kind="Interface">IPluginHolder</a></h4>
+						<h4 class="tsd-returns-title">Returns <a href="extend_pluginholder.pluginholder.html" class="tsd-signature-type" data-tsd-kind="Class">PluginHolder</a></h4>
 					</li>
 				</ul>
 			</section>
@@ -2843,17 +2835,16 @@ img {
 				<a name="getrootdirectory" class="tsd-anchor"></a>
 				<h3>get<wbr>Root<wbr>Directory</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Root<wbr>Directory<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/filesystem_ipath.ipath.html" class="tsd-signature-type" data-tsd-kind="Interface">IPath</a></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Root<wbr>Directory<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="filesystem_path.path.html" class="tsd-signature-type" data-tsd-kind="Class">Path</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
-							<p>Implementation of <a href="../interfaces/prim_iprim.iprim.html">IPrim</a>.<a href="../interfaces/prim_iprim.iprim.html#getrootdirectory">getRootDirectory</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/e386078/src/prim/Prim.ts#L27">src/prim/Prim.ts:27</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/d8285d7/src/prim/Prim.ts#L25">src/prim/Prim.ts:25</a></li>
 							</ul>
 						</aside>
-						<h4 class="tsd-returns-title">Returns <a href="../interfaces/filesystem_ipath.ipath.html" class="tsd-signature-type" data-tsd-kind="Interface">IPath</a></h4>
+						<h4 class="tsd-returns-title">Returns <a href="filesystem_path.path.html" class="tsd-signature-type" data-tsd-kind="Class">Path</a></h4>
 					</li>
 				</ul>
 			</section>
@@ -2873,11 +2864,10 @@ img {
 						<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
 					</ul>
 					<ul class="tsd-legend">
-						<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-						<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+						<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
 					</ul>
 					<ul class="tsd-legend">
-						<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+						<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
 					</ul>
 				</div>
 			</div>

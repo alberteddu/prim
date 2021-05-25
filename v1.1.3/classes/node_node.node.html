@@ -2812,7 +2812,13 @@ img {
 		<section class="tsd-panel">
 			<h3>Implements</h3>
 			<ul class="tsd-hierarchy">
-				<li><a href="../interfaces/node_inode.inode.html" class="tsd-signature-type" data-tsd-kind="Interface">INode</a></li>
+				<li><a href="node_node.node.html" class="tsd-signature-type" data-tsd-kind="Class">Node</a></li>
+			</ul>
+		</section>
+		<section class="tsd-panel">
+			<h3>Implemented by</h3>
+			<ul class="tsd-hierarchy">
+				<li><a href="node_node.node.html" class="tsd-signature-type" data-tsd-kind="Class">Node</a></li>
 			</ul>
 		</section>
 		<section class="tsd-panel-group tsd-index-group">
@@ -2873,29 +2879,29 @@ img {
 				<a name="constructor" class="tsd-anchor"></a>
 				<h3>constructor</h3>
 				<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-					<li class="tsd-signature tsd-kind-icon">new <wbr>Node<span class="tsd-signature-symbol">(</span>_url<span class="tsd-signature-symbol">: </span><a href="../interfaces/url_iurl.iurl.html" class="tsd-signature-type" data-tsd-kind="Interface">IUrl</a>, _path<span class="tsd-signature-symbol">: </span><a href="../interfaces/filesystem_ipath.ipath.html" class="tsd-signature-type" data-tsd-kind="Interface">IPath</a>, _dynamic<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span>, properties<span class="tsd-signature-symbol">?: </span><a href="../interfaces/property_iproperty.iproperty.html" class="tsd-signature-type" data-tsd-kind="Interface">IProperty</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="node_node.node.html" class="tsd-signature-type" data-tsd-kind="Class">Node</a></li>
+					<li class="tsd-signature tsd-kind-icon">new <wbr>Node<span class="tsd-signature-symbol">(</span>_url<span class="tsd-signature-symbol">: </span><a href="url_url.url.html" class="tsd-signature-type" data-tsd-kind="Class">Url</a>, _path<span class="tsd-signature-symbol">: </span><a href="filesystem_path.path.html" class="tsd-signature-type" data-tsd-kind="Class">Path</a>, _dynamic<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span>, properties<span class="tsd-signature-symbol">?: </span><a href="property_property.property.html" class="tsd-signature-type" data-tsd-kind="Class">Property</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="node_node.node.html" class="tsd-signature-type" data-tsd-kind="Class">Node</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<p>Overrides <a href="property_propertyholder.propertyholder.html">PropertyHolder</a>.<a href="property_propertyholder.propertyholder.html#constructor">constructor</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/e386078/src/node/Node.ts#L10">src/node/Node.ts:10</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/d8285d7/src/node/Node.ts#L9">src/node/Node.ts:9</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>_url: <a href="../interfaces/url_iurl.iurl.html" class="tsd-signature-type" data-tsd-kind="Interface">IUrl</a></h5>
+								<h5>_url: <a href="url_url.url.html" class="tsd-signature-type" data-tsd-kind="Class">Url</a></h5>
 							</li>
 							<li>
-								<h5>_path: <a href="../interfaces/filesystem_ipath.ipath.html" class="tsd-signature-type" data-tsd-kind="Interface">IPath</a></h5>
+								<h5>_path: <a href="filesystem_path.path.html" class="tsd-signature-type" data-tsd-kind="Class">Path</a></h5>
 							</li>
 							<li>
 								<h5>_dynamic: <span class="tsd-signature-type">boolean</span></h5>
 							</li>
 							<li>
-								<h5>properties: <a href="../interfaces/property_iproperty.iproperty.html" class="tsd-signature-type" data-tsd-kind="Interface">IProperty</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></h5>
+								<h5>properties: <a href="property_property.property.html" class="tsd-signature-type" data-tsd-kind="Class">Property</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></h5>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <a href="node_node.node.html" class="tsd-signature-type" data-tsd-kind="Class">Node</a></h4>
@@ -2908,15 +2914,17 @@ img {
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
 				<a name="_path" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagProtected">Protected</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> _path</h3>
-				<div class="tsd-signature tsd-kind-icon">_path<span class="tsd-signature-symbol">:</span> <a href="../interfaces/filesystem_ipath.ipath.html" class="tsd-signature-type" data-tsd-kind="Interface">IPath</a></div>
+				<div class="tsd-signature tsd-kind-icon">_path<span class="tsd-signature-symbol">:</span> <a href="filesystem_path.path.html" class="tsd-signature-type" data-tsd-kind="Class">Path</a></div>
 				<aside class="tsd-sources">
+					<p>Implementation of Node._path</p>
 				</aside>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
 				<a name="_url" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagProtected">Protected</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> _url</h3>
-				<div class="tsd-signature tsd-kind-icon">_url<span class="tsd-signature-symbol">:</span> <a href="../interfaces/url_iurl.iurl.html" class="tsd-signature-type" data-tsd-kind="Interface">IUrl</a></div>
+				<div class="tsd-signature tsd-kind-icon">_url<span class="tsd-signature-symbol">:</span> <a href="url_url.url.html" class="tsd-signature-type" data-tsd-kind="Class">Url</a></div>
 				<aside class="tsd-sources">
+					<p>Implementation of Node._url</p>
 				</aside>
 			</section>
 		</section>
@@ -2932,7 +2940,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/e386078/src/node/Node.ts#L33">src/node/Node.ts:33</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/d8285d7/src/node/Node.ts#L32">src/node/Node.ts:32</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -2949,7 +2957,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/e386078/src/node/Node.ts#L25">src/node/Node.ts:25</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/d8285d7/src/node/Node.ts#L24">src/node/Node.ts:24</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -2968,9 +2976,9 @@ img {
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
-							<p>Implementation of <a href="../interfaces/node_inode.inode.html">INode</a>.<a href="../interfaces/node_inode.inode.html#getnodetype">getNodeType</a></p>
+							<p>Implementation of Node.getNodeType</p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/e386078/src/node/Node.ts#L45">src/node/Node.ts:45</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/d8285d7/src/node/Node.ts#L44">src/node/Node.ts:44</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-returns-title">Returns <a href="../enums/node_nodetype.nodetype.html" class="tsd-signature-type" data-tsd-kind="Enumeration">NodeType</a></h4>
@@ -2981,17 +2989,17 @@ img {
 				<a name="getpath" class="tsd-anchor"></a>
 				<h3>get<wbr>Path</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Path<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/filesystem_ipath.ipath.html" class="tsd-signature-type" data-tsd-kind="Interface">IPath</a></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Path<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="filesystem_path.path.html" class="tsd-signature-type" data-tsd-kind="Class">Path</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
-							<p>Implementation of <a href="../interfaces/node_inode.inode.html">INode</a>.<a href="../interfaces/node_inode.inode.html#getpath">getPath</a></p>
+							<p>Implementation of Node.getPath</p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/e386078/src/node/Node.ts#L29">src/node/Node.ts:29</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/d8285d7/src/node/Node.ts#L28">src/node/Node.ts:28</a></li>
 							</ul>
 						</aside>
-						<h4 class="tsd-returns-title">Returns <a href="../interfaces/filesystem_ipath.ipath.html" class="tsd-signature-type" data-tsd-kind="Interface">IPath</a></h4>
+						<h4 class="tsd-returns-title">Returns <a href="filesystem_path.path.html" class="tsd-signature-type" data-tsd-kind="Class">Path</a></h4>
 					</li>
 				</ul>
 			</section>
@@ -2999,18 +3007,18 @@ img {
 				<a name="getproperties" class="tsd-anchor"></a>
 				<h3>get<wbr>Properties</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Properties<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/property_iproperty.iproperty.html" class="tsd-signature-type" data-tsd-kind="Interface">IProperty</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Properties<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="property_property.property.html" class="tsd-signature-type" data-tsd-kind="Class">Property</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
-							<p>Implementation of <a href="../interfaces/node_inode.inode.html">INode</a>.<a href="../interfaces/node_inode.inode.html#getproperties">getProperties</a></p>
+							<p>Implementation of Node.getProperties</p>
 							<p>Inherited from <a href="property_propertyholder.propertyholder.html">PropertyHolder</a>.<a href="property_propertyholder.propertyholder.html#getproperties">getProperties</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/e386078/src/property/PropertyHolder.ts#L71">src/property/PropertyHolder.ts:71</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/d8285d7/src/property/PropertyHolder.ts#L69">src/property/PropertyHolder.ts:69</a></li>
 							</ul>
 						</aside>
-						<h4 class="tsd-returns-title">Returns <a href="../interfaces/property_iproperty.iproperty.html" class="tsd-signature-type" data-tsd-kind="Interface">IProperty</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h4>
+						<h4 class="tsd-returns-title">Returns <a href="property_property.property.html" class="tsd-signature-type" data-tsd-kind="Class">Property</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h4>
 					</li>
 				</ul>
 			</section>
@@ -3018,15 +3026,15 @@ img {
 				<a name="getproperty" class="tsd-anchor"></a>
 				<h3>get<wbr>Property</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Property&lt;T&gt;<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, defaultValue<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/property_iproperty.iproperty.html" class="tsd-signature-type" data-tsd-kind="Interface">IProperty</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Property&lt;T&gt;<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, defaultValue<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="property_property.property.html" class="tsd-signature-type" data-tsd-kind="Class">Property</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
-							<p>Implementation of <a href="../interfaces/node_inode.inode.html">INode</a>.<a href="../interfaces/node_inode.inode.html#getproperty">getProperty</a></p>
+							<p>Implementation of Node.getProperty</p>
 							<p>Inherited from <a href="property_propertyholder.propertyholder.html">PropertyHolder</a>.<a href="property_propertyholder.propertyholder.html#getproperty">getProperty</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/e386078/src/property/PropertyHolder.ts#L57">src/property/PropertyHolder.ts:57</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/d8285d7/src/property/PropertyHolder.ts#L55">src/property/PropertyHolder.ts:55</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3044,7 +3052,7 @@ img {
 								<h5>defaultValue: <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> = ...</span></h5>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <a href="../interfaces/property_iproperty.iproperty.html" class="tsd-signature-type" data-tsd-kind="Interface">IProperty</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <a href="property_property.property.html" class="tsd-signature-type" data-tsd-kind="Class">Property</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
 					</li>
 				</ul>
 			</section>
@@ -3057,10 +3065,10 @@ img {
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
-							<p>Implementation of <a href="../interfaces/node_inode.inode.html">INode</a>.<a href="../interfaces/node_inode.inode.html#getprotectednames">getProtectedNames</a></p>
+							<p>Implementation of Node.getProtectedNames</p>
 							<p>Inherited from <a href="property_propertyholder.propertyholder.html">PropertyHolder</a>.<a href="property_propertyholder.propertyholder.html#getprotectednames">getProtectedNames</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/e386078/src/property/PropertyHolder.ts#L85">src/property/PropertyHolder.ts:85</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/d8285d7/src/property/PropertyHolder.ts#L83">src/property/PropertyHolder.ts:83</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
@@ -3071,17 +3079,17 @@ img {
 				<a name="geturl" class="tsd-anchor"></a>
 				<h3>get<wbr>Url</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Url<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/url_iurl.iurl.html" class="tsd-signature-type" data-tsd-kind="Interface">IUrl</a></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Url<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="url_url.url.html" class="tsd-signature-type" data-tsd-kind="Class">Url</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
-							<p>Implementation of <a href="../interfaces/node_inode.inode.html">INode</a>.<a href="../interfaces/node_inode.inode.html#geturl">getUrl</a></p>
+							<p>Implementation of Node.getUrl</p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/e386078/src/node/Node.ts#L21">src/node/Node.ts:21</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/d8285d7/src/node/Node.ts#L20">src/node/Node.ts:20</a></li>
 							</ul>
 						</aside>
-						<h4 class="tsd-returns-title">Returns <a href="../interfaces/url_iurl.iurl.html" class="tsd-signature-type" data-tsd-kind="Interface">IUrl</a></h4>
+						<h4 class="tsd-returns-title">Returns <a href="url_url.url.html" class="tsd-signature-type" data-tsd-kind="Class">Url</a></h4>
 					</li>
 				</ul>
 			</section>
@@ -3089,21 +3097,21 @@ img {
 				<a name="hasproperty" class="tsd-anchor"></a>
 				<h3>has<wbr>Property</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-					<li class="tsd-signature tsd-kind-icon">has<wbr>Property<span class="tsd-signature-symbol">(</span>property<span class="tsd-signature-symbol">: </span><a href="../interfaces/property_iproperty.iproperty.html" class="tsd-signature-type" data-tsd-kind="Interface">IProperty</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					<li class="tsd-signature tsd-kind-icon">has<wbr>Property<span class="tsd-signature-symbol">(</span>property<span class="tsd-signature-symbol">: </span><a href="property_property.property.html" class="tsd-signature-type" data-tsd-kind="Class">Property</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
-							<p>Implementation of <a href="../interfaces/node_inode.inode.html">INode</a>.<a href="../interfaces/node_inode.inode.html#hasproperty">hasProperty</a></p>
+							<p>Implementation of Node.hasProperty</p>
 							<p>Inherited from <a href="property_propertyholder.propertyholder.html">PropertyHolder</a>.<a href="property_propertyholder.propertyholder.html#hasproperty">hasProperty</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/e386078/src/property/PropertyHolder.ts#L27">src/property/PropertyHolder.ts:27</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/d8285d7/src/property/PropertyHolder.ts#L25">src/property/PropertyHolder.ts:25</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>property: <a href="../interfaces/property_iproperty.iproperty.html" class="tsd-signature-type" data-tsd-kind="Interface">IProperty</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5>property: <a href="property_property.property.html" class="tsd-signature-type" data-tsd-kind="Class">Property</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -3114,20 +3122,20 @@ img {
 				<a name="is" class="tsd-anchor"></a>
 				<h3>is</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">is<span class="tsd-signature-symbol">(</span>node<span class="tsd-signature-symbol">: </span><a href="../interfaces/node_inode.inode.html" class="tsd-signature-type" data-tsd-kind="Interface">INode</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					<li class="tsd-signature tsd-kind-icon">is<span class="tsd-signature-symbol">(</span>node<span class="tsd-signature-symbol">: </span><a href="node_node.node.html" class="tsd-signature-type" data-tsd-kind="Class">Node</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
-							<p>Implementation of <a href="../interfaces/node_inode.inode.html">INode</a>.<a href="../interfaces/node_inode.inode.html#is">is</a></p>
+							<p>Implementation of Node.is</p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/e386078/src/node/Node.ts#L37">src/node/Node.ts:37</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/d8285d7/src/node/Node.ts#L36">src/node/Node.ts:36</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>node: <a href="../interfaces/node_inode.inode.html" class="tsd-signature-type" data-tsd-kind="Interface">INode</a></h5>
+								<h5>node: <a href="node_node.node.html" class="tsd-signature-type" data-tsd-kind="Class">Node</a></h5>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -3143,9 +3151,9 @@ img {
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
-							<p>Implementation of <a href="../interfaces/node_inode.inode.html">INode</a>.<a href="../interfaces/node_inode.inode.html#isdynamic">isDynamic</a></p>
+							<p>Implementation of Node.isDynamic</p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/e386078/src/node/Node.ts#L41">src/node/Node.ts:41</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/d8285d7/src/node/Node.ts#L40">src/node/Node.ts:40</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -3161,10 +3169,10 @@ img {
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
-							<p>Implementation of <a href="../interfaces/node_inode.inode.html">INode</a>.<a href="../interfaces/node_inode.inode.html#match">match</a></p>
+							<p>Implementation of Node.match</p>
 							<p>Inherited from <a href="property_propertyholder.propertyholder.html">PropertyHolder</a>.<a href="property_propertyholder.propertyholder.html#match">match</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/e386078/src/property/PropertyHolder.ts#L33">src/property/PropertyHolder.ts:33</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/d8285d7/src/property/PropertyHolder.ts#L31">src/property/PropertyHolder.ts:31</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -3181,32 +3189,32 @@ img {
 				<a name="matchcallback" class="tsd-anchor"></a>
 				<h3>match<wbr>Callback</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-					<li class="tsd-signature tsd-kind-icon">match<wbr>Callback<span class="tsd-signature-symbol">(</span>callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>property<span class="tsd-signature-symbol">: </span><a href="../interfaces/property_iproperty.iproperty.html" class="tsd-signature-type" data-tsd-kind="Interface">IProperty</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					<li class="tsd-signature tsd-kind-icon">match<wbr>Callback<span class="tsd-signature-symbol">(</span>callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>property<span class="tsd-signature-symbol">: </span><a href="property_property.property.html" class="tsd-signature-type" data-tsd-kind="Class">Property</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
-							<p>Implementation of <a href="../interfaces/node_inode.inode.html">INode</a>.<a href="../interfaces/node_inode.inode.html#matchcallback">matchCallback</a></p>
+							<p>Implementation of Node.matchCallback</p>
 							<p>Inherited from <a href="property_propertyholder.propertyholder.html">PropertyHolder</a>.<a href="property_propertyholder.propertyholder.html#matchcallback">matchCallback</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/e386078/src/property/PropertyHolder.ts#L53">src/property/PropertyHolder.ts:53</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/d8285d7/src/property/PropertyHolder.ts#L51">src/property/PropertyHolder.ts:51</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>callback: <span class="tsd-signature-symbol">(</span>property<span class="tsd-signature-symbol">: </span><a href="../interfaces/property_iproperty.iproperty.html" class="tsd-signature-type" data-tsd-kind="Interface">IProperty</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span></h5>
+								<h5>callback: <span class="tsd-signature-symbol">(</span>property<span class="tsd-signature-symbol">: </span><a href="property_property.property.html" class="tsd-signature-type" data-tsd-kind="Class">Property</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span></h5>
 								<ul class="tsd-parameters">
 									<li class="tsd-parameter-signature">
 										<ul class="tsd-signatures tsd-kind-type-literal">
-											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>property<span class="tsd-signature-symbol">: </span><a href="../interfaces/property_iproperty.iproperty.html" class="tsd-signature-type" data-tsd-kind="Interface">IProperty</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>property<span class="tsd-signature-symbol">: </span><a href="property_property.property.html" class="tsd-signature-type" data-tsd-kind="Class">Property</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 										</ul>
 										<ul class="tsd-descriptions">
 											<li class="tsd-description">
 												<h4 class="tsd-parameters-title">Parameters</h4>
 												<ul class="tsd-parameters">
 													<li>
-														<h5>property: <a href="../interfaces/property_iproperty.iproperty.html" class="tsd-signature-type" data-tsd-kind="Interface">IProperty</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+														<h5>property: <a href="property_property.property.html" class="tsd-signature-type" data-tsd-kind="Class">Property</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
 													</li>
 												</ul>
 												<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -3229,10 +3237,10 @@ img {
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
-							<p>Implementation of <a href="../interfaces/node_inode.inode.html">INode</a>.<a href="../interfaces/node_inode.inode.html#matchnameandvalue">matchNameAndValue</a></p>
+							<p>Implementation of Node.matchNameAndValue</p>
 							<p>Inherited from <a href="property_propertyholder.propertyholder.html">PropertyHolder</a>.<a href="property_propertyholder.propertyholder.html#matchnameandvalue">matchNameAndValue</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/e386078/src/property/PropertyHolder.ts#L41">src/property/PropertyHolder.ts:41</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/d8285d7/src/property/PropertyHolder.ts#L39">src/property/PropertyHolder.ts:39</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -3257,10 +3265,10 @@ img {
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
-							<p>Implementation of <a href="../interfaces/node_inode.inode.html">INode</a>.<a href="../interfaces/node_inode.inode.html#matchregexp">matchRegExp</a></p>
+							<p>Implementation of Node.matchRegExp</p>
 							<p>Inherited from <a href="property_propertyholder.propertyholder.html">PropertyHolder</a>.<a href="property_propertyholder.propertyholder.html#matchregexp">matchRegExp</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/e386078/src/property/PropertyHolder.ts#L49">src/property/PropertyHolder.ts:49</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/d8285d7/src/property/PropertyHolder.ts#L47">src/property/PropertyHolder.ts:47</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -3285,10 +3293,10 @@ img {
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
-							<p>Implementation of <a href="../interfaces/node_inode.inode.html">INode</a>.<a href="../interfaces/node_inode.inode.html#matchvalue">matchValue</a></p>
+							<p>Implementation of Node.matchValue</p>
 							<p>Inherited from <a href="property_propertyholder.propertyholder.html">PropertyHolder</a>.<a href="property_propertyholder.propertyholder.html#matchvalue">matchValue</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/e386078/src/property/PropertyHolder.ts#L45">src/property/PropertyHolder.ts:45</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/d8285d7/src/property/PropertyHolder.ts#L43">src/property/PropertyHolder.ts:43</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -3310,10 +3318,10 @@ img {
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
-							<p>Implementation of <a href="../interfaces/node_inode.inode.html">INode</a>.<a href="../interfaces/node_inode.inode.html#prop">prop</a></p>
+							<p>Implementation of Node.prop</p>
 							<p>Inherited from <a href="property_propertyholder.propertyholder.html">PropertyHolder</a>.<a href="property_propertyholder.propertyholder.html#prop">prop</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/e386078/src/property/PropertyHolder.ts#L81">src/property/PropertyHolder.ts:81</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/d8285d7/src/property/PropertyHolder.ts#L79">src/property/PropertyHolder.ts:79</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3344,10 +3352,10 @@ img {
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
-							<p>Implementation of <a href="../interfaces/node_inode.inode.html">INode</a>.<a href="../interfaces/node_inode.inode.html#propertyexists">propertyExists</a></p>
+							<p>Implementation of Node.propertyExists</p>
 							<p>Inherited from <a href="property_propertyholder.propertyholder.html">PropertyHolder</a>.<a href="property_propertyholder.propertyholder.html#propertyexists">propertyExists</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/e386078/src/property/PropertyHolder.ts#L23">src/property/PropertyHolder.ts:23</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/d8285d7/src/property/PropertyHolder.ts#L21">src/property/PropertyHolder.ts:21</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -3369,10 +3377,10 @@ img {
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
-							<p>Implementation of <a href="../interfaces/node_inode.inode.html">INode</a>.<a href="../interfaces/node_inode.inode.html#removeproperty">removeProperty</a></p>
+							<p>Implementation of Node.removeProperty</p>
 							<p>Inherited from <a href="property_propertyholder.propertyholder.html">PropertyHolder</a>.<a href="property_propertyholder.propertyholder.html#removeproperty">removeProperty</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/e386078/src/property/PropertyHolder.ts#L75">src/property/PropertyHolder.ts:75</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/d8285d7/src/property/PropertyHolder.ts#L73">src/property/PropertyHolder.ts:73</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -3389,21 +3397,21 @@ img {
 				<a name="setproperty" class="tsd-anchor"></a>
 				<h3>set<wbr>Property</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-					<li class="tsd-signature tsd-kind-icon">set<wbr>Property<span class="tsd-signature-symbol">(</span>property<span class="tsd-signature-symbol">: </span><a href="../interfaces/property_iproperty.iproperty.html" class="tsd-signature-type" data-tsd-kind="Interface">IProperty</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					<li class="tsd-signature tsd-kind-icon">set<wbr>Property<span class="tsd-signature-symbol">(</span>property<span class="tsd-signature-symbol">: </span><a href="property_property.property.html" class="tsd-signature-type" data-tsd-kind="Class">Property</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
-							<p>Implementation of <a href="../interfaces/node_inode.inode.html">INode</a>.<a href="../interfaces/node_inode.inode.html#setproperty">setProperty</a></p>
+							<p>Implementation of Node.setProperty</p>
 							<p>Inherited from <a href="property_propertyholder.propertyholder.html">PropertyHolder</a>.<a href="property_propertyholder.propertyholder.html#setproperty">setProperty</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/e386078/src/property/PropertyHolder.ts#L65">src/property/PropertyHolder.ts:65</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/d8285d7/src/property/PropertyHolder.ts#L63">src/property/PropertyHolder.ts:63</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>property: <a href="../interfaces/property_iproperty.iproperty.html" class="tsd-signature-type" data-tsd-kind="Interface">IProperty</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5>property: <a href="property_property.property.html" class="tsd-signature-type" data-tsd-kind="Class">Property</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -3414,22 +3422,22 @@ img {
 				<a name="isattachment" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagStatic">Static</span> is<wbr>Attachment</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<li class="tsd-signature tsd-kind-icon">is<wbr>Attachment<span class="tsd-signature-symbol">(</span>node<span class="tsd-signature-symbol">: </span><a href="../interfaces/node_inode.inode.html" class="tsd-signature-type" data-tsd-kind="Interface">INode</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">node</span><span class="tsd-signature-symbol"> is </span><a href="../interfaces/node_iattachment.iattachment.html" class="tsd-signature-type" data-tsd-kind="Interface">IAttachment</a></li>
+					<li class="tsd-signature tsd-kind-icon">is<wbr>Attachment<span class="tsd-signature-symbol">(</span>node<span class="tsd-signature-symbol">: </span><a href="node_node.node.html" class="tsd-signature-type" data-tsd-kind="Class">Node</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">node</span><span class="tsd-signature-symbol"> is </span><a href="node_attachment.attachment.html" class="tsd-signature-type" data-tsd-kind="Class">Attachment</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/e386078/src/node/Node.ts#L51">src/node/Node.ts:51</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/d8285d7/src/node/Node.ts#L50">src/node/Node.ts:50</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>node: <a href="../interfaces/node_inode.inode.html" class="tsd-signature-type" data-tsd-kind="Interface">INode</a></h5>
+								<h5>node: <a href="node_node.node.html" class="tsd-signature-type" data-tsd-kind="Class">Node</a></h5>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">node</span><span class="tsd-signature-symbol"> is </span><a href="../interfaces/node_iattachment.iattachment.html" class="tsd-signature-type" data-tsd-kind="Interface">IAttachment</a></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">node</span><span class="tsd-signature-symbol"> is </span><a href="node_attachment.attachment.html" class="tsd-signature-type" data-tsd-kind="Class">Attachment</a></h4>
 					</li>
 				</ul>
 			</section>
@@ -3437,22 +3445,22 @@ img {
 				<a name="ispost" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagStatic">Static</span> is<wbr>Post</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<li class="tsd-signature tsd-kind-icon">is<wbr>Post<span class="tsd-signature-symbol">(</span>node<span class="tsd-signature-symbol">: </span><a href="../interfaces/node_inode.inode.html" class="tsd-signature-type" data-tsd-kind="Interface">INode</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">node</span><span class="tsd-signature-symbol"> is </span><a href="../interfaces/node_ipost.ipost.html" class="tsd-signature-type" data-tsd-kind="Interface">IPost</a></li>
+					<li class="tsd-signature tsd-kind-icon">is<wbr>Post<span class="tsd-signature-symbol">(</span>node<span class="tsd-signature-symbol">: </span><a href="node_node.node.html" class="tsd-signature-type" data-tsd-kind="Class">Node</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">node</span><span class="tsd-signature-symbol"> is </span><a href="node_post.post.html" class="tsd-signature-type" data-tsd-kind="Class">Post</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/e386078/src/node/Node.ts#L47">src/node/Node.ts:47</a></li>
+								<li>Defined in <a href="https://github.com/alberteddu/prim/blob/d8285d7/src/node/Node.ts#L46">src/node/Node.ts:46</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>node: <a href="../interfaces/node_inode.inode.html" class="tsd-signature-type" data-tsd-kind="Interface">INode</a></h5>
+								<h5>node: <a href="node_node.node.html" class="tsd-signature-type" data-tsd-kind="Class">Node</a></h5>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">node</span><span class="tsd-signature-symbol"> is </span><a href="../interfaces/node_ipost.ipost.html" class="tsd-signature-type" data-tsd-kind="Interface">IPost</a></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">node</span><span class="tsd-signature-symbol"> is </span><a href="node_post.post.html" class="tsd-signature-type" data-tsd-kind="Class">Post</a></h4>
 					</li>
 				</ul>
 			</section>
@@ -3472,11 +3480,10 @@ img {
 						<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
 					</ul>
 					<ul class="tsd-legend">
-						<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-						<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+						<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
 					</ul>
 					<ul class="tsd-legend">
-						<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+						<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
 					</ul>
 					<ul class="tsd-legend">
 						<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
