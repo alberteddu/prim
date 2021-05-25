@@ -1,15 +1,14 @@
-import { IProperty } from '../property/IProperty';
-import { ISegment } from '../url/ISegment';
-import { IDynamicNode } from '../extend/scope/IDynamicNode';
+import { Property } from '../property/Property';
+import { Segment } from '../url/Segment';
 
-export abstract class DynamicNode implements IDynamicNode {
-    constructor(protected readonly segment: ISegment, protected readonly properties: IProperty[]) {}
+export abstract class DynamicNode {
+    constructor(protected readonly segment: Segment, protected readonly properties: Property[]) {}
 
-    getSegment(): ISegment {
+    getSegment(): Segment {
         return this.segment;
     }
 
-    getProperties(): IProperty[] {
+    getProperties(): Property[] {
         return this.properties;
     }
 }

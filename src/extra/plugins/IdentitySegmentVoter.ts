@@ -1,6 +1,6 @@
 import { ISegmentVoterPlugin } from '../../extend/scope/ISegmentVoterPlugin';
 import { PluginScope } from '../../extend/scope/PluginScope';
-import { ISegment } from '../../url/ISegment';
+import { Segment } from '../../url/Segment';
 
 export class IdentitySegmentVoter implements ISegmentVoterPlugin {
     getId(): string {
@@ -11,7 +11,7 @@ export class IdentitySegmentVoter implements ISegmentVoterPlugin {
         return scope === PluginScope.SegmentVoterPlugin;
     }
 
-    vote(segment: ISegment): ISegment {
+    vote(segment: Segment): Segment {
         return segment;
     }
 }

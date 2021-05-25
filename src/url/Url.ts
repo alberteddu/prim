@@ -1,11 +1,8 @@
 import { normalize } from 'path';
-import { IUrl } from './IUrl';
-import { ISegment } from './ISegment';
 import { Segment } from './Segment';
-import { IPath } from '../filesystem/IPath';
 import { Path } from '../filesystem/Path';
 
-export class Url implements IUrl {
+export class Url {
     constructor(private readonly url: string) {
         this.url = normalize(url);
 
@@ -26,22 +23,22 @@ export class Url implements IUrl {
         return this.url;
     }
 
-    getPath(rootDirectory: IPath): IPath {
+    getPath(rootDirectory: Path): Path {
         return rootDirectory.join(new Path(this.getUrl()));
     }
 
-    getSegments(): ISegment[] {
+    getSegments(): Segment[] {
         return this.getUrl()
             .split('/')
             .map(urlSegment => new Segment(urlSegment))
             .filter(segment => segment.getSegment().length > 0);
     }
 
-    removeLastSegment(): IUrl {
+    removeLastSegment(): Url {
         return Url.fromSegments(...this.getSegments().slice(0, -1));
     }
 
-    getLastSegment(): ISegment | null {
+    getLastSegment(): Segment | null {
         const segments = this.getSegments();
 
         if (segments.length === 0) {
@@ -55,7 +52,7 @@ export class Url implements IUrl {
         return this.getSegments().length > 0;
     }
 
-    appendSegment(segment: ISegment): IUrl {
+    appendSegment(segment: Segment): Url {
         return Url.fromSegments(...this.getSegments(), segment);
     }
 
@@ -63,11 +60,11 @@ export class Url implements IUrl {
         return this.getUrl();
     }
 
-    is(url: IUrl): boolean {
+    is(url: Url): boolean {
         return this.getUrl() === url.getUrl();
     }
 
-    static fromSegments(...segments: ISegment[]): IUrl {
+    static fromSegments(...segments: Segment[]): Url {
         return new Url(segments.map(segment => segment.getSegment()).join('/'));
     }
 }

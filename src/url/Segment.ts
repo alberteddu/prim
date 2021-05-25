@@ -1,13 +1,11 @@
-import { ISegment } from './ISegment';
-
-export class Segment implements ISegment {
+export class Segment {
     constructor(private readonly segment: string) {}
 
     getSegment(): string {
         return this.segment;
     }
 
-    is(segment: ISegment): boolean {
+    is(segment: Segment): boolean {
         return segment.getSegment() === this.getSegment();
     }
 

@@ -1,5 +1,5 @@
 import { IPropertyMatch } from './IPropertyMatch';
-import { IProperty } from '../IProperty';
+import { Property } from '../Property';
 
 export class PropertyMatchIntersection implements IPropertyMatch {
     private operands: IPropertyMatch[];
@@ -8,7 +8,7 @@ export class PropertyMatchIntersection implements IPropertyMatch {
         this.operands = operands;
     }
 
-    match(property: IProperty): boolean {
+    match(property: Property): boolean {
         return this.operands.every(operand => operand.match(property));
     }
 }

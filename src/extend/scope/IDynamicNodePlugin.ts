@@ -1,13 +1,13 @@
-import { IDynamicPost } from './IDynamicPost';
-import { IDynamicAttachment } from './IDynamicAttachment';
 import { PluginScope } from './PluginScope';
-import { IPost } from '../../node/IPost';
+import { DynamicPost } from '../../node/DynamicPost';
+import { Post } from '../../node/Post';
+import { DynamicAttachment } from '../../node/DynamicAttachment';
 import { IPlugin } from '../IPlugin';
 
 export interface IDynamicNodePlugin extends IPlugin {
-    getChildrenOfPost(post: IPost): IDynamicPost[];
+    getChildrenOfPost(post: Post): DynamicPost[];
 
-    getAttachmentsOfPost(post: IPost): IDynamicAttachment[];
+    getAttachmentsOfPost(post: Post): DynamicAttachment[];
 }
 
 export const isDynamicNodePlugin = (object: IPlugin): object is IDynamicNodePlugin => {

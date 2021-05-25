@@ -1,10 +1,10 @@
 import { IPropertyMatch } from './IPropertyMatch';
-import { IProperty } from '../IProperty';
+import { Property } from '../Property';
 
 export class ValueMatchesRegex implements IPropertyMatch {
     constructor(private readonly name: string, private readonly regex: string | RegExp) {}
 
-    match(property: IProperty): boolean {
+    match(property: Property): boolean {
         const value = property.getValue();
 
         if (typeof value !== 'string') {

@@ -1,34 +1,32 @@
-import { inject, injectable } from 'inversify';
-import { IPrim } from './IPrim';
-import { TYPES } from '../types';
-import { IPluginHolder } from '../extend/IPluginHolder';
-import { IPost } from '../node/IPost';
-import { IPath } from '../filesystem/IPath';
-import { IUrl } from '../url/IUrl';
-import { IPathValidator } from '../filesystem/IPathValidator';
-import { IAttachment } from '../node/IAttachment';
-import { INodeFinder } from '../finder/INodeFinder';
+import { inject, injectable } from 'tsyringe';
+import { Attachment } from '../node/Attachment';
 import { IdentitySegmentVoter } from '../extra/plugins/IdentitySegmentVoter';
 import { Url } from '../url/Url';
+import { PathValidator } from '../filesystem/PathValidator';
+import { NodeFinder } from '../finder/NodeFinder';
+import { PluginHolder } from '../extend/PluginHolder';
+import { Path } from '../filesystem/Path';
+import { Post } from '../node/Post';
+import { TYPES } from '../types';
 
 @injectable()
-export class Prim implements IPrim {
+export class Prim {
     constructor(
-        @inject(TYPES.RootDirectory) private readonly rootDirectory: IPath,
-        @inject(TYPES.PathValidator) private readonly pathValidator: IPathValidator,
-        @inject(TYPES.NodeFinder) private readonly nodeFinder: INodeFinder,
-        @inject(TYPES.PluginHolder) private readonly pluginHolder: IPluginHolder,
+        @inject(TYPES.RootDirectory) private readonly rootDirectory: Path,
+        private readonly pathValidator: PathValidator,
+        private readonly nodeFinder: NodeFinder,
+        private readonly pluginHolder: PluginHolder,
     ) {
         this.pathValidator.validateDirectory(this.getRootDirectory());
 
         this.pluginHolder.addPlugin(new IdentitySegmentVoter());
     }
 
-    getRootDirectory(): IPath {
+    getRootDirectory(): Path {
         return this.rootDirectory;
     }
 
-    get(url: string | IUrl): IPost | IAttachment | null {
+    get(url: string | Url): Post | Attachment | null {
         let nodeUrl;
 
         if (typeof url === 'string') {
@@ -40,7 +38,7 @@ export class Prim implements IPrim {
         return this.nodeFinder.findNodeAtUrl(nodeUrl);
     }
 
-    getPluginHolder(): IPluginHolder {
+    getPluginHolder(): PluginHolder {
         return this.pluginHolder;
     }
 }

@@ -1,6 +1,5 @@
 import { ISegmentVoterPlugin } from '../../extend/scope/ISegmentVoterPlugin';
 import { PluginScope } from '../../extend/scope/PluginScope';
-import { ISegment } from '../../url/ISegment';
 import { Segment } from '../../url/Segment';
 
 export class NumberedSegmentVoter implements ISegmentVoterPlugin {
@@ -12,7 +11,7 @@ export class NumberedSegmentVoter implements ISegmentVoterPlugin {
         return scope === PluginScope.SegmentVoterPlugin;
     }
 
-    vote(segment: ISegment): ISegment {
+    vote(segment: Segment): Segment {
         const segmentString = segment.getSegment();
         const matches = segmentString.match(/^\d+\.\s+(.*)$/);
 

@@ -9,15 +9,14 @@ import yaml from 'yaml';
 import { Node as UnistNode } from 'unist';
 import { IPostEnhancerPlugin } from '../../extend/scope/IPostEnhancerPlugin';
 import { IAttachmentEnhancerPlugin } from '../../extend/scope/IAttachmentEnhancerPlugin';
-import { INode } from '../../node/INode';
-import { INodeEnhancement } from '../../extend/scope/INodeEnhancement';
-import { IPost } from '../../node/IPost';
-import { IUrl } from '../../url/IUrl';
 import { PluginScope } from '../../extend/scope/PluginScope';
 import { PropertyIsEqual } from '../../property/match/PropertyIsEqual';
 import { ValueMatchesRegex } from '../../property/match/ValueMatchesRegex';
 import { Property } from '../../property/Property';
 import { Node } from '../../node/Node';
+import { Url } from '../../url/Url';
+import { NodeEnhancement } from '../../extend/scope/NodeEnhancement';
+import { Post } from '../../node/Post';
 
 export enum Formats {
     TOML = 'toml',
@@ -25,7 +24,7 @@ export enum Formats {
 }
 
 export class MarkdownPosts implements IPostEnhancerPlugin, IAttachmentEnhancerPlugin {
-    private contentAttachmentUrls: IUrl[] = [];
+    private contentAttachmentUrls: Url[] = [];
 
     constructor(private readonly supportedFormats: Formats[] = [Formats.TOML, Formats.YAML]) {}
 
@@ -37,7 +36,7 @@ export class MarkdownPosts implements IPostEnhancerPlugin, IAttachmentEnhancerPl
         return [PluginScope.PostEnhancerPlugin, PluginScope.AttachmentEnhancerPlugin].includes(scope);
     }
 
-    enhance(node: INode, currentEnhancement: INodeEnhancement): INodeEnhancement {
+    enhance(node: Node, currentEnhancement: NodeEnhancement): NodeEnhancement {
         if (Node.isAttachment(node)) {
             if (typeof this.contentAttachmentUrls.find(url => url.is(node.getUrl())) !== 'undefined') {
                 node.setProperty(new Property('--content-attachment', true));
@@ -46,7 +45,7 @@ export class MarkdownPosts implements IPostEnhancerPlugin, IAttachmentEnhancerPl
             return currentEnhancement;
         }
 
-        const post = node as IPost;
+        const post = node as Post;
 
         if (post.isDynamic() && !post.propertyExists('_markdown-source')) {
             return currentEnhancement;

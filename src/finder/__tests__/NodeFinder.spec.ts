@@ -1,9 +1,4 @@
 import mock from 'mock-fs';
-import { DynamicAttachment } from '../../node/DynamicAttachment';
-import { IPost } from '../../node/IPost';
-import { DynamicPost } from '../../node/DynamicPost';
-import { IDynamicAttachment } from '../../extend/scope/IDynamicAttachment';
-import { Post } from '../../node/Post';
 import { PathValidator } from '../../filesystem/PathValidator';
 import { NodeProvider } from '../../node/NodeProvider';
 import { NodeFinder } from '../NodeFinder';
@@ -11,12 +6,14 @@ import { PrivateNodes } from '../../extra/plugins/PrivateNodes';
 import { Segment } from '../../url/Segment';
 import { NumberedSegmentVoter } from '../../extra/plugins/NumberedSegmentVoter';
 import { PluginHolder } from '../../extend/PluginHolder';
-import { IDynamicPost } from '../../extend/scope/IDynamicPost';
 import { PluginScope } from '../../extend/scope/PluginScope';
 import { IDynamicNodePlugin } from '../../extend/scope/IDynamicNodePlugin';
 import { IdentitySegmentVoter } from '../../extra/plugins/IdentitySegmentVoter';
 import { Path } from '../../filesystem/Path';
 import { Url } from '../../url/Url';
+import { DynamicAttachment } from '../../node/DynamicAttachment';
+import { DynamicPost } from '../../node/DynamicPost';
+import { Post } from '../../node/Post';
 
 beforeAll(() => {
     mock({
@@ -43,7 +40,7 @@ class ExamplePlugin implements IDynamicNodePlugin {
         return 'example';
     }
 
-    getChildrenOfPost(post: IPost): IDynamicPost[] {
+    getChildrenOfPost(post: Post): DynamicPost[] {
         if (
             post
                 .getUrl()
@@ -65,7 +62,7 @@ class ExamplePlugin implements IDynamicNodePlugin {
         return [];
     }
 
-    getAttachmentsOfPost(post: IPost): IDynamicAttachment[] {
+    getAttachmentsOfPost(post: Post): DynamicAttachment[] {
         if (
             post
                 .getUrl()

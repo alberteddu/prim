@@ -1,55 +1,53 @@
-import { IPost } from './IPost';
-import { IAttachmentList } from './IAttachmentList';
 import { NodeType } from './NodeType';
 import { PostList } from './PostList';
-import { IAttachment } from './IAttachment';
-import { IPostList } from './IPostList';
 import { Node } from './Node';
-import { INodeFinder } from '../finder/INodeFinder';
-import { IProperty } from '../property/IProperty';
-import { IPath } from '../filesystem/IPath';
-import { IUrl } from '../url/IUrl';
+import { AttachmentList } from './AttachmentList';
+import { Attachment } from './Attachment';
+import { Property } from '../property/Property';
+import { NodeFinder } from '../finder/NodeFinder';
+import { Url } from '../url/Url';
+import { Path } from '../filesystem/Path';
 
-export class Post extends Node implements IPost {
+export class Post extends Node implements Post {
     constructor(
-        url: IUrl,
-        path: IPath,
+        url: Url,
+        path: Path,
         dynamic: boolean,
-        properties: IProperty[],
-        private readonly nodeFinder: INodeFinder,
+        properties: Property[],
+        private readonly nodeFinder: NodeFinder,
     ) {
         super(url, path, dynamic, properties);
     }
 
-    getAttachments(): IAttachmentList {
+    getAttachments(): AttachmentList {
         return this.nodeFinder.findAttachmentsAt(this);
     }
 
-    get attachments(): IAttachment[] {
+    get attachments(): Attachment[] {
         return this.getAttachments().toArray();
     }
 
-    hasAttachment(attachment: IAttachment): boolean {
+    hasAttachment(attachment: Attachment): boolean {
         return attachment.getPost().is(this);
     }
 
-    isParentOf(node: IPost): boolean {
+    isParentOf(node: Post): boolean {
         return node.getParent()?.is(this) ?? false;
     }
 
-    isChildOf(node: IPost): boolean {
+    isChildOf(node: Post): boolean {
         return this.getParent()?.is(node) ?? false;
     }
 
-    getChildren(): IPostList {
+    getChildren(): PostList {
         return this.nodeFinder.findPostsAt(this);
     }
 
-    get children(): IPost[] {
+    get children(): Post[] {
         return this.getChildren().toArray();
     }
 
-    getSiblings(): IPostList {
+    getSiblings(): PostList {
         return (
             this.getParent()
                 ?.getChildren()
@@ -57,11 +55,11 @@ export class Post extends Node implements IPost {
         );
     }
 
-    get siblings(): IPost[] {
+    get siblings(): Post[] {
         return this.getSiblings().toArray();
     }
 
-    getParent(): IPost | null {
+    getParent(): Post | null {
         if (this.isRoot()) {
             return null;
         }

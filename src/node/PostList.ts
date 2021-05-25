@@ -1,5 +1,4 @@
-import { IPost } from './IPost';
-import { IPostList } from './IPostList';
+import { Post } from './Post';
 import { NodeList } from './NodeList';
 
-export class PostList extends NodeList<IPostList, IPost> implements IPostList {}
+export class PostList extends NodeList<PostList, Post> {}

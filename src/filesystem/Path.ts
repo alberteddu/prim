@@ -1,14 +1,12 @@
 import { join, normalize } from 'path';
-import { IPath } from './IPath';
-import { ISegment } from '../url/ISegment';
 import { Segment } from '../url/Segment';
 
-export class Path implements IPath {
+export class Path implements Path {
     constructor(private readonly path: string) {
         this.path = path.length === 0 ? '' : normalize(path);
     }
 
-    getPath(prefix?: IPath): string {
+    getPath(prefix?: Path): string {
         if (prefix === undefined) {
             return this.path;
         }
@@ -16,11 +14,11 @@ export class Path implements IPath {
         return new Path(join(prefix.getPath(), this.path)).getPath();
     }
 
-    appendSegment(segment: string): IPath {
+    appendSegment(segment: string): Path {
         return new Path(join(this.path, segment));
     }
 
-    removeLastSegment(): IPath {
+    removeLastSegment(): Path {
         const newPathString = this.path
             .split('/')
             .slice(0, -1)
@@ -29,11 +27,11 @@ export class Path implements IPath {
         return new Path(newPathString);
     }
 
-    join(path: IPath): IPath {
+    join(path: Path): Path {
         return new Path(path.getPath(this));
     }
 
-    getLastSegment(): ISegment | null {
+    getLastSegment(): Segment | null {
         const segments = this.path.split('/').filter(part => part.length > 0);
 
         if (segments.length === 0) {

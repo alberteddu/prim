@@ -1,9 +1,9 @@
 import { PluginScope } from './PluginScope';
 import { IPlugin } from '../IPlugin';
-import { ISegment } from '../../url/ISegment';
+import { Segment } from '../../url/Segment';
 
 export interface ISegmentVoterPlugin extends IPlugin {
-    vote(segment: ISegment): ISegment;
+    vote(segment: Segment): Segment;
 }
 
 export const isSegmentVoterPlugin = (object: IPlugin): object is ISegmentVoterPlugin => {

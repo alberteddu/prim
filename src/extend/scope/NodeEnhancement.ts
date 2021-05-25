@@ -1,14 +1,13 @@
-import { INodeEnhancement } from './INodeEnhancement';
-import { IResolution } from '../../finder/resolution/IResolution';
+import { Resolution } from '../../finder/resolution/Resolution';
 
-export abstract class NodeEnhancement implements INodeEnhancement {
-    constructor(protected readonly resolution: IResolution) {}
+export abstract class NodeEnhancement {
+    constructor(protected readonly resolution: Resolution) {}
 
-    resolve(): IResolution {
+    resolve(): Resolution {
         return this.resolution;
     }
 
-    withResolution(resolution: IResolution): INodeEnhancement {
-        return new (this.constructor as { new (resolution: IResolution): INodeEnhancement })(resolution);
+    withResolution(resolution: Resolution): NodeEnhancement {
+        return new (this.constructor as { new (resolution: Resolution): NodeEnhancement })(resolution);
     }
 }
