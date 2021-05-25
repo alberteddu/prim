@@ -1,11 +1,9 @@
 import { IPropertyMatch } from './match/IPropertyMatch';
 import { PropertyPassesTest } from './match/PropertyPassesTest';
-import { IProperty } from './IProperty';
 import { IPropertyHolderAwareMatch } from './match/IPropertyHolderAwareMatch';
 import { PropertyIsEqual } from './match/PropertyIsEqual';
 import { PropertyObject } from './PropertyObject';
 import { ValueMatchesRegex } from './match/ValueMatchesRegex';
-import { IPropertyHolder } from './IPropertyHolder';
 import { Property } from './Property';
 import { CannotModifyProtectedProperty } from '../error/CannotModifyProtectedProperty';
 
@@ -13,10 +11,10 @@ const instanceOfPropertyHolderAwareMatch = (object: IPropertyMatch): object is I
     return 'setPropertyHolder' in object;
 };
 
-export abstract class PropertyHolder implements IPropertyHolder {
+export abstract class PropertyHolder implements PropertyHolder {
     private readonly properties: PropertyObject = {};
 
-    constructor(properties: IProperty[] = []) {
+    protected constructor(properties: Property[] = []) {
         properties.forEach(this.setProperty.bind(this));
     }
 
@@ -24,7 +22,7 @@ export abstract class PropertyHolder implements IPropertyHolder {
         return this.properties.hasOwnProperty(name);
     }
 
-    hasProperty(property: IProperty): boolean {
+    hasProperty(property: Property): boolean {
         const name = property.getName();
 
         return this.propertyExists(name) && this.getProperty(name).is(property);
@@ -50,11 +48,11 @@ export abstract class PropertyHolder implements IPropertyHolder {
         return this.match(new ValueMatchesRegex(name, regex));
     }
 
-    matchCallback(callback: (property: IProperty) => boolean): boolean {
+    matchCallback(callback: (property: Property) => boolean): boolean {
         return this.match(new PropertyPassesTest(callback));
     }
 
-    getProperty<T = any>(name: string, defaultValue: T = null as any): IProperty {
+    getProperty<T = any>(name: string, defaultValue: T = null as any): Property {
         if (this.propertyExists(name)) {
             return this.properties[name];
         }
@@ -62,13 +60,13 @@ export abstract class PropertyHolder implements IPropertyHolder {
         return new Property<T>(name, defaultValue);
     }
 
-    setProperty(property: IProperty): void {
+    setProperty(property: Property): void {
         this.protect(property.getName());
 
         this.properties[property.getName()] = property;
     }
 
-    getProperties(): IProperty[] {
+    getProperties(): Property[] {
         return Object.values(this.properties);
     }
 

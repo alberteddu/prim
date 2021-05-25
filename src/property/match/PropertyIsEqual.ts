@@ -1,10 +1,10 @@
 import { IPropertyMatch } from './IPropertyMatch';
-import { IProperty } from '../IProperty';
+import { Property } from '../Property';
 
 export class PropertyIsEqual implements IPropertyMatch {
-    constructor(private readonly property: IProperty) {}
+    constructor(private readonly property: Property) {}
 
-    match(property: IProperty): boolean {
+    match(property: Property): boolean {
         return property.is(this.property);
     }
 }

@@ -60,6 +60,7 @@
         "remark-parse": "^8.0.3",
         "remark-stringify": "^8.1.1",
         "rollup": "^2.49.0",
+        "tsyringe": "^4.5.0",
         "unified": "^8.4.2",
         "unist-util-filter": "^2.0.3"
     },
@@ -85,7 +86,6 @@
         "deep-equal": "^2.0.1",
         "eslint": "^7.27.0",
         "husky": "^1.0.1",
-        "inversify": "^5.0.1",
         "jest": "^26.6.3",
         "jest-config": "^26.6.3",
         "jexl": "^2.2.2",

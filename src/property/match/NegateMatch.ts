@@ -1,10 +1,10 @@
 import { IPropertyMatch } from './IPropertyMatch';
-import { IProperty } from '../IProperty';
+import { Property } from '../Property';
 
 export class NegateMatch implements IPropertyMatch {
     constructor(private readonly propertyMatch: IPropertyMatch) {}
 
-    match(property: IProperty): boolean {
+    match(property: Property): boolean {
         return !this.propertyMatch.match(property);
     }
 }

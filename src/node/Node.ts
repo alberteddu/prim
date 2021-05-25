@@ -1,24 +1,23 @@
-import { INode } from './INode';
-import { IPost } from './IPost';
+import { Post } from './Post';
 import { NodeType } from './NodeType';
-import { IAttachment } from './IAttachment';
+import { Attachment } from './Attachment';
 import { PropertyHolder } from '../property/PropertyHolder';
-import { IUrl } from '../url/IUrl';
-import { IPath } from '../filesystem/IPath';
-import { IProperty } from '../property/IProperty';
+import { Property } from '../property/Property';
+import { Url } from '../url/Url';
+import { Path } from '../filesystem/Path';
 
-export abstract class Node extends PropertyHolder implements INode {
+export abstract class Node extends PropertyHolder implements Node {
     /* istanbul ignore next */
     constructor(
-        protected readonly _url: IUrl,
-        protected readonly _path: IPath,
+        protected readonly _url: Url,
+        protected readonly _path: Path,
         private readonly _dynamic: boolean,
-        properties: IProperty[] = [],
+        properties: Property[] = [],
     ) {
         super(properties);
     }
 
-    getUrl(): IUrl {
+    getUrl(): Url {
         return this._url;
     }
 
@@ -26,7 +25,7 @@ export abstract class Node extends PropertyHolder implements INode {
         return this._url.toString();
     }
 
-    getPath(): IPath {
+    getPath(): Path {
         return this._path;
     }
 
@@ -34,7 +33,7 @@ export abstract class Node extends PropertyHolder implements INode {
         return this._path.toString();
     }
 
-    is(node: INode): boolean {
+    is(node: Node): boolean {
         return this.getPath().getPath() === node.getPath().getPath();
     }
 
@@ -44,11 +43,11 @@ export abstract class Node extends PropertyHolder implements INode {
 
     abstract getNodeType(): NodeType;
 
-    static isPost(node: INode): node is IPost {
+    static isPost(node: Node): node is Post {
         return node.getNodeType() === NodeType.Post;
     }
 
-    static isAttachment(node: INode): node is IAttachment {
+    static isAttachment(node: Node): node is Attachment {
         return node.getNodeType() === NodeType.Attachment;
     }
 }

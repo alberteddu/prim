@@ -1,5 +1,5 @@
-import { IProperty } from '../IProperty';
+import { Property } from '../Property';
 
 export interface IPropertyMatch {
-    match(property: IProperty): boolean;
+    match(property: Property): boolean;
 }

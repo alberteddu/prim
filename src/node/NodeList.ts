@@ -1,9 +1,8 @@
 import jexl from 'jexl';
-import { INodeList } from './INodeList';
-import { INode } from './INode';
+import { Node } from './Node';
 import { IPropertyMatch } from '../property/match/IPropertyMatch';
 
-export abstract class NodeList<L extends INodeList<any>, T extends INode = INode> implements INodeList<L, T> {
+export abstract class NodeList<L extends NodeList<any>, T extends Node = Node> {
     constructor(private readonly nodes: T[]) {}
 
     count() {

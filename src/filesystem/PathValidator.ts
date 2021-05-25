@@ -1,22 +1,21 @@
 import { existsSync, lstatSync } from 'fs';
 import { isAbsolute, relative } from 'path';
-import { inject, injectable } from 'inversify';
-import { IPath } from './IPath';
-import { IPathValidator } from './IPathValidator';
+import { inject, injectable } from 'tsyringe';
+import { Path } from './Path';
 import { TYPES } from '../types';
 import { InvalidPath } from '../error/InvalidPath';
 
 @injectable()
-export class PathValidator implements IPathValidator {
-    constructor(@inject(TYPES.RootDirectory) private readonly rootDirectory: IPath) {}
+export class PathValidator {
+    constructor(@inject(TYPES.RootDirectory) private readonly rootDirectory: Path) {}
 
-    validatePath(path: IPath): void {
+    validatePath(path: Path): void {
         if (!this.isValid(path)) {
             this.failPath(path);
         }
     }
 
-    validateDirectory(path: IPath): void {
+    validateDirectory(path: Path): void {
         this.validatePath(path);
 
         if (!this.isDirectory(path)) {
@@ -24,7 +23,7 @@ export class PathValidator implements IPathValidator {
         }
     }
 
-    validateFile(path: IPath): void {
+    validateFile(path: Path): void {
         this.validatePath(path);
 
         if (!this.isFile(path)) {
@@ -32,15 +31,15 @@ export class PathValidator implements IPathValidator {
         }
     }
 
-    isValid(path: IPath): boolean {
+    isValid(path: Path): boolean {
         return existsSync(path.getPath()) && this.isPathUnderRootDirectory(path.getPath());
     }
 
-    isDirectory(path: IPath): boolean {
+    isDirectory(path: Path): boolean {
         return lstatSync(path.getPath()).isDirectory();
     }
 
-    isFile(path: IPath): boolean {
+    isFile(path: Path): boolean {
         return lstatSync(path.getPath()).isFile();
     }
 
@@ -54,7 +53,7 @@ export class PathValidator implements IPathValidator {
         return relativePath.length > 0 && !relativePath.startsWith('..') && !isAbsolute(relativePath);
     }
 
-    private failPath(path: IPath): void {
+    private failPath(path: Path): void {
         throw new InvalidPath(path);
     }
 }

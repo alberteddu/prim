@@ -1,25 +1,21 @@
 import { readFileSync } from 'fs';
 import { basename, extname } from 'path';
-import { inject, injectable } from 'inversify';
 import { lookup } from 'mime-types';
-import { IPost } from './IPost';
+import { injectable } from 'tsyringe';
 import { Post } from './Post';
-import { INodeProvider } from './INodeProvider';
 import { Attachment } from './Attachment';
-import { IAttachment } from './IAttachment';
-import { IPathValidator } from '../filesystem/IPathValidator';
-import { IPath } from '../filesystem/IPath';
-import { IUrl } from '../url/IUrl';
-import { TYPES } from '../types';
-import { INodeFinder } from '../finder/INodeFinder';
 import { Property } from '../property/Property';
+import { PathValidator } from '../filesystem/PathValidator';
+import { NodeFinder } from '../finder/NodeFinder';
+import { Url } from '../url/Url';
+import { Path } from '../filesystem/Path';
 
 @injectable()
-export class NodeProvider implements INodeProvider {
-    constructor(@inject(TYPES.PathValidator) private readonly pathValidator: IPathValidator) {}
+export class NodeProvider implements NodeProvider {
+    constructor(private readonly pathValidator: PathValidator) {}
 
     // todo: here and in provideAttachment, location can be derived from url
-    providePost(url: IUrl, location: IPath, dynamic: boolean, nodeFinder: INodeFinder): IPost {
+    providePost(url: Url, location: Path, dynamic: boolean, nodeFinder: NodeFinder): Post {
         if (!dynamic) {
             this.pathValidator.validateDirectory(location);
         }
@@ -28,7 +24,7 @@ export class NodeProvider implements INodeProvider {
         return new Post(url, location, dynamic, [], nodeFinder);
     }
 
-    provideAttachment(url: IUrl, location: IPath, dynamic: boolean, nodeFinder: INodeFinder): IAttachment {
+    provideAttachment(url: Url, location: Path, dynamic: boolean, nodeFinder: NodeFinder): Attachment {
         if (!dynamic) {
             this.pathValidator.validateFile(location);
         }

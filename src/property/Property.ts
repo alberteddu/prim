@@ -1,7 +1,6 @@
 import equal from 'deep-equal';
-import { IProperty } from './IProperty';
 
-export class Property<T = any> implements IProperty<T> {
+export class Property<T = any> {
     constructor(private readonly name: string, private readonly value: T) {}
 
     getName(): string {
@@ -12,7 +11,7 @@ export class Property<T = any> implements IProperty<T> {
         return this.value;
     }
 
-    is(property: IProperty): boolean {
+    is(property: Property): boolean {
         return this.name === property.getName() && Property.valueEquals(this.value, property.getValue());
     }
 

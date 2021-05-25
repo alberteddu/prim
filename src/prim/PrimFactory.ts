@@ -1,35 +1,22 @@
-import { Container } from 'inversify';
+import { container } from 'tsyringe';
 import { Prim } from './Prim';
-import { IPrim } from './IPrim';
-import { IPluginHolder } from '../extend/IPluginHolder';
-import { IPath } from '../filesystem/IPath';
-import { IPathValidator } from '../filesystem/IPathValidator';
-import { PathValidator } from '../filesystem/PathValidator';
-import { INodeProvider } from '../node/INodeProvider';
-import { NodeProvider } from '../node/NodeProvider';
-import { INodeFinder } from '../finder/INodeFinder';
-import { NodeFinder } from '../finder/NodeFinder';
 import { TYPES } from '../types';
-import { PluginHolder } from '../extend/PluginHolder';
 import { Path } from '../filesystem/Path';
+import { NodeFinder } from '../finder/NodeFinder';
+import { NodeProvider } from '../node/NodeProvider';
+import { PathValidator } from '../filesystem/PathValidator';
+import { PluginHolder } from '../extend/PluginHolder';
 
 export class PrimFactory {
-    static createFromPath(path: string): IPrim {
-        const container = new Container();
-        container.bind<string>(TYPES.Path).toConstantValue(path);
-        container.bind<IPath>(TYPES.RootDirectory).toConstantValue(new Path(path));
-        container
-            .bind<IPluginHolder>(TYPES.PluginHolder)
-            .to(PluginHolder)
-            .inSingletonScope();
-        container
-            .bind<IPrim>(TYPES.Prim)
-            .to(Prim)
-            .inSingletonScope();
-        container.bind<IPathValidator>(TYPES.PathValidator).to(PathValidator);
-        container.bind<INodeFinder>(TYPES.NodeFinder).to(NodeFinder);
-        container.bind<INodeProvider>(TYPES.NodeProvider).to(NodeProvider);
+    static createFromPath(path: string): Prim {
+        const newContainer = container.createChildContainer();
+        newContainer.register<Path>(TYPES.RootDirectory, { useValue: new Path(path) });
+        newContainer.register<NodeFinder>(NodeFinder, { useClass: NodeFinder });
+        newContainer.register<NodeProvider>(NodeProvider, { useClass: NodeProvider });
+        newContainer.register<PathValidator>(PathValidator, { useClass: PathValidator });
+        newContainer.registerSingleton<PluginHolder>(PluginHolder);
+        newContainer.registerSingleton<Prim>(Prim);
 
-        return container.get<IPrim>(TYPES.Prim);
+        return newContainer.resolve(Prim);
     }
 }

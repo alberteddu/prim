@@ -1,10 +1,9 @@
-import { injectable } from 'inversify';
-import { IPluginHolder } from './IPluginHolder';
+import { singleton } from 'tsyringe';
 import { PluginsObject } from './PluginsObject';
 import { IPlugin } from './IPlugin';
 
-@injectable()
-export class PluginHolder implements IPluginHolder {
+@singleton()
+export class PluginHolder {
     private readonly plugins: PluginsObject = {};
 
     addPlugin(plugin: IPlugin): void {

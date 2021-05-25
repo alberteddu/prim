@@ -1,29 +1,28 @@
-import { IAttachment } from './IAttachment';
-import { IPost } from './IPost';
+import { Post } from './Post';
 import { NodeType } from './NodeType';
 import { Node } from './Node';
-import { IUrl } from '../url/IUrl';
-import { IPath } from '../filesystem/IPath';
-import { IProperty } from '../property/IProperty';
-import { INodeFinder } from '../finder/INodeFinder';
+import { Property } from '../property/Property';
+import { NodeFinder } from '../finder/NodeFinder';
+import { Path } from '../filesystem/Path';
+import { Url } from '../url/Url';
 
-export class Attachment extends Node implements IAttachment {
+export class Attachment extends Node {
     /* istanbul ignore next */
     constructor(
-        url: IUrl,
-        path: IPath,
+        url: Url,
+        path: Path,
         dynamic: boolean,
-        properties: IProperty[],
-        private readonly nodeFinder: INodeFinder,
+        properties: Property[],
+        private readonly nodeFinder: NodeFinder,
     ) {
         super(url, path, dynamic, properties);
     }
 
-    getPost(): IPost {
-        return this.nodeFinder.findPostAtUrl(this.getUrl().removeLastSegment()) as IPost;
+    getPost(): Post {
+        return this.nodeFinder.findPostAtUrl(this.getUrl().removeLastSegment()) as Post;
     }
 
-    isAttachmentOf(post: IPost): boolean {
+    isAttachmentOf(post: Post): boolean {
         return post.getAttachments().contains(this);
     }
 

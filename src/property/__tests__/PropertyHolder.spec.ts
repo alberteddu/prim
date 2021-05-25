@@ -1,17 +1,15 @@
 import { CannotModifyProtectedProperty } from '../../error/CannotModifyProtectedProperty';
 import { PropertyHolder } from '../PropertyHolder';
-import { IProperty } from '../IProperty';
 import { PropertyMatchUnion } from '../match/PropertyMatchUnion';
 import { PropertyIsEqual } from '../match/PropertyIsEqual';
 import { IPropertyHolderAwareMatch } from '../match/IPropertyHolderAwareMatch';
 import { PropertyMatchIntersection } from '../match/PropertyMatchIntersection';
 import { NegateMatch } from '../match/NegateMatch';
 import { ValueMatchesRegex } from '../match/ValueMatchesRegex';
-import { IPropertyHolder } from '../IPropertyHolder';
 import { Property } from '../Property';
 
 class ConcretePropertyHolder extends PropertyHolder {
-    constructor(properties: IProperty[] = []) {
+    constructor(properties: Property[] = []) {
         super(properties);
     }
 
@@ -21,9 +19,9 @@ class ConcretePropertyHolder extends PropertyHolder {
 }
 
 class PropertyHolderAwareMatch extends PropertyIsEqual implements IPropertyHolderAwareMatch {
-    propertyHolder: IPropertyHolder | null = null;
+    propertyHolder: PropertyHolder | null = null;
 
-    setPropertyHolder(propertyHolder: IPropertyHolder) {
+    setPropertyHolder(propertyHolder: PropertyHolder) {
         this.propertyHolder = propertyHolder;
     }
 }

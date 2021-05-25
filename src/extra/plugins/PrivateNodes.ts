@@ -1,17 +1,17 @@
 import { IAttachmentEnhancerPlugin } from '../../extend/scope/IAttachmentEnhancerPlugin';
 import { ResolutionState } from '../../finder/resolution/ResolutionState';
-import { INode } from '../../node/INode';
-import { INodeEnhancement } from '../../extend/scope/INodeEnhancement';
 import { PluginScope } from '../../extend/scope/PluginScope';
 import { IPostEnhancerPlugin } from '../../extend/scope/IPostEnhancerPlugin';
 import { Resolution } from '../../finder/resolution/Resolution';
+import { NodeEnhancement } from '../../extend/scope/NodeEnhancement';
+import { Node } from '../../node/Node';
 
 export class PrivateNodes implements IAttachmentEnhancerPlugin, IPostEnhancerPlugin {
     hasScope(scope: PluginScope): boolean {
         return [PluginScope.AttachmentEnhancerPlugin, PluginScope.PostEnhancerPlugin].includes(scope);
     }
 
-    enhance(node: INode, currentEnhancement: INodeEnhancement): INodeEnhancement {
+    enhance(node: Node, currentEnhancement: NodeEnhancement): NodeEnhancement {
         if (currentEnhancement.resolve().getState() !== ResolutionState.Found) {
             return currentEnhancement;
         }

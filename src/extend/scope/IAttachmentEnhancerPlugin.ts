@@ -1,10 +1,10 @@
-import { IAttachmentEnhancement } from './IAttachmentEnhancement';
 import { PluginScope } from './PluginScope';
-import { IAttachment } from '../../node/IAttachment';
+import { AttachmentEnhancement } from './AttachmentEnhancement';
+import { Attachment } from '../../node/Attachment';
 import { IPlugin } from '../IPlugin';
 
 export interface IAttachmentEnhancerPlugin extends IPlugin {
-    enhance(attachment: IAttachment, currentEnhancement: IAttachmentEnhancement): IAttachmentEnhancement;
+    enhance(attachment: Attachment, currentEnhancement: AttachmentEnhancement): AttachmentEnhancement;
 }
 
 export const isAttachmentEnhancerPlugin = (object: IPlugin): object is IAttachmentEnhancerPlugin => {
