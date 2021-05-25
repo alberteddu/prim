@@ -26,7 +26,7 @@
         "make-pretty": "prettier --write 'src/**/*.{js,ts,tsx}'",
         "prebuild": "rimraf dist",
         "build": "tsc --module commonjs && rollup -c rollup.config.ts",
-        "docs": "typedoc --json docs/docs.json --out docs --target es6 --theme minimal --mode file src",
+        "docs": "typedoc --json docs/docs.json --out docs --theme minimal src",
         "start": "rollup -c rollup.config.ts -w",
         "test": "jest --coverage",
         "test:watch": "jest --coverage --watch",
@@ -105,8 +105,9 @@
         "travis-deploy-once": "^5.0.11",
         "ts-jest": "^26.5.6",
         "ts-node": "^7.0.1",
+        "tslib": "^2.2.0",
         "typedoc": "^0.20.36",
-        "typescript": "^3.8.3",
+        "typescript": "^4.2.4",
         "yaml": "^1.8.3"
     },
     "publishConfig": {
