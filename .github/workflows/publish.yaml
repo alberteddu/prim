@@ -15,9 +15,9 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: yarn install
-      - run: yarn test:prod
-      - run: yarn build
+      - run: npm install
+      - run: npm run test:prod
+      - run: npm run build
       - uses: actions/upload-artifact@v1
         with:
           name: dist
@@ -35,16 +35,16 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: yarn install
+      - run: npm install
       - uses: actions/download-artifact@v1
         with:
           name: dist
-      - run: yarn semantic-release
+      - run: npm run semantic-release
       - id: tag
         uses: 'WyriHaximus/github-action-get-previous-tag@master'
         env:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
-      - run: yarn docs
+      - run: npm run docs
       - uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
