@@ -1,4 +1,5 @@
 import { Url } from '../Url';
+import { Path } from '../../filesystem/Path';
 
 describe('Url', () => {
     it('should normalize the url correctly', () => {
@@ -16,5 +17,11 @@ describe('Url', () => {
 
             expect(url.getUrl()).toBe(expectedUrl);
         });
+    });
+
+    it('should make a path', () => {
+        const url = new Url('some-url');
+
+        expect(url.getPath(new Path('/test')).getPath()).toBe('/test/some-url');
     });
 });
